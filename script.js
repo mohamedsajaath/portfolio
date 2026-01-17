@@ -372,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="timeline">
                     <div class="timeline-item left">
                         <div class="timeline-content">
-                            <div class="time">Jan 2026 - Present</div>
+                            <div class="time">Jan 2022 - Present</div>
                             <div class="role">Software Developer</div>
                             <div class="company">Solutionitcs • Sri Lanka</div>
                             <p style="font-size: 13px; color: #666; line-height: 1.5; margin-top: 8px;">Architected and launched WebScale, a productivity extension for web analysis and SEO optimization.</p>
@@ -391,9 +391,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div id="more-experience" style="display: none; width: 100%;">
                          <div class="timeline-item left">
                             <div class="timeline-content">
-                                <div class="time">February 2022 - Present</div>
+                                <div class="time">October 2023 - May 2025</div>
                                 <div class="role">Software Developer</div>
-                                <div class="company">Solutionitcs • Sri Lanka</div>
+                                <div class="company">BayLanka Technologies • Sri Lanka</div>
                                 <p style="font-size: 13px; color: #666; line-height: 1.5; margin-top: 8px;">Driving full-stack development across client projects, specializing in performance and custom tools.</p>
                             </div>
                         </div>
@@ -408,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="timeline-item left">
                             <div class="timeline-content">
                                 <div class="time">Sep 2021 - Jan 2022</div>
-                                <div class="role">Web Developer Trainee</div>
+                                <div class="role">Software Developer Trainee -> Software Developer</div>
                                 <div class="company">Imara Software Solution • Sri Lanka</div>
                                 <p style="font-size: 13px; color: #666; line-height: 1.5; margin-top: 8px;">Gained foundational experience in web technologies and contributed to frontend development tasks.</p>
                             </div>
