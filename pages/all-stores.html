@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Shopify Stores | Sajaath Mohamed</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fff;
+            overflow-y: auto;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--shopify-blue);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+
+        .header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        .stores-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .stores-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">
+            <svg viewBox="0 0 20 20" width="20" height="20" fill="currentColor">
+                <path
+                    d="M12.5 15a.75.75 0 0 1-.53-.22l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 1.06L9.31 10l3.72 3.72a.75.75 0 0 1-.53 1.28Z" />
+            </svg>
+            Back to Portfolio
+        </a>
+
+        <header class="header">
+            <h1>Shopify Stores Showcase</h1>
+            <p>A collection of stores and brands I've helped build and grow.</p>
+        </header>
+
+        <section class="stores-grid">
+            <!-- Full List of Stores -->
+            <div class="skill-card">
+                <div class="shop-thumbnail">
+                    <img src="../images/kbs.png" alt="KBS">
+                </div>
+                <h3>KBS - Welt der Steine</h3>
+                <a href="https://kbs-shop.com/" target="_blank" class="view-link">View Live Store →</a>
+            </div>
+
+            <div class="skill-card">
+                <div class="shop-thumbnail">
+                    <img src="../images/littlecub.png" alt="Littlecub">
+                </div>
+                <h3>Littlecub</h3>
+                <a href="https://littlecub.de/" target="_blank" class="view-link">View Live Store →</a>
+            </div>
+
+            <div class="skill-card">
+                <div class="shop-thumbnail">
+                    <img src="../images/fingersscrossed.png" alt="Fingerscrossed">
+                </div>
+                <h3>Fingerscrossed</h3>
+                <a href="https://fingerscrossed.design/" target="_blank" class="view-link">View Live Store →</a>
+            </div>
+
+            <div class="skill-card">
+                <div class="shop-thumbnail">
+                    <img src="../images/fingersscrossed.png" alt="Larrys">
+                </div>
+                <h3>Larrys</h3>
+                <a href="https://larrys0711.de/" target="_blank" class="view-link">View Live Store →</a>
+            </div>
+
+            <div class="skill-card">
+                <div class="shop-thumbnail">
+                    <img src="../images/schuldner.png" alt="Schuldner Insolvenz">
+                </div>
+                <h3>Schuldner Insolvenz Centrum</h3>
+                <a href="https://www.schuldner-insolvenz-centrum.de/en" class="view-link">View Live Store →</a>
+            </div>
+
+            <div class="skill-card">
+                <div class="shop-thumbnail">
+                    <img src="../images/scalesolutions.png" alt="Scale Solutions">
+                </div>
+                <h3>Scale Solutions</h3>
+                <a href="https://scalesolutions.de/" target="_blank" class="view-link">View Live Store →</a>
+            </div>
+
+            <div class="skill-card">
+                <div class="shop-thumbnail">
+                    <img src="../images/ng-kosmeticks.png" alt="NG Kosmetik">
+                </div>
+                <h3>NG Kosmetik</h3>
+                <a href="https://laximor.de/" target="_blank" class="view-link">View Live Store →</a>
+            </div>
+
+            <div class="skill-card">
+                <div class="shop-thumbnail">
+                    <img src="../images/fingersscrossed.png" alt="Salz Kultur">
+                </div>
+                <h3>Salz Kultur</h3>
+                <p style="font-size: 11px; color: #6d7175; margin-top: auto;">In Development</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="shop-thumbnail">
+                    <img src="../images/fingersscrossed.png" alt="EasyHeizen">
+                </div>
+                <h3>EasyHeizen</h3>
+                <p style="font-size: 11px; color: #6d7175; margin-top: auto;">Private Project</p>
+            </div>
+        </section>
+
+        <footer
+            style="margin-top: 100px; text-align: center; color: #babfc3; border-top: 1px solid #f1f1f1; padding-top: 40px;">
+            © 2026 Sajaath Mohamed | Shopify Developer
+        </footer>
+    </div>
+</body>
+
+</html>
