@@ -1222,6 +1222,17 @@ body {
     }
 }
 
+#section-hero,
+#section-shopify-work,
+#section-projects,
+#section-experience,
+#section-skills,
+#section-agency,
+#section-reviews {
+    padding: 10px 40px;
+}
+
+
 /* Mobile View: Hide UI and show only content */
 @media screen and (max-width: 768px) {
 
@@ -1331,15 +1342,7 @@ body {
 
 
 
-#section-hero,
-#section-shopify-work,
-#section-projects,
-#section-experience,
-#section-skills,
-#section-agency,
-#section-reviews {
-    padding: 10px 40px;
-}
+
 
 .mobile #section-hero,
 .mobile #section-shopify-work,
