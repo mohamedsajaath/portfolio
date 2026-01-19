@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="hero-image">
                         <img src="profile.png" alt="Sajaath Mohamed">
                         <div class="member-badge">
-                            <img src="images/SDA Member Light (PNG).png" alt="ShopDev Alliance Member" style="height: 22px; width: auto; object-fit: contain;">
+                            <img src="images/SDA Member Light (PNG).png" alt="ShopDev Alliance Member" style="height: 22px; width: auto; object-fit: contain; border-radius: 0;">
                         </div>
 
 
