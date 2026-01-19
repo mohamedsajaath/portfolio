@@ -65,20 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `
         },
-        'experience': {
-            title: 'Experience & Education',
-            settings: `
-                <div class="settings-group">
-                    <label for="show-timeline">Show Timeline</label>
-                    <input type="checkbox" id="show-timeline" checked style="width: auto;">
-                </div>
-                <div class="settings-group">
-                    <label>Items</label>
-                    <div style="font-size: 13px; color: #6d7175; margin-bottom: 8px;">10 entries identified</div>
-                    <button class="btn-secondary" style="width:100%;">Edit Entries</button>
-                </div>
-            `
-        },
         'projects': {
             title: 'Featured Projects',
             settings: `
@@ -97,6 +83,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="btn-secondary" style="width:100%;">Manage Projects</button>
             `
         },
+
+        'experience': {
+            title: 'Experience & Education',
+            settings: `
+                <div class="settings-group">
+                    <label for="show-timeline">Show Timeline</label>
+                    <input type="checkbox" id="show-timeline" checked style="width: auto;">
+                </div>
+                <div class="settings-group">
+                    <label>Items</label>
+                    <div style="font-size: 13px; color: #6d7175; margin-bottom: 8px;">10 entries identified</div>
+                    <button class="btn-secondary" style="width:100%;">Edit Entries</button>
+                </div>
+            `
+        },
+
         'skills': {
             title: 'Skills & Certs',
             settings: `
@@ -128,6 +130,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     <input type="checkbox" id="show-agency-badge" checked style="width: auto;">
                 </div>
                 <button class="btn-secondary" style="width:100%;">Edit Agency Profile</button>
+            `
+        },
+        'case-studies': {
+            title: 'Case Studies',
+            settings: `
+                <div class="settings-group">
+                    <label for="blog-posts-count">Display Count</label>
+                    <input type="number" id="blog-posts-count" value="3" min="1" max="6">
+                </div>
+                <div class="settings-group">
+                    <label for="show-blog-excerpt">Show Excerpts</label>
+                    <input type="checkbox" id="show-blog-excerpt" checked style="width: auto;">
+                </div>
+                <button class="btn-secondary" style="width:100%;">Manage Blog Posts</button>
             `
         },
         'reviews': {
@@ -235,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
         `,
+
 
 
         'projects': `
@@ -579,6 +596,41 @@ document.addEventListener('DOMContentLoaded', () => {
                             Visit Agency Website →
                         </a>
                     </div>
+                </div>
+            </div>
+        `,
+
+        'case-studies': `
+            <div id="section-case-studies" class="p-section-wrapper">
+                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid #f1f1f1; padding-bottom: 12px; margin-top: 90px; text-align: center;">Case Studies & Insights</h2>
+                <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <a href="pages/blog/shopify-speed.html" class="skill-card" style="text-decoration: none; color: inherit;">
+                        <div class="shop-thumbnail">
+                            <img src="images/blog/shopify-speed.png" alt="Shopify Speed">
+                        </div>
+                        <h3>Maximizing Shopify Speed</h3>
+                        <p style="font-size: 11px; color: #6d7175;">Performance Case Study</p>
+                        <span class="view-link" style="margin-top: 12px;">Read Article →</span>
+                    </a>
+                    <a href="pages/blog/shopify-metafields.html" class="skill-card" style="text-decoration: none; color: inherit;">
+                        <div class="shop-thumbnail">
+                            <img src="images/blog/shopify-metafields.png" alt="Metafields">
+                        </div>
+                        <h3>Product Page Metafields</h3>
+                        <p style="font-size: 11px; color: #6d7175;">Development Insights</p>
+                        <span class="view-link" style="margin-top: 12px;">Read Article →</span>
+                    </a>
+                    <a href="pages/blog/shopify-plus.html" class="skill-card" style="text-decoration: none; color: inherit;">
+                        <div class="shop-thumbnail">
+                            <img src="images/blog/shopify-plus.png" alt="Shopify Plus">
+                        </div>
+                        <h3>Scaling with Shopify Plus</h3>
+                        <p style="font-size: 11px; color: #6d7175;">Enterprise Solutions</p>
+                        <span class="view-link" style="margin-top: 12px;">Read Article →</span>
+                    </a>
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="pages/blog.html" class="btn-sub" style="display: inline-block;">View All Case Studies</a>
                 </div>
             </div>
         `,

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <title>High-Conversion Product Pages with Metafields | Sajaath Mohamed</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .article-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .article-category {
+            color: var(--shopify-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .article-title {
+            font-size: 48px;
+            margin: 16px 0;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+        }
+
+        .article-meta {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .article-hero {
+            width: 100%;
+            height: 450px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-body {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .article-body h2 {
+            font-size: 32px;
+            margin: 48px 0 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--shopify-blue);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body style="background: #fff; overflow-y: auto;">
+    <div class="article-container">
+        <a href="../blog.html" class="back-link">← Back to Blog</a>
+        <header class="article-header">
+            <span class="article-category">Shopify Development</span>
+            <h1 class="article-title">Building High-Conversion Product Pages with Shopify Metafields</h1>
+            <div class="article-meta">Published on Jan 10, 2026 • 6 min read</div>
+        </header>
+        <div class="article-hero">
+            <img src="../../images/blog/shopify-metafields.png" alt="Shopify Metafields">
+        </div>
+        <article class="article-body">
+            <p>One-size-fits-all product pages are a thing of the past. To truly stand out, Shopify merchants need to
+                provide rich, specific information that answers every potential customer question. This is where Shopify
+                Metafields and Metaobjects shine.</p>
+            <h2>Dynamic Content Strategy</h2>
+            <p>Instead of cramming every piece of information into the product description, I use Metafields to store
+                structured data like:
+            <ul>
+                <li>Materials and Care instructions</li>
+                <li>Technical specifications (Dimensions, Weight)</li>
+                <li>Unique selling points for specific variants</li>
+                <li>Custom "Shop the Look" references using Metaobjects</li>
+            </ul>
+            </p>
+            <h2>Implementation Detail</h2>
+            <p>Using Liquid code, I pull this data into custom theme sections. This ensures that the layout remains
+                clean and professional across the entire catalog while allowing for unique details on every page.</p>
+        </article>
+        <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid #eee; text-align: center;">
+            <a href="../../index.html#contact" class="btn-main">Scale Your Store Data</a>
+        </div>
+    </div>
+</body>
+
+</html>

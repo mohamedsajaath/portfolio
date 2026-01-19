@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <title>Shopify Speed Optimization Case Study | Sajaath Mohamed</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .article-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .article-category {
+            color: var(--shopify-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .article-title {
+            font-size: 48px;
+            margin: 16px 0;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+        }
+
+        .article-meta {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .article-hero {
+            width: 100%;
+            height: 450px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-body {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .article-body h2 {
+            font-size: 32px;
+            margin: 48px 0 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .article-body p {
+            margin-bottom: 24px;
+        }
+
+        .article-body ul {
+            margin-bottom: 24px;
+            padding-left: 20px;
+        }
+
+        .article-body li {
+            margin-bottom: 12px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--shopify-blue);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body style="background: #fff; overflow-y: auto;">
+    <div class="article-container">
+        <a href="../blog.html" class="back-link">← Back to Blog</a>
+
+        <header class="article-header">
+            <span class="article-category">Performance Optimization</span>
+            <h1 class="article-title">Maximizing Shopify Speed: A Case Study on Custom Liquid Optimization</h1>
+            <div class="article-meta">Published on Jan 15, 2026 • 8 min read</div>
+        </header>
+
+        <div class="article-hero">
+            <img src="../../images/blog/shopify-speed.png" alt="Shopify Speed Optimization">
+        </div>
+
+        <article class="article-body">
+            <p>In the world of e-commerce, every millisecond counts. Research shows that a 1-second delay in page load
+                time can lead to a 7% reduction in conversions. This case study details how I took a struggling Shopify
+                store with a desktop speed score of 45 and optimized it to a staggering 98.</p>
+
+            <h2>The Challenge</h2>
+            <p>A client approached me with a store that felt sluggish. They were using a premium theme but had installed
+                dozens of apps, each injecting their own scripts. The homepage was heavy with unoptimized images and
+                redundant Liquid loops that were firing multiple times.</p>
+
+            <h2>The Solution</h2>
+            <ul>
+                <li><strong>Script Audit:</strong> Removed 5 redundant apps and replaced their functionality with custom
+                    Liquid code, reducing external JS requests by 40%.</li>
+                <li><strong>Lazy Loading:</strong> Implemented native browser lazy loading for all images below the fold
+                    and used "fetchpriority" for the LCP hero image.</li>
+                <li><strong>Liquid Refactoring:</strong> Optimized nested "for" loops in the product grid to reduce
+                    server-side execution time.</li>
+                <li><strong>Critical CSS:</strong> Extracted core layout styles to be inlined in the header, ensuring
+                    the store feels fast even before the full stylesheet loads.</li>
+            </ul>
+
+            <h2>The Results</h2>
+            <p>Post-optimization, the store saw a 12% increase in average time on site and a 4.5% lift in conversion
+                rate within the first month. The Google PageSpeed Insights score stabilized at 98/100 for desktop and
+                92/100 for mobile.</p>
+        </article>
+
+        <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid #eee; text-align: center;">
+            <a href="../../index.html#contact" class="btn-main">Work with Me on Optimization</a>
+        </div>
+    </div>
+</body>
+
+</html>

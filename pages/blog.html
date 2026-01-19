@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <title>Shopify Case Studies & Blog | Sajaath Mohamed</title>
+    <meta name="description"
+        content="Deep dives into Shopify development, performance optimization, and custom Liquid solutions. Read case studies by Sajaath Mohamed.">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .blog-list-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .blog-header h1 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .blog-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--shopify-blue);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .blog-thumb {
+            width: 100%;
+            height: 200px;
+            background: #f6f6f7;
+            overflow: hidden;
+        }
+
+        .blog-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .blog-card:hover .blog-thumb img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-category {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--shopify-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .blog-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .blog-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .read-more {
+            color: var(--shopify-blue);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+    </style>
+</head>
+
+<body style="background: #fafafa; overflow-y: auto;">
+    <div class="blog-list-container">
+        <div style="margin-bottom: 30px;">
+            <a href="../index.html"
+                style="color: var(--shopify-blue); text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 8px;">
+                ← Back to Portfolio
+            </a>
+        </div>
+
+        <header class="blog-header">
+            <h1>Case Studies & Insights</h1>
+            <p style="color: var(--text-secondary); font-size: 18px;">Deep dives into how I solve complex Shopify
+                challenges.</p>
+        </header>
+
+        <div class="blog-grid">
+            <!-- Article 1 -->
+            <a href="blog/shopify-speed.html" class="blog-card">
+                <div class="blog-thumb">
+                    <img src="../images/blog/shopify-speed.png" alt="Shopify Speed Optimization">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-category">Performance</span>
+                    <h2 class="blog-title">Maximizing Shopify Speed: A Case Study on Custom Liquid Optimization</h2>
+                    <p class="blog-excerpt">How I improved a Shopify store speed score from 45 to 98 using core Liquid
+                        optimization techniques.</p>
+                    <div class="blog-footer">
+                        <span>Jan 15, 2026</span>
+                        <span class="read-more">Read Full Case Study</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Article 2 -->
+            <a href="blog/shopify-metafields.html" class="blog-card">
+                <div class="blog-thumb">
+                    <img src="../images/blog/shopify-metafields.png" alt="Shopify Metafields">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-category">Development</span>
+                    <h2 class="blog-title">Building High-Conversion Product Pages with Shopify Metafields</h2>
+                    <p class="blog-excerpt">Leveraging Metaobjects and Metafields to create dynamic, data-driven product
+                        experiences.</p>
+                    <div class="blog-footer">
+                        <span>Jan 10, 2026</span>
+                        <span class="read-more">Read Full Case Study</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Article 3 -->
+            <a href="blog/shopify-plus.html" class="blog-card">
+                <div class="blog-thumb">
+                    <img src="../images/blog/shopify-plus.png" alt="Shopify Plus Scaling">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-category">Enterprise</span>
+                    <h2 class="blog-title">The Power of Shopify Plus: Scaling International Brands</h2>
+                    <p class="blog-excerpt">Strategies for managing multi-currency and multi-language setups for global
+                        enterprise clients.</p>
+                    <div class="blog-footer">
+                        <span>Jan 05, 2026</span>
+                        <span class="read-more">Read Full Case Study</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Article 4 -->
+            <a href="blog/shopify-checkout.html" class="blog-card">
+                <div class="blog-thumb">
+                    <img src="../images/blog/shopify-checkout.png" alt="Shopify Checkout">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-category">UX Design</span>
+                    <h2 class="blog-title">Customizing Shopify Checkout: Enhancing Brand Consistency</h2>
+                    <p class="blog-excerpt">Using Checkout Extensibility to build a seamless transition from cart to
+                        thank you page.</p>
+                    <div class="blog-footer">
+                        <span>Dec 28, 2025</span>
+                        <span class="read-more">Read Full Case Study</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Article 5 -->
+            <a href="blog/shopify-hydrogen.html" class="blog-card">
+                <div class="blog-thumb">
+                    <img src="../images/blog/shopify-hydrogen.png" alt="Hydrogen vs Liquid">
+                </div>
+                <div class="blog-content">
+                    <span class="blog-category">Architecture</span>
+                    <h2 class="blog-title">Shopify Hydrogen vs Liquid: Choosing the Right Stack</h2>
+                    <p class="blog-excerpt">A technical comparison of headless commerce vs traditional theme development
+                        for 2026.</p>
+                    <div class="blog-footer">
+                        <span>Dec 20, 2025</span>
+                        <span class="read-more">Read Full Case Study</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <footer
+            style="margin-top: 100px; text-align: center; color: #babfc3; border-top: 1px solid #f1f1f1; padding-top: 40px;">
+            © 2026 Sajaath Mohamed | Shopify Developer
+        </footer>
+    </div>
+</body>
+
+</html>

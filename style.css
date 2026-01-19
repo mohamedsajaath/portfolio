@@ -1007,10 +1007,9 @@ body {
 }
 
 .skill-card:hover {
-    transform: translateY(-12px) rotateX(10deg) rotateY(-5deg);
+    transform: translateY(-5px);
     box-shadow:
-        -5px 5px 0px rgba(0, 128, 96, 0.1),
-        0 20px 40px rgba(0, 0, 0, 0.12);
+        0 8px 24px rgba(0, 0, 0, 0.08);
     border-color: var(--shopify-blue);
 }
 
@@ -1238,7 +1237,8 @@ body {
 #section-experience,
 #section-skills,
 #section-agency,
-#section-reviews {
+#section-reviews,
+#section-case-studies {
     padding: 10px 40px;
 }
 
@@ -1311,7 +1311,8 @@ body {
     #section-experience,
     #section-skills,
     #section-agency,
-    #section-reviews {
+    #section-reviews,
+    #section-case-studies {
         padding: 10px 10px;
     }
 
@@ -1360,7 +1361,8 @@ body {
 .mobile #section-experience,
 .mobile #section-skills,
 .mobile #section-agency,
-.mobile #section-reviews {
+.mobile #section-reviews,
+.mobile #section-case-studies {
     padding: 10px 10px;
 }
 
