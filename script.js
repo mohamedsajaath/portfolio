@@ -724,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="footer-container">
                     <div class="footer-top">
                         <div style="font-size: 12px; color: var(--shopify-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;">Available Globally</div>
-                        <h1>Let's build something<br>exceptional together.</h1>
+                        <h2>Let's build something<br>exceptional together.</h2>
                         
                         <div class="footer-social">
                             <a href="https://www.linkedin.com/in/sajaathmohamed" target="_blank" class="social-icon-link" title="LinkedIn">
