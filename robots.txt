@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sajaath-mohamed.online/sitemap.xml

@@ -4,7 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sajaath Mohamed | Shopify Developer Portfolio</title>
+    <title>Sajaath Mohamed | Certified Shopify Developer Portfolio</title>
+    <meta name="description"
+        content="Certified Shopify Liquid Theme Developer specializing in building fast, conversion-driven stores. Explore the portfolio of Sajaath Mohamed, featuring 12+ Shopify stores and custom development projects.">
+    <meta name="keywords"
+        content="Shopify Developer, Liquid Developer, Shopify Theme Developer, E-commerce Expert, Freelance Shopify Developer, Sajaath Mohamed, Shopify Plus, Custom Shopify Theme">
+    <meta name="author" content="Sajaath Mohamed">
+    <link rel="canonical" href="https://sajaath-mohamed.online/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sajaath-mohamed.online/">
+    <meta property="og:title" content="Sajaath Mohamed | Certified Shopify Developer">
+    <meta property="og:description"
+        content="Certified Shopify Liquid Theme Developer specializing in building fast, conversion-driven stores.">
+    <meta property="og:image" content="https://sajaath-mohamed.online/profile.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sajaath-mohamed.online/">
+    <meta property="twitter:title" content="Sajaath Mohamed | Certified Shopify Developer">
+    <meta property="twitter:description"
+        content="Certified Shopify Liquid Theme Developer specializing in building fast, conversion-driven stores.">
+    <meta property="twitter:image" content="https://sajaath-mohamed.online/profile.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sajaath Mohamed",
+      "url": "https://sajaath-mohamed.online",
+      "jobTitle": "Shopify Developer",
+      "image": "https://sajaath-mohamed.online/profile.png",
+      "sameAs": [
+        "https://www.linkedin.com/in/sajaathmohamed",
+        "https://github.com/mohamedsajaath",
+        "https://www.instagram.com/sajaath.mohamed/",
+        "https://web.facebook.com/profile.php?id=61569993419912"
+      ],
+      "description": "Certified Shopify Liquid Theme Developer with a passion for building fast, conversion-driven stores.",
+      "knowsAbout": ["Shopify", "Liquid", "JavaScript", "PHP", "E-commerce Development", "Web Performance"]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Sajaath Mohamed Portfolio",
+      "url": "https://sajaath-mohamed.online/"
+    }
+    </script>
+
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +67,7 @@
         <!-- Top Bar -->
         <header class="top-bar">
             <div class="top-bar-left">
-                <button class="back-btn"><svg viewBox="0 0 20 20" width="20" height="20">
+                <button class="back-btn" aria-label="Go back"><svg viewBox="0 0 20 20" width="20" height="20">
                         <path
                             d="M12.5 15a.75.75 0 0 1-.53-.22l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 1.06L9.31 10l3.72 3.72a.75.75 0 0 1-.53 1.28Z" />
                     </svg></button>
@@ -40,11 +91,13 @@
             </div>
             <div class="top-bar-right">
                 <div class="device-switcher">
-                    <button class="active" title="Desktop view"><svg viewBox="0 0 20 20" width="20" height="20">
+                    <button class="active" title="Desktop view" aria-label="Desktop view"><svg viewBox="0 0 20 20"
+                            width="20" height="20">
                             <path
                                 d="M2.5 5.5A1.5 1.5 0 0 1 4 4h12a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 16 16H4a1.5 1.5 0 0 1-1.5-1.5v-9Zm1.5 0v9h12v-9H4Z" />
                         </svg></button>
-                    <button title="Mobile view"><svg viewBox="0 0 20 20" width="20" height="20">
+                    <button title="Mobile view" aria-label="Mobile view"><svg viewBox="0 0 20 20" width="20"
+                            height="20">
                             <path
                                 d="M7.5 4A1.5 1.5 0 0 0 6 5.5v9A1.5 1.5 0 0 0 7.5 16h5a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 12.5 4h-5Zm0 1.5h5v9h-5v-9Z" />
                         </svg></button>
@@ -65,8 +118,8 @@
                 <div class="sidebar-content">
                     <div class="sidebar-group">
                         <div class="group-header">Header</div>
-                        <div class="section-item" data-section="announcement-bar">
-                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16">
+                        <div class="section-item" data-section="announcement-bar" role="button" tabindex="0">
+                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
                                 <path
                                     d="M12.25 4a.75.75 0 0 1 .75.75V11a.25.25 0 0 1-.25.25H7.25a.25.25 0 0 1-.25-.25V4.75a.75.75 0 0 1 1.5 0v5.5h3V4.75a.75.75 0 0 1 .75-.75Z" />
                             </svg>
@@ -76,70 +129,70 @@
 
                     <div class="sidebar-group">
                         <div class="group-header">Template</div>
-                        <div class="section-item" data-section="hero">
-                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16">
+                        <div class="section-item" data-section="hero" role="button" tabindex="0">
+                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
                                 <path
                                     d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-6.5 8a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0Z" />
                             </svg>
                             <span>About Me</span>
                         </div>
 
-                        <div class="section-item" data-section="shopify-work">
-                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16">
+                        <div class="section-item" data-section="shopify-work" role="button" tabindex="0">
+                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
                                 <path fill-rule="evenodd"
                                     d="M10.273 2.53a.75.75 0 0 0-.546 0L4.477 4.46a.75.75 0 0 0-.477.701v4.444c0 .247.121.477.324.617L9.5 13.911V16a.75.75 0 0 0 1.5 0v-2.089l5.176-3.689a.75.75 0 0 0 .324-.617V5.161a.75.75 0 0 0-.477-.701L10.273 2.53ZM14.5 6.06V9.4l4-2.85V3.34l-4 2.72ZM9.5 12.111 5.5 9.259V5.84l4 2.852v3.42ZM10 7.323l4-2.85V3.132l-4 2.853V7.323Zm-1-.871L5 3.599v1.34l4 2.853V6.452Z" />
                             </svg>
                             <span>Shopify Work</span>
                         </div>
-                        <div class="section-item" data-section="projects">
-                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16">
+                        <div class="section-item" data-section="projects" role="button" tabindex="0">
+                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
                                 <path
                                     d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-6.5 8a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0Z" />
                             </svg>
                             <span>Other Projects</span>
                         </div>
-                        <div class="section-item" data-section="experience">
-                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16">
+                        <div class="section-item" data-section="experience" role="button" tabindex="0">
+                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
                                 <path
                                     d="M10 4.5A.75.75 0 0 1 10.75 5v3.25H14a.75.75 0 0 1 0 1.5h-3.25V13a.75.75 0 0 1-1.5 0V9.75H6a.75.75 0 0 1 0-1.5h3.25V5A.75.75 0 0 1 10 4.5Z" />
                             </svg>
                             <span>Experience</span>
                         </div>
-                        <div class="section-item" data-section="skills">
-                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16">
+                        <div class="section-item" data-section="skills" role="button" tabindex="0">
+                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
                                 <path
                                     d="M2.5 1h15a1.5 1.5 0 0 1 1.5 1.5v15a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 1 17.5v-15A1.5 1.5 0 0 1 2.5 1Zm0 1.5v15h15v-15h-15Z" />
                             </svg>
                             <span>Skills & Certs</span>
                         </div>
-                        <div class="section-item" data-section="agency">
-                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16">
+                        <div class="section-item" data-section="agency" role="button" tabindex="0">
+                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
                                 <path
                                     d="M4.5 5.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10Zm1.5.5v9h9v-9h-9Z" />
                                 <path d="M7 8h6v1.5H7V8Zm0 3h6v1.5H7V11Z" />
                             </svg>
                             <span>Hire Agency</span>
                         </div>
-                        <div class="section-item" data-section="reviews">
-                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16">
+                        <div class="section-item" data-section="reviews" role="button" tabindex="0">
+                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
                                 <path
                                     d="M4 4h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2l-4 4-4-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" />
                             </svg>
                             <span>Reviews & Recommendations</span>
                         </div>
-                        <div class="add-section">
+                        <button class="add-section" aria-label="Add new section">
                             <svg viewBox="0 0 20 20" width="16" height="16">
                                 <path
                                     d="M10 4.5A.75.75 0 0 1 10.75 5v3.25H14a.75.75 0 0 1 0 1.5h-3.25V13a.75.75 0 0 1-1.5 0V9.75H6a.75.75 0 0 1 0-1.5h3.25V5A.75.75 0 0 1 10 4.5Z" />
                             </svg>
                             <span>Add section</span>
-                        </div>
+                        </button>
                     </div>
 
                     <div class="sidebar-group">
                         <div class="group-header">Footer</div>
-                        <div class="section-item" data-section="footer">
-                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16">
+                        <div class="section-item" data-section="footer" role="button" tabindex="0">
+                            <svg class="section-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
                                 <path
                                     d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-6.5 8a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0Z" />
                             </svg>
@@ -162,10 +215,13 @@
             <aside class="sidebar-right">
                 <div class="sidebar-header">
                     <h2>Section Settings</h2>
-                    <svg viewBox="0 0 20 20" width="20" height="20">
-                        <path
-                            d="M6 10a2 2 0 1 1-4.001-.001A2 2 0 0 1 6 10Zm6 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 12 10Zm6 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 18 10Z" />
-                    </svg>
+                    <button aria-label="More settings"
+                        style="background:none; border:none; padding:0; cursor:pointer; color:inherit;">
+                        <svg viewBox="0 0 20 20" width="20" height="20">
+                            <path
+                                d="M6 10a2 2 0 1 1-4.001-.001A2 2 0 0 1 6 10Zm6 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 12 10Zm6 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 18 10Z" />
+                        </svg>
+                    </button>
                 </div>
                 <div class="sidebar-content">
                     <div class="settings-group">

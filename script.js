@@ -10,18 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Announcement bar',
             settings: `
                 <div class="settings-group">
-                    <label>Text</label>
-                    <input type="text" value="📢 Currently available for Shopify projects!">
+                    <label for="announcement-text">Text</label>
+                    <input type="text" id="announcement-text" value="📢 Currently available for Shopify projects!">
                 </div>
                 <div class="settings-group">
-                    <label>Link</label>
-                    <input type="text" value="#contact">
+                    <label for="announcement-link">Link</label>
+                    <input type="text" id="announcement-link" value="#contact">
                 </div>
                 <div class="settings-group">
                     <label>Colors</label>
-                    <div class="color-swatches">
-                        <div class="swatch" style="background: var(--shopify-blue);"></div>
-                        <div class="swatch" style="background: #000;"></div>
+                    <div class="color-swatches" role="group" aria-label="Color options">
+                        <button class="swatch" aria-label="Shopify Blue" style="background: var(--shopify-blue); border:none;"></button>
+                        <button class="swatch" aria-label="Black" style="background: #000; border:none;"></button>
                     </div>
                 </div>
             `
@@ -30,20 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'About Me',
             settings: `
                 <div class="settings-group">
-                    <label>Heading</label>
-                    <input type="text" value="Sajaath Mohamed">
+                    <label for="hero-heading">Heading</label>
+                    <input type="text" id="hero-heading" value="Sajaath Mohamed">
                 </div>
                 <div class="settings-group">
-                    <label>Subheading</label>
-                    <textarea rows="4">Certified Shopify Liquid Theme Developer with a passion for building fast, conversion-driven stores.</textarea>
+                    <label for="hero-subheading">Subheading</label>
+                    <textarea id="hero-subheading" rows="4">Certified Shopify Liquid Theme Developer with a passion for building fast, conversion-driven stores.</textarea>
                 </div>
                 <div class="settings-group">
-                    <label>Primary Button</label>
-                    <input type="text" value="Let's talk">
+                    <label for="hero-primary-btn">Primary Button</label>
+                    <input type="text" id="hero-primary-btn" value="Let's talk">
                 </div>
                 <div class="settings-group">
-                    <label>Secondary Button</label>
-                    <input type="text" value="Let's chat">
+                    <label for="hero-secondary-btn">Secondary Button</label>
+                    <input type="text" id="hero-secondary-btn" value="Let's chat">
                 </div>
             `
         },
@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Shopify Work',
             settings: `
                 <div class="settings-group">
-                    <label>List Layout</label>
-                    <select style="width:100%; padding:8px; border-radius:6px; border:1px solid #babfc3;">
+                    <label for="work-layout">List Layout</label>
+                    <select id="work-layout" style="width:100%; padding:8px; border-radius:6px; border:1px solid #babfc3;">
                         <option>Grid (Small thumbnails)</option>
                         <option>Grid (Medium posters)</option>
                         <option>Showcase Slide</option>
@@ -69,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Experience & Education',
             settings: `
                 <div class="settings-group">
-                    <label>Show Timeline</label>
-                    <input type="checkbox" checked style="width: auto;">
+                    <label for="show-timeline">Show Timeline</label>
+                    <input type="checkbox" id="show-timeline" checked style="width: auto;">
                 </div>
                 <div class="settings-group">
                     <label>Items</label>
@@ -83,16 +83,16 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Featured Projects',
             settings: `
                 <div class="settings-group">
-                    <label>Layout</label>
-                    <select style="width:100%; padding:8px; border-radius:6px; border:1px solid #babfc3;">
+                    <label for="projects-layout">Layout</label>
+                    <select id="projects-layout" style="width:100%; padding:8px; border-radius:6px; border:1px solid #babfc3;">
                         <option>Grid (2 columns)</option>
                         <option>Grid (3 columns)</option>
                         <option>List</option>
                     </select>
                 </div>
                 <div class="settings-group">
-                    <label>Show Project Descriptions</label>
-                    <input type="checkbox" checked style="width: auto;">
+                    <label for="show-project-desc">Show Project Descriptions</label>
+                    <input type="checkbox" id="show-project-desc" checked style="width: auto;">
                 </div>
                 <button class="btn-secondary" style="width:100%;">Manage Projects</button>
             `
@@ -102,14 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
             settings: `
                 <div class="settings-group">
                     <label>Certificates Style</label>
-                    <div class="color-swatches">
-                        <div class="swatch" style="background: #f8f9fa;"></div>
-                        <div class="swatch" style="background: #fff3e0;"></div>
+                    <div class="color-swatches" role="group" aria-label="Certificate styles">
+                        <button class="swatch" aria-label="Light Gray" style="background: #f8f9fa; border:none;"></button>
+                        <button class="swatch" aria-label="Light Orange" style="background: #fff3e0; border:none;"></button>
                     </div>
                 </div>
                 <div class="settings-group">
-                    <label>HackerRank Badges</label>
-                    <input type="checkbox" checked style="width: auto;">
+                    <label for="show-badges">HackerRank Badges</label>
+                    <input type="checkbox" id="show-badges" checked style="width: auto;">
                 </div>
             `
         },
@@ -117,15 +117,15 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Partner Agency',
             settings: `
                 <div class="settings-group">
-                    <label>Display Layout</label>
-                    <select style="width:100%; padding:8px; border-radius:6px; border-color: #babfc3;">
+                    <label for="agency-layout">Display Layout</label>
+                    <select id="agency-layout" style="width:100%; padding:8px; border-radius:6px; border-color: #babfc3;">
                         <option>Featured Card</option>
                         <option>Service Grid Only</option>
                     </select>
                 </div>
                 <div class="settings-group">
-                    <label>Show Official Badge</label>
-                    <input type="checkbox" checked style="width: auto;">
+                    <label for="show-agency-badge">Show Official Badge</label>
+                    <input type="checkbox" id="show-agency-badge" checked style="width: auto;">
                 </div>
                 <button class="btn-secondary" style="width:100%;">Edit Agency Profile</button>
             `
@@ -134,15 +134,15 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Reviews & Feedback',
             settings: `
                 <div class="settings-group">
-                    <label>Layout Style</label>
-                    <select style="width:100%; padding:8px; border-radius:6px; border-color: #babfc3;">
+                    <label for="reviews-layout">Layout Style</label>
+                    <select id="reviews-layout" style="width:100%; padding:8px; border-radius:6px; border-color: #babfc3;">
                         <option>Masonry Grid</option>
                         <option>Carousel</option>
                     </select>
                 </div>
                 <div class="settings-group">
-                    <label>Verified Badge</label>
-                    <input type="checkbox" checked style="width: auto;">
+                    <label for="show-verified-badge">Verified Badge</label>
+                    <input type="checkbox" id="show-verified-badge" checked style="width: auto;">
                 </div>
                 <button class="btn-secondary" style="width:100%;">Import LinkedIn Recommendations</button>
             `
@@ -151,12 +151,12 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Footer',
             settings: `
                 <div class="settings-group">
-                    <label>Copyright</label>
-                    <input type="text" value="© 2026 Sajaath Mohamed">
+                    <label for="copyright-text">Copyright</label>
+                    <input type="text" id="copyright-text" value="© 2026 Sajaath Mohamed">
                 </div>
                 <div class="settings-group">
-                    <label>Availability</label>
-                    <input type="text" value="Available Globally">
+                    <label for="availability-text">Availability</label>
+                    <input type="text" id="availability-text" value="Available Globally">
                 </div>
             `
         }
@@ -444,11 +444,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="skill-tag">GitHub</span>
                     </div>
 
-                    <div class="cert-filter-tabs" id="cert-tabs">
-                        <div class="cert-tab active" data-filter="all" onclick="filterCerts('all')">All</div>
-                        <div class="cert-tab" data-filter="shopify" onclick="filterCerts('shopify')">Shopify</div>
-                        <div class="cert-tab" data-filter="development" onclick="filterCerts('development')">Development</div>
-                        <div class="cert-tab" data-filter="design" onclick="filterCerts('design')">Design & AI</div>
+                    <div class="cert-filter-tabs" id="cert-tabs" role="tablist" aria-label="Certificate filters">
+                        <button class="cert-tab active" role="tab" aria-selected="true" data-filter="all" onclick="filterCerts('all')">All</button>
+                        <button class="cert-tab" role="tab" aria-selected="false" data-filter="shopify" onclick="filterCerts('shopify')">Shopify</button>
+                        <button class="cert-tab" role="tab" aria-selected="false" data-filter="development" onclick="filterCerts('development')">Development</button>
+                        <button class="cert-tab" role="tab" aria-selected="false" data-filter="design" onclick="filterCerts('design')">Design & AI</button>
                     </div>
 
                     <div class="cert-grid" id="cert-registry">
@@ -589,9 +589,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid #f1f1f1; padding-bottom: 12px; margin-top: 90px; text-align: center;">Partner Feedback & Endorsements</h2>
                 
                 <div class="reviews-container">
-                    <div class="reviews-filter-tabs">
-                        <div class="review-tab active" onclick="switchReviewTab('recommendations')">Recommendations</div>
-                        <div class="review-tab" onclick="switchReviewTab('reviews')">Reviews</div>
+                    <div class="reviews-filter-tabs" role="tablist" aria-label="Review type filters">
+                        <button class="review-tab active" role="tab" aria-selected="true" onclick="switchReviewTab('recommendations')">Recommendations</button>
+                        <button class="review-tab" role="tab" aria-selected="false" onclick="switchReviewTab('reviews')">Reviews</button>
                     </div>
 
                     <div id="recommendations-content" class="recommendations-grid">
@@ -602,7 +602,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <img src="images/oliver.jpeg" alt="Oliver Schönbett">
                                 </div>
                                 <div class="recommender-info">
-                                    <div class="recommender-name">Oliver Schönbett <span style="color:var(--shopify-blue)">✔</span></div>
+                                    <div class="recommender-name">Oliver Schönbett </div>
                                     <div class="recommender-title">Founder & IT Strategist • Germany</div>
                                 </div>
                             </div>
@@ -618,7 +618,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <img src="images/patricia.jpeg" alt="Patricia Kats">
                                 </div>
                                 <div class="recommender-info">
-                                    <div class="recommender-name">Patricia Kats <span style="color:var(--shopify-blue)">✔</span></div>
+                                    <div class="recommender-name">Patricia Kats </div>
                                     <div class="recommender-title">E-Commerce Project Manager • Germany</div>
                                 </div>
                             </div>
@@ -634,7 +634,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <img src="images/markus.jpeg" alt="Dr. Markus Lehmann">
                                 </div>
                                 <div class="recommender-info">
-                                    <div class="recommender-name">Dr. Markus Lehmann <span style="color:var(--shopify-blue)">✔</span></div>
+                                    <div class="recommender-name">Dr. Markus Lehmann </div>
                                     <div class="recommender-title">CEO & Software Architect • Germany</div>
                                 </div>
                             </div>
@@ -650,7 +650,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <img src="images/isthiyaque.jpeg" alt="Ishthiyaque Ahmed">
                                 </div>
                                 <div class="recommender-info">
-                                    <div class="recommender-name">Ishthiyaque Ahmed <span style="color:var(--shopify-blue)">✔</span></div>
+                                    <div class="recommender-name">Ishthiyaque Ahmed </div>
                                     <div class="recommender-title">Automation Strategist • Sri Lanka</div>
                                 </div>
                             </div>
@@ -666,7 +666,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <img src="images/ajhar.jpeg" alt="Mohamed Ajhar">
                                 </div>
                                 <div class="recommender-info">
-                                    <div class="recommender-name">Mohamed Ajhar <span style="color:var(--shopify-blue)">✔</span></div>
+                                    <div class="recommender-name">Mohamed Ajhar </div>
                                     <div class="recommender-title">Software Engineer • Sri Lanka</div>
                                 </div>
                             </div>
@@ -682,7 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <img src="images/faalil.png" alt="Mohamed Faalil">
                                 </div>
                                 <div class="recommender-info">
-                                    <div class="recommender-name">Mohamed Faalil <span style="color:var(--shopify-blue)">✔</span></div>
+                                    <div class="recommender-name">Mohamed Faalil </div>
                                     <div class="recommender-title">Senior Software Engineer • Germany</div>
                                 </div>
                             </div>
@@ -698,7 +698,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <img src="images/ajmal.jpeg" alt="Rajabdeen Ajmal">
                                 </div>
                                 <div class="recommender-info">
-                                    <div class="recommender-name">Rajabdeen Ajmal <span style="color:var(--shopify-blue)">✔</span></div>
+                                    <div class="recommender-name">Rajabdeen Ajmal </div>
                                     <div class="recommender-title">Senior Technical Lead • Sri Lanka</div>
                                 </div>
                             </div>
@@ -727,22 +727,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h2>Let's build something<br>exceptional together.</h2>
                         
                         <div class="footer-social">
-                            <a href="https://www.linkedin.com/in/sajaathmohamed" target="_blank" class="social-icon-link" title="LinkedIn">
+                            <a href="https://www.linkedin.com/in/sajaathmohamed" target="_blank" class="social-icon-link" title="LinkedIn" aria-label="Follow me on LinkedIn">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                             </a>
-                            <a href="https://github.com/mohamedsajaath" target="_blank" class="social-icon-link" title="GitHub">
+                            <a href="https://github.com/mohamedsajaath" target="_blank" class="social-icon-link" title="GitHub" aria-label="Check my projects on GitHub">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                             </a>
-                            <a href="https://www.instagram.com/sajaath.mohamed/" target="_blank" class="social-icon-link" title="Instagram">
+                            <a href="https://www.instagram.com/sajaath.mohamed/" target="_blank" class="social-icon-link" title="Instagram" aria-label="Follow me on Instagram">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                             </a>
-                            <a href="https://web.facebook.com/profile.php?id=61569993419912" target="_blank" class="social-icon-link" title="Facebook">
+                            <a href="https://web.facebook.com/profile.php?id=61569993419912" target="_blank" class="social-icon-link" title="Facebook" aria-label="Follow me on Facebook">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                             </a>
-                            <a href="https://wa.me/94775265646" target="_blank" class="social-icon-link" title="WhatsApp">
+                            <a href="https://wa.me/94775265646" target="_blank" class="social-icon-link" title="WhatsApp" aria-label="Contact me on WhatsApp">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                             </a>
-                            <a href="mailto:mohamedsajaath0409@gmail.com" class="social-icon-link" title="Email">
+                            <a href="mailto:mohamedsajaath0409@gmail.com" class="social-icon-link" title="Email" aria-label="Send me an email">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                             </a>
                         </div>
@@ -773,12 +773,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const wrapper = document.createElement('div');
             wrapper.className = 'canvas-section';
             wrapper.dataset.sectionId = id;
+            wrapper.setAttribute('tabindex', '0');
+            wrapper.setAttribute('role', 'button');
+            wrapper.setAttribute('aria-label', `Edit ${id.replace('-', ' ')} section`);
             wrapper.innerHTML = portfolioData[id];
             previewEl.appendChild(wrapper);
 
-            wrapper.addEventListener('click', (e) => {
+            const selectSection = (e) => {
                 e.stopPropagation();
                 switchSection(id);
+            };
+
+            wrapper.addEventListener('click', selectSection);
+            wrapper.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectSection(e);
+                }
             });
         });
     }
@@ -831,10 +842,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     sectionItems.forEach(item => {
-        item.addEventListener('click', (e) => {
+        const handleAction = (e) => {
             e.preventDefault();
             const sectionId = item.getAttribute('data-section');
             if (sectionId) switchSection(sectionId);
+        };
+        item.addEventListener('click', handleAction);
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                handleAction(e);
+            }
         });
     });
 
@@ -894,8 +911,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tabs.forEach(tab => {
             if (tab.getAttribute('data-filter') === category) {
                 tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
             } else {
                 tab.classList.remove('active');
+                tab.setAttribute('aria-selected', 'false');
             }
         });
 
@@ -917,13 +936,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tab === 'recommendations') {
             if (recContent) recContent.style.display = 'grid';
             if (revContent) revContent.style.display = 'none';
-            if (tabs[0]) tabs[0].classList.add('active');
-            if (tabs[1]) tabs[1].classList.remove('active');
+            if (tabs[0]) {
+                tabs[0].classList.add('active');
+                tabs[0].setAttribute('aria-selected', 'true');
+            }
+            if (tabs[1]) {
+                tabs[1].classList.remove('active');
+                tabs[1].setAttribute('aria-selected', 'false');
+            }
         } else {
             if (recContent) recContent.style.display = 'none';
             if (revContent) revContent.style.display = 'grid';
-            if (tabs[0]) tabs[0].classList.remove('active');
-            if (tabs[1]) tabs[1].classList.add('active');
+            if (tabs[0]) {
+                tabs[0].classList.remove('active');
+                tabs[0].setAttribute('aria-selected', 'false');
+            }
+            if (tabs[1]) {
+                tabs[1].classList.add('active');
+                tabs[1].setAttribute('aria-selected', 'true');
+            }
         }
     };
 });

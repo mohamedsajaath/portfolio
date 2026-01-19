@@ -243,6 +243,15 @@ body {
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    transition: background 0.2s;
+}
+
+.add-section:hover {
+    background: #f6f6f7;
 }
 
 /* Preview Area */
@@ -1113,6 +1122,7 @@ body {
     cursor: pointer;
     white-space: nowrap;
     transition: all 0.2s ease;
+    font-family: inherit;
 }
 
 .cert-tab.active {
@@ -1714,6 +1724,9 @@ body {
     font-weight: 600;
     color: #637381;
     transition: all 0.3s ease;
+    background: none;
+    border: none;
+    font-family: inherit;
 }
 
 .review-tab.active {
