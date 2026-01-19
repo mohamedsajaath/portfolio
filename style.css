@@ -1564,6 +1564,7 @@ body {
     color: #999;
     font-size: 13px;
     flex-wrap: wrap;
+    padding-inline: 20px;
 }
 
 .footer-info {
@@ -1582,9 +1583,29 @@ body {
     color: var(--shopify-blue);
 }
 
+.mobile .footer-container {
+    padding-block: 80px;
+    padding-inline: 0;
+}
+.mobile .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    justify-content: center;
+}
+
+.mobile .footer-bottom *{
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    justify-content: center;
+}
+
+
 @media screen and (max-width: 768px) {
     .footer-container {
-        padding: 60px 20px 30px;
+        padding-block: 80px;
+        padding-inline: 0;
     }
 
     .footer-top h1 {
@@ -1595,7 +1616,15 @@ body {
         flex-direction: column;
         gap: 16px;
         text-align: center;
+        justify-content: center;
     }
+    .footer-bottom *{
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        justify-content: center;
+    }
+
 
     .footer-info {
         flex-direction: column;
@@ -1868,5 +1897,72 @@ body {
     .agency-feature-card {
         padding: 40px 20px;
         margin: 20px;
+    }
+}
+
+/* Tech Stack Slider */
+.tech-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+.tech-track {
+    display: flex;
+    width: calc(180px * 16);
+    /* item width * count (8 * 2) */
+    animation: scroll 25s linear infinite;
+}
+
+.tech-track:hover {
+    animation-play-state: paused;
+}
+
+.tech-item {
+    width: 180px;
+    /* Reduced from 250px to close the gap */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    /* Slightly tighter gap between logo and text */
+    flex-shrink: 0;
+}
+
+.tech-item img {
+    height: 28px;
+    /* Slightly smaller logos to match tighter spacing */
+    width: auto;
+    filter: grayscale(100%);
+    /* Invert icons if background is white for visibility or vice versa */
+    opacity: 0.6;
+    transition: all 0.3s;
+}
+
+.tech-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.tech-item span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #637381;
+    transition: color 0.3s;
+}
+
+.tech-item:hover span {
+    color: var(--text-primary);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-180px * 8));
     }
 }

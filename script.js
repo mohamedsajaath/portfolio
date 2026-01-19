@@ -47,6 +47,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `
         },
+        'tech-stack': {
+            title: 'Tech Stack Slider',
+            settings: `
+                <div class="settings-group">
+                    <label for="slider-speed">Animation Speed (s)</label>
+                    <input type="number" id="slider-speed" value="30" min="10" max="100">
+                </div>
+                <div class="settings-group">
+                    <label for="show-logo-names">Show Technology Names</label>
+                    <input type="checkbox" id="show-logo-names" checked style="width: auto;">
+                </div>
+                <div class="settings-group">
+                    <label>Logos</label>
+                    <div style="font-size: 13px; color: #6d7175; margin-bottom: 8px;">Shopify, React, JS, HTML5, CSS3, Tailwind, Node, Figma, Git</div>
+                    <button class="btn-secondary" style="width:100%;">Manage Logos</button>
+                </div>
+            `
+        },
         'shopify-work': {
             title: 'Shopify Work',
             settings: `
@@ -201,6 +219,31 @@ document.addEventListener('DOMContentLoaded', () => {
                         </a>
                     </div>
 
+                </div>
+            </div>
+        `,
+        'tech-stack': `
+            <div id="section-tech-stack" class="p-section-wrapper" style="padding: 40px 0; background: #fff; overflow: hidden; border-bottom: 1px solid #f1f1f1;">
+                <div class="tech-slider">
+                    <div class="tech-track">
+                        <!-- Logos repeated for infinite scroll -->
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/shopify.svg" alt="Shopify"><span>Shopify</span></div>
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/javascript.svg" alt="JavaScript"><span>JavaScript</span></div>
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/html5.svg" alt="HTML5"><span>HTML5</span></div>
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/nodedotjs.svg" alt="Node.js"><span>Node.js</span></div>
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/figma.svg" alt="Figma"><span>Figma</span></div>
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/git.svg" alt="Git"><span>Git</span></div>
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/make.svg" alt="Make.com"><span>Make.com</span></div>
+                        
+                        <!-- Repeat -->
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/shopify.svg" alt="Shopify"><span>Shopify</span></div>
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/javascript.svg" alt="JavaScript"><span>JavaScript</span></div>
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/html5.svg" alt="HTML5"><span>HTML5</span></div>
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/nodedotjs.svg" alt="Node.js"><span>Node.js</span></div>
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/figma.svg" alt="Figma"><span>Figma</span></div>
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/git.svg" alt="Git"><span>Git</span></div>
+                        <div class="tech-item"><img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/make.svg" alt="Make.com"><span>Make.com</span></div>
+                    </div>
                 </div>
             </div>
         `,
@@ -758,7 +801,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div>© 2026 Sajaath Mohamed — Built with Passion</div>
                         <div class="footer-info">
                             <span class="footer-link">Puttalam District, LK</span>
-                            <a href="mailto:mohamedsajaath0409@gmail.com" class="footer-link">mohamedsajaath0409@gmail.com</a>
+                            <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-end;">
+                                <a href="mailto:sajaath.mohamed@scalesolutions.de" class="footer-link">sajaath.mohamed@scalesolutions.de</a>
+                                <a href="mailto:mohamedsajaath0409@gmail.com" class="footer-link">mohamedsajaath0409@gmail.com</a>
+                            </div>
                         </div>
                     </div>
                 </div>
