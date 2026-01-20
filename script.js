@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div id="section-hero" class="p-section-wrapper">
                 <div class="hero-content">
                     <div class="hero-image">
-                        <img src="profile.png" alt="Sajaath Mohamed">
+                        <img src="profile.png" alt="Sajaath Mohamed" itemprop="image">
                         <div class="member-badge">
                             <img src="images/SDA Member Light (PNG).png" alt="ShopDev Alliance Member" style="height: 22px; width: auto; object-fit: contain; border-radius: 0;">
                         </div>
@@ -201,10 +201,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     </div>
                     <h1>Sajaath Mohamed</h1>
-                    <p class="subtitle">Shopify Developer</p>
+                    <p class="subtitle">Shopify Developer & Expert | Shopify Entwickler</p>
 
 
-                    <p class="description"></p>
+                    <p class="description">Experienced E-commerce Developer specializing in high-performance Shopify stores (Shopify Shops). Helping brands scale with custom Liquid themes and conversion-oriented development.</p>
 
 
 
