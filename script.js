@@ -200,10 +200,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                     </div>
-                    <h1>Sajaath Mohamed</h1>
-                    <p class="subtitle">Shopify Developer | Shopify Entwickler</p>
-
-
+            
+                    <h1 class="subtitle">Shopify Developer | Shopify Entwickler</h1>
+                    <h2>Sajaath Mohamed</h2>
                     <p class="description">Experienced E-commerce Developer specializing in high-performance Shopify stores (Shopify Shops). Helping brands scale with custom Liquid themes and conversion-oriented development.</p>
 
 
