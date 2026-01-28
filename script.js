@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             settings: `
                 <div class="settings-group">
                     <label for="hero-heading">Heading</label>
-                    <input type="text" id="hero-heading" value="Sajaath Mohamed">
+                    <input type="text" id="hero-heading" value="th Mohamed">
                 </div>
                 <div class="settings-group">
                     <label for="hero-subheading">Subheading</label>
@@ -201,9 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     </div>
 
-                    <h1 style="visibility:hidden; height:0;">Shopify Developer</h1>
-                    <h2>Sajaath Mohamed</h2>
-                    <p class="subtitle">Shopify Developer | Shopify Entwickler</p>
+                    <h1 style="font-size: 30px;">Shopify Developer for Custom Themes & High-Converting Stores</h1>
+                    <p class="subtitle">Sajaath Mohamed</p>
                   
                     <p class="description">Experienced E-commerce Developer specializing in high-performance Shopify stores (Shopify Shops). Helping brands scale with custom Liquid themes and conversion-oriented development.</p>
 
