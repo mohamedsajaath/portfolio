@@ -201,9 +201,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     </div>
 
-                    <h1 style="font-size: 30px;">Shopify Developer for Custom Themes & High-Converting Stores</h1>
-                    <p class="subtitle">Sajaath Mohamed</p>
-                  
+                    <p class="subtitle" style="font-size: 20px;">Sajaath Mohamed</p>
+                    <h1 style="font-size: 18px;">Shopify Developer for Custom Themes & High-Converting Stores</h1>
+
                     <p class="description">Experienced E-commerce Developer specializing in high-performance Shopify stores (Shopify Shops). Helping brands scale with custom Liquid themes and conversion-oriented development.</p>
 
 
