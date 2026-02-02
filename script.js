@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div id="section-hero" class="p-section-wrapper">
                 <div class="hero-content">
                     <div class="hero-image">
-                        <img src="profile.png" alt="Sajaath Mohamed" itemprop="image">
+                        <img src="sajaath_mohamed.jpg" alt="Sajaath Mohamed" itemprop="image">
                         <div class="member-badge">
                             <img src="images/SDA Member Light (PNG).png" alt="ShopDev Alliance Member" style="height: 22px; width: auto; object-fit: contain; border-radius: 0;">
                         </div>
