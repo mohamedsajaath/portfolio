@@ -796,11 +796,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             <a href="https://calendly.com/mohamedsajaath0409/30min" target="_blank" class="btn-main">Work with me</a>
                         </div>
 
-                        
-                        <!-- Calendly inline widget begin -->
-                        <div class="calendly-inline-widget" data-url="https://calendly.com/mohamedsajaath0409/30min?primary_color=245bd3" style="min-width:320px;height:700px;"></div>
-                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                        <!-- Calendly inline widget end -->
                     </div>
 
                     <div class="footer-bottom">
