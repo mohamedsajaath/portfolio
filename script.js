@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div id="section-announcement-bar" class="p-section-wrapper">
                 <div style="background: var(--shopify-blue); color: #fff; padding: 12px; border-radius: 8px 8px 0px 0px; text-align: center; margin-bottom: 20px; font-weight: 500; font-size: 14px;">
                     Currently available for Shopify projects! 
-                    <a href="https://calendly.com/mohamedsajaath0409/30min" target="_blank" style="color: #fff; text-decoration: underline; margin-left: 10px;">Book a call →</a>
+                    <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/mohamedsajaath0409/30min'});return false;" style="color: #fff; text-decoration: underline; margin-left: 10px;">Book a call →</a>
                 </div>
             </div>
         `,
