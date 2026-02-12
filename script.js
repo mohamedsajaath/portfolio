@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                     <div class="hero-btns">
-                        <a href="https://calendly.com/mohamedsajaath0409/30min" target="_blank" class="btn-main">
+                        <a onclick="Calendly.initPopupWidget({url: 'https://calendly.com/mohamedsajaath0409/30min'});return false;" class="btn-main">
                             <svg viewBox="0 0 20 20" width="18" height="18" fill="currentColor" style="margin-right: 8px;"><path d="M6 3.5a.5.5 0 0 1 .5.5v.5h7V4a.5.5 0 0 1 1 0v.5h.5A1.5 1.5 0 0 1 16.5 6v9a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 3.5 15V6A1.5 1.5 0 0 1 5 4.5h.5V4a.5.5 0 0 1 .5-.5ZM5 5.5a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5h-.5V6a.5.5 0 0 1-1 0v-.5h-7V6a.5.5 0 0 1-1 0v-.5H5Z"/></svg>
                             Book a call
                         </a>
