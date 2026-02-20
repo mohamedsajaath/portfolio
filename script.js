@@ -197,12 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="member-badge">
                             <img src="images/SDA Member Light (PNG).png" alt="ShopDev Alliance Member" style="height: 22px; width: auto; object-fit: contain; border-radius: 0;">
                         </div>
-
-                        <!-- TrustBox widget - Review Collector -->
-                        <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6996d84f186850d3ad797804" data-style-height="52px" data-style-width="100%" data-token="01b7811c-597f-4205-8396-f065c33f1dd2">
-                          <a href="https://www.trustpilot.com/review/sajaath-mohamed.online" target="_blank" rel="noopener">Trustpilot</a>
-                        </div>
-                        <!-- End TrustBox widget -->
                     </div>
 
                     <p class="subtitle" style="font-size: 20px;">Sajaath Mohamed</p>
@@ -757,9 +751,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <div id="reviews-content" class="recommendations-grid" style="display: none;">
                         <div class="empty-reviews-state">
-                            <div style="font-size: 40px; margin-bottom: 20px;">⭐</div>
-                            <h3>No Direct Reviews Yet</h3>
-                            <p>Direct platform reviews are coming soon. In the meantime, please check out my professional endorsements from LinkedIn!</p>
+                            <!-- TrustBox widget - Review Collector -->
+                            <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6996d84f186850d3ad797804" data-style-height="52px" data-style-width="100%" data-token="01b7811c-597f-4205-8396-f065c33f1dd2">
+                              <a href="https://www.trustpilot.com/review/sajaath-mohamed.online" target="_blank" rel="noopener">Trustpilot</a>
+                            </div>
+                            <!-- End TrustBox widget -->
                         </div>
                     </div>
                 </div>
