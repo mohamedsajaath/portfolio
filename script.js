@@ -514,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         'articles': `
             <div id="section-articles" class="p-section-wrapper">
-                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid #f1f1f1; padding-bottom: 12px; margin-top: 90px; text-align: center;">Articles & Technical Insights</h2>
+                <h2 class="section-header-centered">Articles & Technical Insights</h2>
                 
                 <div class="articles-grid">
                     <!-- Article 1 -->
