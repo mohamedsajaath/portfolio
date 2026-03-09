@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <label for="hero-secondary-btn">Secondary Button</label>
                     <input type="text" id="hero-secondary-btn" value="Let's chat">
                 </div>
+                <div class="settings-group">
+                    <label for="hero-rating">Trustpilot Rating (1-5)</label>
+                    <input type="number" id="hero-rating" value="4" min="1" max="5" step="1">
+                </div>
             `
         },
         'tech-stack': {
@@ -113,6 +117,38 @@ document.addEventListener('DOMContentLoaded', () => {
                     <input type="checkbox" id="show-project-desc" checked style="width: auto;">
                 </div>
                 <button class="btn-secondary" style="width:100%;">Manage Projects</button>
+            `
+        },
+        'articles': {
+            title: 'Articles & Insights',
+            settings: `
+                <div class="settings-group">
+                    <label for="article-layout">Layout</label>
+                    <select id="article-layout" style="width:100%; padding:8px; border-radius:6px; border:1px solid #babfc3;">
+                        <option>Cards Grid</option>
+                        <option>Compact List</option>
+                        <option>Featured Highlight</option>
+                    </select>
+                </div>
+                <div class="settings-group">
+                    <label for="show-article-date">Show Publication Date</label>
+                    <input type="checkbox" id="show-article-date" checked style="width: auto;">
+                </div>
+                <button class="btn-secondary" style="width:100%;">Import from LinkedIn</button>
+            `
+        },
+        'virtual-office': {
+            title: 'Virtual Office',
+            settings: `
+                <div class="settings-group">
+                    <label for="office-status">Live Status Override</label>
+                    <select id="office-status" style="width:100%; padding:8px; border-radius:6px; border:1px solid #babfc3;">
+                        <option>Automatic (Based on Schedule)</option>
+                        <option>Force Live</option>
+                        <option>Force Offline</option>
+                    </select>
+                </div>
+                <button class="btn-secondary" style="width:100%;">Update Office Timings</button>
             `
         },
         'skills': {
@@ -194,26 +230,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="hero-content">
                     <div class="hero-image">
                         <img src="sajaath_mohamed.jpg" alt="Sajaath Mohamed" itemprop="image">
-                        <div class="member-badge">
-                            <img src="images/SDA Member Light (PNG).png" alt="ShopDev Alliance Member" style="height: 22px; width: auto; object-fit: contain; border-radius: 0;">
+                        <div class="star-on-profile" id="profile-star">
+                            <svg viewBox="0 0 20 20" width="32" height="32" fill="currentColor">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="hero-score-badge" onclick="window.addStarToProfile(event)">
+                            <div class="score-stars">
+                                <div class="star-unit"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                <div class="star-unit"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                <div class="star-unit"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                <div class="star-unit"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                <div class="star-unit empty"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                            </div>
+                            <div class="score-label">Trustpilot Rating <span>4.0</span></div>
                         </div>
                     </div>
 
                     <p class="subtitle" style="font-size: 20px;">Sajaath Mohamed</p>
-                    <h1 style="font-size: 18px;">Shopify Developer for Custom Themes & High-Converting Stores</h1>
+                    <h1 style="font-size: 18px;">Shopify Developer for Custom Themes & High Converting Stores</h1>
 
-                    <p class="description">Experienced E-commerce Developer specializing in high-performance Shopify stores (Shopify Shops). Helping brands scale with custom Liquid themes and conversion-oriented development.</p>
+                    <p class="description">Experienced Shopify Liquid Theme Developer specializing in building fast, conversion-driven stores. Helping brands scale with custom architectures and performance-oriented development.</p>
 
 
 
                     <div class="hero-btns">
                         <a onclick="Calendly.initPopupWidget({url: 'https://calendly.com/mohamedsajaath0409/30min'});return false;" class="btn-main">
-                            <svg viewBox="0 0 20 20" width="18" height="18" fill="currentColor" style="margin-right: 8px;"><path d="M6 3.5a.5.5 0 0 1 .5.5v.5h7V4a.5.5 0 0 1 1 0v.5h.5A1.5 1.5 0 0 1 16.5 6v9a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 3.5 15V6A1.5 1.5 0 0 1 5 4.5h.5V4a.5.5 0 0 1 .5-.5ZM5 5.5a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5h-.5V6a.5.5 0 0 1-1 0v-.5h-7V6a.5.5 0 0 1-1 0v-.5H5Z"/></svg>
                             Book a call
                         </a>
-                        <a href="https://wa.me/94775265646" target="_blank" class="btn-sub btn-whatsapp">
+                        <a href="https://wa.me/sajaathmohamed" target="_blank" class="btn-sub btn-whatsapp" style="color: #25d366; border-color: #25d366;">
                             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right: 8px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                            WhatsApp
+                            Message on WhatsApp
                         </a>
                     </div>
 
@@ -272,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 40px;">
-                    <a href="pages/all-stores.html" class="btn-sub" style="display: inline-block;">View More Stores</a>
+                    <a href="pages/all-stores.html" class="btn-sub" style="display: inline-block;">View All Stores</a>
                 </div>
             </div>
         `,
@@ -464,9 +512,142 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `,
 
+        'articles': `
+            <div id="section-articles" class="p-section-wrapper">
+                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid #f1f1f1; padding-bottom: 12px; margin-top: 90px; text-align: center;">Articles & Technical Insights</h2>
+                
+                <div class="articles-grid">
+                    <!-- Article 1 -->
+                    <a href="https://www.linkedin.com/pulse/update-shopify-theme-without-breaking-sajaath-mohamed-7aolc/" target="_blank" class="article-card">
+                        <div class="article-linkedin-icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </div>
+                        <div class="article-image">
+                            <img src="https://media.licdn.com/dms/image/v2/D5612AQEtSYlpnpEdkg/article-cover_image-shrink_720_1280/B56Zyq4BPlK4AI-/0/1772393342566?e=2147483647&v=beta&t=nb1Qr5TMVZaVmOYWH8o7XHn1iuMTJJGldz3SMIY4ZiE" alt="Shopify Theme Updates">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-date">Mar 1, 2026</span>
+                            </div>
+                            <h3 class="article-title">Update Shopify Theme Without Breaking Customizations</h3>
+                            <p class="article-excerpt">A practical guide for developers to handle complex theme updates while preserving custom business logic and UI changes.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">Shopify</span>
+                                <span class="article-tag">Theme Dev</span>
+                            </div>
+                        </div>
+                    </a>
 
+                    <!-- Article 2 -->
+                    <a href="https://www.linkedin.com/pulse/section-rendering-api-my-sdk-sajaath-mohamed-qtcsc/" target="_blank" class="article-card">
+                        <div class="article-linkedin-icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </div>
+                        <div class="article-image">
+                            <img src="https://media.licdn.com/dms/image/v2/D5612AQF3JLb8Xx9L4A/article-cover_image-shrink_720_1280/B56ZeOVLkQH8AI-/0/1750439609855?e=2147483647&v=beta&t=aEATleP1BeLwoYYcxRS3y5evPrIt-jjC5n1R4dqHfmw" alt="Section Rendering API SDK">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-date">Jun 20, 2025</span>
+                            </div>
+                            <h3 class="article-title">Section Rendering API + My Open-Source SDK</h3>
+                            <p class="article-excerpt">Introducing a lightweight SDK designed to simplify dynamic UI updates in Shopify by wrapping the Section Rendering API.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">API</span>
+                                <span class="article-tag">Open Source</span>
+                            </div>
+                        </div>
+                    </a>
 
+                    <!-- Article 3 -->
+                    <a href="https://www.linkedin.com/pulse/creating-shopify-sections-sidekick-ai-developers-guide-mohamed-3kohc/" target="_blank" class="article-card">
+                        <div class="article-linkedin-icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </div>
+                        <div class="article-image">
+                            <img src="https://media.licdn.com/dms/image/v2/D5612AQHm90D7Hzsnhw/article-cover_image-shrink_720_1280/B56ZddNWqAGsAI-/0/1749615471743?e=2147483647&v=beta&t=kykDQr76EriNuNfSYgV87vIt-p7b-aHAos4dNPPg8MM" alt="Shopify Sidekick AI">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-date">Jun 21, 2025</span>
+                            </div>
+                            <h3 class="article-title">Creating Shopify Sections with Sidekick AI</h3>
+                            <p class="article-excerpt">How to convert Shopify Sidekick-generated blocks into fully reusable, high-performance liquid sections.</p>
+                            <div class="article-tags">
+                                <span class="article-tag">Shopify AI</span>
+                                <span class="article-tag">Liquid</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="https://www.linkedin.com/in/sajaathmohamed/recent-activity/articles/" target="_blank" class="btn-sub" style="display: inline-block;">View All Articles on LinkedIn</a>
+                </div>
+            </div>
+        `,
+
+        'virtual-office': `
+            <div id="section-virtual-office" class="p-section-wrapper">
+                <div class="office-hero">
+                    <div class="office-main-card">
+                        <div class="office-visuals">
+                            <div class="office-image-stack">
+                                <img src="images/virtual office 1.png" alt="My Virtual Office View 1" class="office-img-primary">
+                                <img src="images/virtual office 2.png" alt="My Virtual Office View 2" class="office-img-secondary">
+                            </div>
+                            <div class="office-status-badge">
+                                <span class="live-indicator"></span>
+                                <span class="status-mode">Live Hub</span>
+                            </div>
+                        </div>
+
+                        <div class="office-details">
+                            <div class="office-header-group">
+                                <span class="office-pretitle">Workspace • Interact • Connect</span>
+                                <h1 class="office-big-title">Visit my office virtually</h1>
+                            </div>
+                            
+                            <p class="office-description">
+                                Step into my digitized workspace on Work Adventure it's an interactive campus designed for real-time collaboration and spontaneous meetings. <strong>Just pick a name and walk in!</strong>
+                            </p>
+                            
+                            <div class="schedule-card-compact">
+                                <div class="schedule-top">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>Office Hours (GMT+5:30)</span>
+                                </div>
+                                <div class="schedule-body">
+                                    <div class="schedule-item-live">
+                                        <div class="day-dot"></div>
+                                        <span class="day-label">Mon — Thu</span>
+                                        <span class="hour-label">9:00 AM — 4:00 PM</span>
+                                    </div>
+                                    <div class="schedule-item-off">
+                                        <div class="day-dot"></div>
+                                        <span class="day-label">Fri — Sun</span>
+                                        <span class="hour-label">Offline</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://play.workadventu.re/@/solutionitics/solutionitics/solutionitics-campus" target="_blank" class="teleport-action-btn">
+                                <span>Teleport to My Office</span>
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                            <p class="office-small-hint">Optimal performance on Chrome/Desktop.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `,
 
         'skills': `
             <div id="section-skills" class="p-section-wrapper">
@@ -588,37 +769,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
         'agency': `
             <div id="section-agency" class="p-section-wrapper">
-                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid #f1f1f1; padding-bottom: 12px; margin-top: 90px; text-align: center;">Partner Shopify Agency</h2>
+                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid #f1f1f1; padding-bottom: 12px; margin-top: 90px; text-align: center;">Partner Agencies</h2>
                 
-                <div class="agency-feature-card">
-                    <div class="agency-badge">Official Partner</div>
-                    <div class="agency-logo-wrapper">
-                        <img src="images/scalesolutions.svg" alt="Scale Solutions Logo">
-                    </div>
-                    <h3 style="font-size: 24px; color: #1a1a1a; margin-bottom: 16px;">Scale Solutions - Munich, Germany</h3>
-                    <p style="color: #637381; font-size: 12px; line-height: 1.6; max-width: 600px; margin-bottom: 32px;">
-                        I am proud to be part of Scale Solutions, a premier German agency specializing in predictable growth for Shopify brands. We blend high-end development with performance-marketing to scale businesses efficiently and sustainably.
-                    </p>
+                <div class="agencies-list">
+                    <!-- Scale Solutions -->
+                    <div class="agency-feature-card">
+                        <div class="agency-badge">Marketing Partner</div>
+                        <div class="agency-logo-wrapper">
+                            <img src="images/scalesolutions.svg" alt="Scale Solutions Logo">
+                        </div>
+                        <h3 style="font-size: 24px; color: #1a1a1a; margin-bottom: 16px;">Scale Solutions</h3>
+                        <p style="color: #637381; font-size: 13px; line-height: 1.6; max-width: 600px; margin-bottom: 32px;">
+                            I am proud to be part of Scale Solutions, a premier German agency specializing in predictable growth for Shopify brands. We blend high-end development with performance-marketing to scale businesses efficiently and sustainably.
+                        </p>
 
-                    <div class="agency-services-grid">
-                        <div class="agency-service-item">
-                            <div class="agency-service-title">UI/UX Design</div>
-                            <div class="agency-service-desc">Conversion-focused interface design tailored for e-commerce excellence.</div>
+                        <div class="agency-services-grid">
+                            <div class="agency-service-item">
+                                <div class="agency-service-title">UI/UX Design</div>
+                                <div class="agency-service-desc">Conversion-focused interface design tailored for e-commerce excellence.</div>
+                            </div>
+                            <div class="agency-service-item">
+                                <div class="agency-service-title">Shopify Development</div>
+                                <div class="agency-service-desc">Custom theme development and complex app integrations for high-scale stores.</div>
+                            </div>
+                            <div class="agency-service-item">
+                                <div class="agency-service-title">Growth Marketing</div>
+                                <div class="agency-service-desc">Data-driven performance marketing to acquire and retain high-value customers.</div>
+                            </div>
                         </div>
-                        <div class="agency-service-item">
-                            <div class="agency-service-title">Shopify Development</div>
-                            <div class="agency-service-desc">Custom theme development and complex app integrations for high-scale stores.</div>
-                        </div>
-                        <div class="agency-service-item">
-                            <div class="agency-service-title">Growth Marketing</div>
-                            <div class="agency-service-desc">Data-driven performance marketing to acquire and retain high-value customers.</div>
+
+                        <div class="hero-btns">
+                            <a href="https://scalesolutions.de/" target="_blank" class="btn-main">
+                                Visit Agency Website →
+                            </a>
                         </div>
                     </div>
 
-                    <div class="hero-btns">
-                        <a href="https://scalesolutions.de/" target="_blank" class="btn-main">
-                            Visit Agency Website →
-                        </a>
+                    <!-- UI Master -->
+                    <div class="agency-feature-card">
+                        <div class="agency-badge">Design Partner</div>
+                        <div class="agency-logo-wrapper" style="max-width: 140px;">
+                            <div class="uimaster-logo-box">
+                                <img src="https://static.wixstatic.com/media/629672_ceef1a9c4e024ae5bc1c53f89f6159f7~mv2.png" alt="UI Master Logo">
+                            </div>
+                        </div>
+                        <h3 style="font-size: 24px; color: #1a1a1a; margin-bottom: 16px;">UI Master</h3>
+                        <p style="color: #637381; font-size: 13px; line-height: 1.6; max-width: 600px; margin-bottom: 32px;">
+                            Professional design agency specializing in creating user-friendly, visually stunning e-commerce store designs. A dedicated Shopify Agency delivering high-quality, performance-driven solutions globally.
+                        </p>
+
+                        <div class="agency-services-grid">
+                            <div class="agency-service-item">
+                                <div class="agency-service-title">E-commerce Design</div>
+                                <div class="agency-service-desc">Clean, conversion-oriented store layouts and interactive prototypes.</div>
+                            </div>
+                            <div class="agency-service-item">
+                                <div class="agency-service-title">Shopify App Design</div>
+                                <div class="agency-service-desc">Specialized UI/UX for Shopify extensions and custom merchant tools.</div>
+                            </div>
+                            <div class="agency-service-item">
+                                <div class="agency-service-title">Website Redesign</div>
+                                <div class="agency-service-desc">Modernizing legacy stores with performance-first design and modern branding.</div>
+                            </div>
+                        </div>
+
+                        <div class="hero-btns">
+                            <a href="https://www.uimaster.net/" target="_blank" class="btn-main">
+                                Visit Agency Website →
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -627,15 +846,134 @@ document.addEventListener('DOMContentLoaded', () => {
 
         'reviews': `
             <div id="section-reviews" class="p-section-wrapper">
-                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid #f1f1f1; padding-bottom: 12px; margin-top: 90px; text-align: center;">Partner Feedback & Endorsements</h2>
+                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid #f1f1f1; padding-bottom: 12px; margin-top: 90px; text-align: center;">Reviews & Recommendations</h2>
                 
                 <div class="reviews-container">
                     <div class="reviews-filter-tabs" role="tablist" aria-label="Review type filters">
-                        <button class="review-tab active" role="tab" aria-selected="true" onclick="switchReviewTab('recommendations')">Recommendations</button>
-                        <button class="review-tab" role="tab" aria-selected="false" onclick="switchReviewTab('reviews')">Reviews</button>
+                        <button class="review-tab active" role="tab" aria-selected="true" onclick="switchReviewTab('reviews')">Reviews</button>
+                        <button class="review-tab" role="tab" aria-selected="false" onclick="switchReviewTab('recommendations')">Recommendations</button>
                     </div>
 
-                    <div id="recommendations-content" class="recommendations-grid">
+                    <div id="reviews-content" class="reviews-grid">
+                        <!-- Julian Fritsch -->
+                        <div class="review-card" style="cursor: pointer;" onclick="window.open('https://www.trustpilot.com/review/sajaath-mohamed.online', '_blank')">
+                            <div class="review-header">
+                                <div class="review-user-box">
+                                    <div class="review-initials">JF</div>
+                                    <div>
+                                        <div class="review-user-name">Julian Fritsch</div>
+                                        <div class="review-user-meta">DE • 4 reviews</div>
+                                    </div>
+                                </div>
+                                <div class="review-date">Feb 20, 2026</div>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                </div>
+                            </div>
+                            <div class="review-body">
+                                <div class="review-title">Always a pleasure working with Sajaath</div>
+                                <div class="review-text">Always a pleasure working with Sajaath. His deliveries are right on time and also very high quality. He has a deep knowledge in Front-End Development, especially when it comes to Shopify. We did a lot of Shopify projects and custom features with him and it always worked out great. If you need an experienced, fast and very good to work with Front-End Developer, Sajaath is your guy!</div>
+                            </div>
+                            <div class="review-reply">
+                                <div class="reply-header">
+                                    <div class="reply-avatar">
+                                        <img src="sajaath_mohamed.jpg" alt="Sajaath Mohamed">
+                                    </div>
+                                    <div class="reply-info">
+                                        <div class="reply-name">Reply from Sajaath Mohamed</div>
+                                        <div class="reply-date">Feb 20, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="reply-text">Thank you so much for the kind words and continued trust. It’s always a pleasure collaborating with you on Shopify projects and building custom features together. I truly appreciate the smooth communication and clear direction, which makes delivering high-quality work on time much easier. Looking forward to many more successful projects ahead.</div>
+                            </div>
+                        </div>
+
+                        <!-- Daniel Geiger -->
+                        <div class="review-card" style="cursor: pointer;" onclick="window.open('https://www.trustpilot.com/review/sajaath-mohamed.online', '_blank')">
+                            <div class="review-header">
+                                <div class="review-user-box">
+                                    <div class="review-initials">DG</div>
+                                    <div>
+                                        <div class="review-user-name">Daniel Geiger</div>
+                                        <div class="review-user-meta">DE • 3 reviews</div>
+                                    </div>
+                                </div>
+                                <div class="review-date">Feb 20, 2026</div>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                </div>
+                            </div>
+                            <div class="review-body">
+                                <div class="review-title">Sajaath is a standout developer who amazing job supporting our e-commerce agency</div>
+                                <div class="review-text">Sajaath is a standout developer who does an amazing job supporting our e-commerce agency on various client projects. He was instrumental in our Shopify theme development, consistently delivering clean, high-performance code under tight agency deadlines. He is highly skilled in technical troubleshooting, app integrations, and site speed optimization. Sajaath is a reliable professional who handles complex client requirements with ease and always ensures a flawless end product. I highly recommend him to any agency looking for a dependable, top-tier developer.</div>
+                            </div>
+                            <div class="review-reply">
+                                <div class="reply-header">
+                                    <div class="reply-avatar">
+                                        <img src="sajaath_mohamed.jpg" alt="Sajaath Mohamed">
+                                    </div>
+                                    <div class="reply-info">
+                                        <div class="reply-name">Reply from Sajaath Mohamed</div>
+                                        <div class="reply-date">Feb 20, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="reply-text">Thank you so much for the kind words and trust. It’s always a pleasure working with your team and contributing to such impactful projects. I truly appreciate the collaboration and look forward to supporting many more successful launches together.</div>
+                            </div>
+                        </div>
+
+                        <!-- Jan Moritz Wrzesniewski -->
+                        <div class="review-card" style="cursor: pointer;" onclick="window.open('https://www.trustpilot.com/review/sajaath-mohamed.online', '_blank')">
+                            <div class="review-header">
+                                <div class="review-user-box">
+                                    <div class="review-initials">JW</div>
+                                    <div>
+                                        <div class="review-user-name">Jan Moritz Wrzesniewski</div>
+                                        <div class="review-user-meta">DE • 1 review</div>
+                                    </div>
+                                </div>
+                                <div class="review-date">Feb 20, 2026</div>
+                            </div>
+                            <div class="review-rating-row">
+                                <div class="review-stars">
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                    <div class="review-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg></div>
+                                </div>
+                            </div>
+                            <div class="review-body">
+                                <div class="review-title">Very happy with the work of Mohamed</div>
+                                <div class="review-text">Very happy with the work of Mohamed. We were working toghether on a CRO project for a D2C Brand. He is a great developer and made every request possible. The Communication was seamles and most importantly he is honest about the time it took him to get the work done. We from OOAKLINE really recommend him!</div>
+                            </div>
+                            <div class="review-reply">
+                                <div class="reply-header">
+                                    <div class="reply-avatar">
+                                        <img src="sajaath_mohamed.jpg" alt="Sajaath Mohamed">
+                                    </div>
+                                    <div class="reply-info">
+                                        <div class="reply-name">Reply from Sajaath Mohamed</div>
+                                        <div class="reply-date">Feb 20, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="reply-text">Thank you for the kind words and for the opportunity to work on the CRO project. It was great collaborating with the OOAKLINE. I really appreciate the trust and smooth communication throughout the process.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="recommendations-content" class="recommendations-grid" style="display: none;">
                         <!-- Oliver Schönbett -->
                         <div class="recommendation-card">
                             <div class="recommender-header">
@@ -732,6 +1070,22 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
 
+                        <!-- Francis Silva -->
+                        <div class="recommendation-card">
+                            <div class="recommender-header">
+                                <div class="recommender-avatar">
+                                    <img src="images/Francis.jpeg" alt="Francis Silva">
+                                </div>
+                                <div class="recommender-info">
+                                    <div class="recommender-name">Francis Silva</div>
+                                    <div class="recommender-title">Shopify Plus Developer • Germany 🇩🇪</div>
+                                </div>
+                            </div>
+                            <div class="recommendation-text">
+                                "I had the pleasure of working closely with Sajaath Mohamed at Eshop Guide. He is an exceptionally talented Shopify developer, always delivering clean, efficient, and creative solutions. Working with him taught me a lot about development best practices and problem-solving. His professionalism, knowledge, and collaborative spirit make him someone I highly recommend to any team."
+                            </div>
+                        </div>
+
                         <!-- Rajabdeen Ajmal -->
                         <div class="recommendation-card">
                             <div class="recommender-header">
@@ -748,16 +1102,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                     </div>
-
-                    <div id="reviews-content" class="recommendations-grid" style="display: none;">
-                        <div class="empty-reviews-state">
-                            <!-- TrustBox widget - Review Collector -->
-                            <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6996d84f186850d3ad797804" data-style-height="52px" data-style-width="100%" data-token="01b7811c-597f-4205-8396-f065c33f1dd2">
-                              <a href="https://www.trustpilot.com/review/sajaath-mohamed.online" target="_blank" rel="noopener">Trustpilot</a>
-                            </div>
-                            <!-- End TrustBox widget -->
+                    <!-- TrustBox widget - Review Collector -->
+                    <div style="margin-top: 40px; border-top: 1px solid #f1f1f1; padding-top: 32px;">
+                        <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6996d84f186850d3ad797804" data-style-height="52px" data-style-width="100%" data-token="0ff42ff3-ee14-40c5-b3c0-bc2213b01fa1">
+                            <a href="https://www.trustpilot.com/review/sajaath-mohamed.online" target="_blank" rel="noopener">Trustpilot</a>
                         </div>
                     </div>
+                    <!-- End TrustBox widget -->
                 </div>
             </div>
         `,
@@ -803,7 +1154,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="footer-info">
                             <span class="footer-link">Puttalam District, LK</span>
                             <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-end;">
-                                <a href="mailto:sajaath.mohamed@scalesolutions.de" class="footer-link">sajaath.mohamed@scalesolutions.de</a>
                                 <a href="mailto:mohamedsajaath0409@gmail.com" class="footer-link">mohamedsajaath0409@gmail.com</a>
                             </div>
                         </div>
@@ -865,23 +1215,49 @@ document.addEventListener('DOMContentLoaded', () => {
         if (settingsData[id]) {
             sidebarTitle.textContent = settingsData[id].title;
             settingsContent.innerHTML = settingsData[id].settings;
+
+            // Handle live updates for Hero Rating
+            if (id === 'hero') {
+                const ratingInput = settingsContent.querySelector('#hero-rating');
+                if (ratingInput) {
+                    ratingInput.addEventListener('input', (e) => {
+                        const val = parseFloat(e.target.value) || 0;
+                        const starsContainer = document.querySelector('.hero-score-badge .score-stars');
+                        const labelValue = document.querySelector('.hero-score-badge .score-label span');
+
+                        if (starsContainer && labelValue) {
+                            labelValue.textContent = val.toFixed(1);
+                            const boxes = starsContainer.querySelectorAll('.star-unit');
+                            boxes.forEach((box, index) => {
+                                if (index < Math.floor(val)) {
+                                    box.classList.remove('empty');
+                                } else {
+                                    box.classList.add('empty');
+                                }
+                            });
+                        }
+                    });
+                }
+            }
         }
 
         const targetSection = document.querySelector(`.canvas-section[data-section-id="${id}"]`);
         if (targetSection) {
             document.querySelectorAll('.canvas-section').forEach(s => s.classList.remove('canvas-active'));
             targetSection.classList.add('canvas-active');
-            targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
             // Trigger typing effect for hero
             if (id === 'hero') {
                 const desc = targetSection.querySelector('.description');
-                const fullText = "Certified Shopify Liquid Theme Developer with a passion for building fast, conversion-driven, and fully customizable Shopify stores. Experienced in translating Figma designs into pixel-perfect Liquid themes, optimizing performance, and delivering scalable solutions tailored for real-world e-commerce growth.";
+                const fullText = "Experienced Shopify Liquid Theme Developer specializing in building fast, conversion-driven stores. Helping brands scale with custom architectures and performance-oriented development.";
                 if (desc) {
-                    // Delay to wait for the container's entrance animation
-                    setTimeout(() => {
-                        typeWriter(desc, fullText);
-                    }, 800);
+                    // Only start if not already typing to avoid flickering
+                    if (!desc.classList.contains('typing')) {
+                        setTimeout(() => {
+                            typeWriter(desc, fullText);
+                        }, 800);
+                    }
                 }
             }
         }
@@ -983,27 +1359,116 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tab === 'recommendations') {
             if (recContent) recContent.style.display = 'grid';
             if (revContent) revContent.style.display = 'none';
-            if (tabs[0]) {
-                tabs[0].classList.add('active');
-                tabs[0].setAttribute('aria-selected', 'true');
-            }
-            if (tabs[1]) {
-                tabs[1].classList.remove('active');
-                tabs[1].setAttribute('aria-selected', 'false');
-            }
+            tabs.forEach(t => {
+                if (t.textContent.includes('Recommendations')) {
+                    t.classList.add('active');
+                    t.setAttribute('aria-selected', 'true');
+                } else {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                }
+            });
         } else {
             if (recContent) recContent.style.display = 'none';
             if (revContent) revContent.style.display = 'grid';
-            if (tabs[0]) {
-                tabs[0].classList.remove('active');
-                tabs[0].setAttribute('aria-selected', 'false');
-            }
-            if (tabs[1]) {
-                tabs[1].classList.add('active');
-                tabs[1].setAttribute('aria-selected', 'true');
-            }
+            tabs.forEach(t => {
+                if (t.textContent.includes('Reviews')) {
+                    t.classList.add('active');
+                    t.setAttribute('aria-selected', 'true');
+                } else {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                }
+            });
         }
     };
+
+    window.addStarToProfile = function (event) {
+        event.stopPropagation(); // BUG FIX: Prevent switching section and restarting typing
+
+        const startX = event.clientX;
+        const startY = event.clientY;
+
+        const profileImg = document.querySelector('.hero-image');
+        const profileStar = document.getElementById('profile-star');
+
+        if (!profileImg || !profileStar) return;
+
+        const targetRect = profileImg.getBoundingClientRect();
+        const targetX = targetRect.left + targetRect.width / 2 - startX;
+        const targetY = targetRect.top + targetRect.height / 2 - startY;
+
+        // Create flying star
+        const star = document.createElement('div');
+        star.className = 'floating-star';
+        star.innerHTML = `
+            <svg viewBox="0 0 20 20" width="20" height="20" fill="currentColor">
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+            </svg>
+        `;
+        star.style.left = `${startX}px`;
+        star.style.top = `${startY}px`;
+        star.style.setProperty('--target-x', `${targetX}px`);
+        star.style.setProperty('--target-y', `${targetY}px`);
+
+        document.body.appendChild(star);
+
+        setTimeout(() => {
+            star.remove();
+            profileStar.classList.add('active');
+
+            // Add a little pulse to the image
+            profileImg.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                profileImg.style.transform = '';
+            }, 300);
+        }, 1000);
+
+        // Redirect after animation (3 seconds as requested)
+        setTimeout(() => {
+            window.open('https://www.trustpilot.com/review/sajaath-mohamed.online', '_blank');
+        }, 3000);
+    };
+
+    window.scrollToSection = function (id) {
+        switchSection(id);
+    };
+
+    function updateOfficeStatus() {
+        const now = new Date();
+        // Sri Lanka is GMT+5:30. Calculate UTC offset.
+        const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+        const slDate = new Date(utc + (3600000 * 5.5));
+
+        const day = slDate.getDay(); // 0: Sun, 1: Mon... 4: Thu
+        const hours = slDate.getHours();
+        const minutes = slDate.getMinutes();
+        const timeValue = hours + minutes / 60;
+
+        const isWorkingDay = day >= 1 && day <= 4;
+        const isWorkingHour = timeValue >= 9 && timeValue < 16;
+        const online = isWorkingDay && isWorkingHour;
+
+        const indicators = document.querySelectorAll('.live-indicator');
+        const labels = document.querySelectorAll('.status-mode');
+
+        indicators.forEach(ind => {
+            if (online) {
+                ind.classList.remove('offline');
+            } else {
+                ind.classList.add('offline');
+            }
+        });
+
+        labels.forEach(label => {
+            label.textContent = online ? 'Online Now' : 'Offline';
+            label.style.color = online ? '#1a1a1a' : '#637381';
+        });
+    }
+
+    // Update status every minute
+    updateOfficeStatus();
+    setInterval(updateOfficeStatus, 60000);
 });
 
 
