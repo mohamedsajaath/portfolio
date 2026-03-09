@@ -584,6 +584,7 @@ body {
     max-width: 650px;
     margin-bottom: 0px;
     min-height: 80px;
+    margin-bottom: 1rem;
     /* Reserve space to prevent layout jump */
 }
 
@@ -1906,7 +1907,7 @@ body {
 
 .agencies-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
     gap: 40px;
     align-items: stretch;
     margin-top: 60px;
@@ -1961,9 +1962,11 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-    .articles-grid {
-        grid-template-columns: 1fr;
-        padding: 0 20px;
+
+    .articles-grid,
+    .agencies-list {
+        grid-template-columns: 1fr !important;
+        padding: 0 16px;
         gap: 24px;
     }
 
@@ -2963,6 +2966,11 @@ body {
     .teleport-action-btn {
         width: 100%;
         padding: 18px 24px;
+    }
+
+    .schedule-body {
+        text-align: left;
+        align-items: flex-start;
     }
 }
 
