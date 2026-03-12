@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', initialTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('portfolio-theme', next);
+        });
+    }
+
     const sectionItems = document.querySelectorAll('.section-item');
     const rightSidebar = document.querySelector('.sidebar-right');
     const sidebarTitle = rightSidebar.querySelector('.sidebar-header h2');
@@ -64,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="settings-group">
                     <label>Logos</label>
-                    <div style="font-size: 13px; color: #6d7175; margin-bottom: 8px;">Shopify, React, JS, HTML5, CSS3, Tailwind, Node, Figma, Git</div>
+                <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">Shopify, React, JS, HTML5, CSS3, Tailwind, Node, Figma, Git</div>
                     <button class="btn-secondary" style="width:100%;">Manage Logos</button>
                 </div>
             `
@@ -82,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="settings-group">
                     <label>Stores</label>
-                    <div style="font-size: 13px; color: #6d7175; margin-bottom: 8px;">12 stores added</div>
+                <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">12 stores added</div>
                     <button class="btn-secondary" style="width:100%;">Edit Stores</button>
                 </div>
             `
@@ -96,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="settings-group">
                     <label>Items</label>
-                    <div style="font-size: 13px; color: #6d7175; margin-bottom: 8px;">10 entries identified</div>
+                <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">10 entries identified</div>
                     <button class="btn-secondary" style="width:100%;">Edit Entries</button>
                 </div>
             `
@@ -269,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `,
         'tech-stack': `
-            <div id="section-tech-stack" class="p-section-wrapper" style="padding: 40px 0; background: #fff; overflow: hidden; border-bottom: 1px solid #f1f1f1;">
+            <div id="section-tech-stack" class="p-section-wrapper" style="padding: 40px 0; background: var(--bg-surface); overflow: hidden; border-bottom: 1px solid var(--border-color-subdued);">
                 <div class="tech-slider">
                     <div class="tech-track">
                         <!-- Logos repeated for infinite scroll -->
@@ -295,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `,
         'shopify-work': `
             <div id="section-shopify-work" class="p-section-wrapper">
-                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid #f1f1f1; padding-bottom: 12px; margin-top: 90px; text-align: center;">Shopify Stores I've Worked</h2>
+                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid var(--border-color-subdued); padding-bottom: 12px; margin-top: 90px; text-align: center;">Shopify Stores I've Worked</h2>
                 <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr);">
                     <div class="skill-card">
                         <div class="shop-thumbnail">
@@ -328,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         'projects': `
             <div id="section-projects" class="p-section-wrapper">
-                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid #f1f1f1; padding-bottom: 12px; margin-top: 60px; text-align: center;">Other Projects</h2>
+                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid var(--border-color-subdued); padding-bottom: 12px; margin-top: 60px; text-align: center;">Other Projects</h2>
                 
                 <div class="project-list-modern">
                     <!-- WebScale -->
@@ -457,14 +472,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         'experience': `
             <div id="section-experience" class="p-section-wrapper">
-                <h2 style="font-size: 24px; margin-bottom: 24px; border-bottom: 2px solid #f1f1f1; padding-bottom: 8px; margin-top: 40px; text-align: center;">Professional Experience</h2>
+                <h2 style="font-size: 24px; margin-bottom: 24px; border-bottom: 2px solid var(--border-color-subdued); padding-bottom: 8px; margin-top: 40px; text-align: center;">Professional Experience</h2>
                 <div class="timeline">
                     <div class="timeline-item left">
                         <div class="timeline-content">
                             <div class="time">Jan 2022 - Present</div>
                             <div class="role">Software Developer</div>
                             <div class="company">Solutionitcs • Sri Lanka</div>
-                            <p style="font-size: 13px; color: #666; line-height: 1.5; margin-top: 8px;">Architected and launched WebScale, a productivity extension for web analysis and SEO optimization.</p>
+                            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-top: 8px;">Architected and launched WebScale, a productivity extension for web analysis and SEO optimization.</p>
                         </div>
                     </div>
                     <div class="timeline-item right">
@@ -472,7 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="time">June 2025 - Present</div>
                             <div class="role">Shopify Developer</div>
                             <div class="company">Scale Solutions • Germany</div>
-                            <p style="font-size: 13px; color: #666; line-height: 1.5; margin-top: 8px;">Liquid theme development and Shopify Plus store optimizations focused on international growth.</p>
+                            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-top: 8px;">Liquid theme development and Shopify Plus store optimizations focused on international growth.</p>
                         </div>
                     </div>
                  
@@ -483,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="time">October 2023 - May 2025</div>
                                 <div class="role">Software Developer</div>
                                 <div class="company">BayLanka Technologies • Sri Lanka</div>
-                                <p style="font-size: 13px; color: #666; line-height: 1.5; margin-top: 8px;">Driving full-stack development across client projects, specializing in performance and custom tools.</p>
+                                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-top: 8px;">Driving full-stack development across client projects, specializing in performance and custom tools.</p>
                             </div>
                         </div>
                         <div class="timeline-item right">
@@ -491,7 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="time">May 2024 - May 2025</div>
                                 <div class="role">Shopify Storefront Dev</div>
                                 <div class="company">Eshop Guide • Germany</div>
-                                <p style="font-size: 13px; color: #666; line-height: 1.5; margin-top: 8px;">Specialized in complex store migrations and custom Liquid architecture for high-revenue merchants.</p>
+                                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-top: 8px;">Specialized in complex store migrations and custom Liquid architecture for high-revenue merchants.</p>
                             </div>
                         </div>
                         <div class="timeline-item left">
@@ -499,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="time">Sep 2021 - Jan 2022</div>
                                 <div class="role">Software Developer Trainee -> Software Developer</div>
                                 <div class="company">Imara Software Solution • Sri Lanka</div>
-                                <p style="font-size: 13px; color: #666; line-height: 1.5; margin-top: 8px;">Gained foundational experience in web technologies and contributed to frontend development tasks.</p>
+                                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-top: 8px;">Gained foundational experience in web technologies and contributed to frontend development tasks.</p>
                             </div>
                         </div>
                     </div>
@@ -652,7 +667,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'skills': `
             <div id="section-skills" class="p-section-wrapper">
                 <div class="skills-container">
-                    <h2 style="font-size: 24px; margin-bottom: 24px; border-bottom: 2px solid #f1f1f1; padding-bottom: 8px; margin-top: 60px; text-align: center;">Expertise & Credentials</h2>
+                    <h2 style="font-size: 24px; margin-bottom: 24px; border-bottom: 2px solid var(--border-color-subdued); padding-bottom: 8px; margin-top: 60px; text-align: center;">Expertise & Credentials</h2>
                     
                     <div class="skills-cloud">
                         <span class="skill-tag">Shopify Liquid</span>
@@ -769,7 +784,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         'agency': `
             <div id="section-agency" class="p-section-wrapper">
-                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid #f1f1f1; padding-bottom: 12px; margin-top: 90px; text-align: center;">Partner Agencies</h2>
+                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid var(--border-color-subdued); padding-bottom: 12px; margin-top: 90px; text-align: center;">Partner Agencies</h2>
                 
                 <div class="agencies-list">
                     <!-- Scale Solutions -->
@@ -778,8 +793,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="agency-logo-wrapper">
                             <img src="images/scalesolutions.svg" alt="Scale Solutions Logo">
                         </div>
-                        <h3 style="font-size: 24px; color: #1a1a1a; margin-bottom: 16px;">Scale Solutions</h3>
-                        <p style="color: #637381; font-size: 13px; line-height: 1.6; max-width: 600px; margin-bottom: 32px;">
+                        <h3 style="font-size: 24px; color: var(--text-strong); margin-bottom: 16px;">Scale Solutions</h3>
+                        <p style="color: var(--text-muted); font-size: 13px; line-height: 1.6; max-width: 600px; margin-bottom: 32px;">
                             I am proud to be part of Scale Solutions, a premier German agency specializing in predictable growth for Shopify brands. We blend high-end development with performance-marketing to scale businesses efficiently and sustainably.
                         </p>
 
@@ -813,8 +828,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="https://static.wixstatic.com/media/629672_ceef1a9c4e024ae5bc1c53f89f6159f7~mv2.png" alt="UI Master Logo">
                             </div>
                         </div>
-                        <h3 style="font-size: 24px; color: #1a1a1a; margin-bottom: 16px;">UI Master</h3>
-                        <p style="color: #637381; font-size: 13px; line-height: 1.6; max-width: 600px; margin-bottom: 32px;">
+                        <h3 style="font-size: 24px; color: var(--text-strong); margin-bottom: 16px;">UI Master</h3>
+                        <p style="color: var(--text-muted); font-size: 13px; line-height: 1.6; max-width: 600px; margin-bottom: 32px;">
                             Professional design agency specializing in creating user-friendly, visually stunning e-commerce store designs. A dedicated Shopify Agency delivering high-quality, performance-driven solutions globally.
                         </p>
 
@@ -846,7 +861,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         'reviews': `
             <div id="section-reviews" class="p-section-wrapper">
-                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid #f1f1f1; padding-bottom: 12px; margin-top: 90px; text-align: center;">Reviews & Recommendations</h2>
+                <h2 style="font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid var(--border-color-subdued); padding-bottom: 12px; margin-top: 90px; text-align: center;">Reviews & Recommendations</h2>
                 
                 <div class="reviews-container">
                     <div class="reviews-filter-tabs" role="tablist" aria-label="Review type filters">
@@ -1103,7 +1118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <!-- TrustBox widget - Review Collector -->
-                    <div style="margin-top: 40px; border-top: 1px solid #f1f1f1; padding-top: 32px;">
+                    <div style="margin-top: 40px; border-top: 1px solid var(--border-color-subdued); padding-top: 32px;">
                         <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6996d84f186850d3ad797804" data-style-height="52px" data-style-width="100%" data-token="0ff42ff3-ee14-40c5-b3c0-bc2213b01fa1">
                             <a href="https://www.trustpilot.com/review/sajaath-mohamed.online" target="_blank" rel="noopener">Trustpilot</a>
                         </div>
@@ -1462,7 +1477,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         labels.forEach(label => {
             label.textContent = online ? 'Online Now' : 'Offline';
-            label.style.color = online ? '#1a1a1a' : '#637381';
+            label.style.color = online ? 'var(--text-strong)' : 'var(--text-muted)';
         });
     }
 
