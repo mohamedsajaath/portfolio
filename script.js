@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div id="section-hero" class="p-section-wrapper">
                 <div class="hero-content">
                     <div class="hero-image">
-                        <img src="sajaath_mohamed.jpg" alt="Sajaath Mohamed" itemprop="image">
+                        <img src="profile_current.png" alt="Sajaath Mohamed" itemprop="image">
                         <div class="star-on-profile" id="profile-star">
                             <svg viewBox="0 0 20 20" width="32" height="32" fill="currentColor">
                                 <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
@@ -883,7 +883,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="review-reply">
                                 <div class="reply-header">
                                     <div class="reply-avatar">
-                                        <img src="sajaath_mohamed.jpg" alt="Sajaath Mohamed">
+                                        <img src="profile_current.png" alt="Sajaath Mohamed">
                                     </div>
                                     <div class="reply-info">
                                         <div class="reply-name">Reply from Sajaath Mohamed</div>
@@ -922,7 +922,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="review-reply">
                                 <div class="reply-header">
                                     <div class="reply-avatar">
-                                        <img src="sajaath_mohamed.jpg" alt="Sajaath Mohamed">
+                                        <img src="profile_current.png" alt="Sajaath Mohamed">
                                     </div>
                                     <div class="reply-info">
                                         <div class="reply-name">Reply from Sajaath Mohamed</div>
@@ -961,7 +961,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="review-reply">
                                 <div class="reply-header">
                                     <div class="reply-avatar">
-                                        <img src="sajaath_mohamed.jpg" alt="Sajaath Mohamed">
+                                        <img src="profile_current.png" alt="Sajaath Mohamed">
                                     </div>
                                     <div class="reply-info">
                                         <div class="reply-name">Reply from Sajaath Mohamed</div>
