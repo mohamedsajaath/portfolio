@@ -16448,6 +16448,10 @@ textarea.form-control-lg {
   margin-inline-end: 5px;
 }
 
+.banner-section {
+  background-color: #0b0b0b;
+}
+
 .banner-section::before {
   content: "";
   position: absolute;
