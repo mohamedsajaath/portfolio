@@ -169,10 +169,11 @@
 
     <!--  Banner Section -->
     <section class="banner-section position-relative d-flex align-items-end min-vh-100">
-      <video class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" autoplay muted loop playsinline preload="none" poster="./assets/images/backgrounds/poster.png">
+      <video id="hero-video" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" autoplay muted loop playsinline preload="none" poster="./assets/images/backgrounds/poster.png">
         <source src="./assets/images/backgrounds/hero-background-sajaath.webm" type="video/webm" />
         <source src="./assets/images/backgrounds/hero-background-sajaath.mp4" type="video/mp4" />
       </video>
+      
       <div class="container">
         <div class="d-flex flex-column gap-4 pb-8 position-relative z-1">
           <div class="row align-items-center">
@@ -1687,6 +1688,16 @@
   <script src="./assets/js/custom.js"></script>
   <!-- solar icons -->
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  <!-- Defer video loading until page is fully loaded -->
+  <script>
+    window.addEventListener('load', function() {
+      const heroVideo = document.getElementById('hero-video');
+      if (heroVideo) {
+        heroVideo.load();
+        heroVideo.play();
+      }
+    });
+  </script>
 </body>
 
 </html>
