@@ -77,5 +77,18 @@ $(function () {
 		once: true,
 	});
 
+    // Video lazy loading - Load video after everything else
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
+        window.addEventListener('load', function() {
+            heroVideo.setAttribute('preload', 'auto');
+            heroVideo.load();
+            heroVideo.play().catch(error => {
+                // Silently handle cases where autoplay might be blocked
+                console.log("Video auto-play handled after page load.");
+            });
+        });
+    }
+
 });
 
