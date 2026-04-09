@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /404/
+Disallow: /sign-in/
+Disallow: /sign-up/
+Disallow: /html/
+Disallow: /about-us/
+Disallow: /projects-detail/
+Disallow: /blog-detail/
+
+Sitemap: https://sajaath-mohamed.online/sitemap.xml
