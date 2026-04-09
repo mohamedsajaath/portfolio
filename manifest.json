@@ -1,0 +1,16 @@
+{
+  "name": "Sajaath Mohamed | Shopify Developer Portfolio",
+  "short_name": "Sajaath",
+  "description": "Certified Shopify Liquid Theme Developer specializing in fast, conversion-driven stores.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "./assets/images/logos/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
