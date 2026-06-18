@@ -16832,3 +16832,47 @@ ul {
         display: none;
     }
 }
+
+/* Custom Trustpilot Reviews Styling */
+.tp-star-box {
+  background-color: #00b67a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  margin-right: 3px;
+}
+.tp-star-box.empty {
+  background-color: #dbdbdb;
+}
+.tp-star-box.partial {
+  background: linear-gradient(90deg, #00b67a 20%, #dbdbdb 20%);
+}
+.tp-star-box svg {
+  width: 13px;
+  height: 13px;
+  fill: #fff;
+}
+.custom-tp-link {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.custom-tp-link:hover {
+  opacity: 0.85;
+}
+.custom-tp-card {
+  background: var(--bs-white);
+  border: 1px solid rgba(31, 42, 46, 0.08);
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.custom-tp-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 16px 24px -4px rgba(16, 24, 40, 0.08);
+}
