@@ -1,0 +1,235 @@
+<!doctype html>
+<!-- LinkedIn cover, 1584 × 396 (render at 2× for a sharp upload).
+     Safe zones: the profile photo covers roughly x 0–420, y 220–396 on desktop, and the
+     phone app trims the far left and right, so the message sits in the centre-right. -->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>LinkedIn banner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=block"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0c;
+      --ink: #f3f0e8;
+      --ink-2: rgba(243, 240, 232, .68);
+      --ink-3: rgba(243, 240, 232, .42);
+      --line: rgba(243, 240, 232, .08);
+      --lime: #c1ff72;
+      --f-display: "Bricolage Grotesque", sans-serif;
+      --f-serif: "Instrument Serif", serif;
+      --f-mono: "JetBrains Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 1584px;
+      height: 396px;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .banner {
+      position: relative;
+      width: 1584px;
+      height: 396px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    /* glows, grid and outlined type, as in the hero poster */
+    .glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(420px 300px at 36% 30%, rgba(193, 255, 114, .2), transparent 70%),
+        radial-gradient(520px 340px at 92% 95%, rgba(130, 100, 255, .2), transparent 70%);
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 44px 44px;
+      background-position: 22px 22px;
+      mask-image: radial-gradient(ellipse 70% 90% at 58% 45%, #000 20%, transparent 80%);
+    }
+
+    .type {
+      position: absolute;
+      left: -40px;
+      top: 14px;
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: 168px;
+      line-height: .84;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+      font-variation-settings: "opsz" 96;
+      color: transparent;
+      -webkit-text-stroke: 1.2px rgba(243, 240, 232, .13);
+    }
+
+    .type em {
+      font-family: var(--f-serif);
+      font-weight: 400;
+      letter-spacing: -.02em;
+    }
+
+    .type .r2 {
+      margin-left: -260px;
+    }
+
+    .scrim {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(0deg, rgba(13, 13, 12, .85) 0%, rgba(13, 13, 12, .35) 35%, transparent 60%),
+        linear-gradient(90deg, rgba(13, 13, 12, .7) 0%, transparent 34%);
+    }
+
+    /* viewfinder chrome */
+    .vf {
+      position: absolute;
+      inset: 22px 26px;
+    }
+
+    .vf b {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--ink);
+      opacity: .75;
+    }
+
+    .vf b:nth-child(1) { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+    .vf b:nth-child(2) { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+    .vf b:nth-child(3) { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+    .vf b:nth-child(4) { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+    .meta {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--f-mono);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+
+    .meta.tr { top: 4px; right: 36px; }
+    .meta.br { bottom: 3px; right: 36px; }
+
+    /* the wordmark, tucked into the top-left corner of the frame */
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 38px;
+      height: 46px;
+    }
+
+    /* contact: email and website, stacked on the right */
+    .contact {
+      position: absolute;
+      left: 1124px;
+      top: 92px;
+      width: 312px;
+      padding: 26px 28px;
+      border: 1px solid rgba(243, 240, 232, .14);
+      border-radius: 22px;
+      background: linear-gradient(160deg, rgba(27, 27, 24, .85), rgba(13, 13, 12, .7));
+      box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .8);
+    }
+
+    .contact .row + .row {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(243, 240, 232, .1);
+    }
+
+    .contact .label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    .contact .label i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 10px rgba(193, 255, 114, .7);
+    }
+
+    .contact .value {
+      display: block;
+      margin-top: 8px;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 25px;
+      letter-spacing: -.035em;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .contact .value.mail {
+      color: var(--lime);
+    }
+
+    .contact .value span {
+      color: var(--ink-3);
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="banner">
+    <div class="glow"></div>
+    <div class="grid"></div>
+    <div class="type">
+      <div>Get to know me · Get to know me</div>
+      <div class="r2">Say <em>hello</em> · Let's build · Say <em>hello</em></div>
+    </div>
+    <div class="scrim"></div>
+
+    <div class="vf">
+      <b></b><b></b><b></b><b></b>
+      <img class="logo" src="logo/svg/sajaath-logo-primary-dark.svg" alt="sajaath">
+      <span class="meta tr">30+ stores shipped</span>
+      <span class="meta br">Shopify · Liquid · CRO</span>
+    </div>
+
+    <div class="contact">
+      <div class="row">
+        <span class="label"><i></i>Let's talk</span>
+        <span class="value mail">hello@sajaath.com</span>
+      </div>
+      <div class="row">
+        <span class="label">Portfolio</span>
+        <span class="value">sajaath<span>.com</span></span>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

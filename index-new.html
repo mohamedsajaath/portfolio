@@ -1,0 +1,4716 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sajaath Mohamed — Shopify Developer & Certified Liquid Expert</title>
+  <meta name="description"
+    content="Sajaath Mohamed builds pixel-perfect, high-converting Shopify stores. 30+ stores shipped for brands and German agencies. Custom Liquid themes, CRO and speed optimisation.">
+  <link rel="canonical" href="https://sajaath.com/" />
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logos/sajaath-mark.svg" />
+  <meta name="theme-color" content="#0d0d0c">
+  <meta property="og:title" content="Sajaath Mohamed — Shopify Developer">
+  <meta property="og:description" content="Pixel-perfect Shopify stores, built to sell.">
+  <meta property="og:url" content="https://sajaath.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0d0d0c;
+      --bg-2: #141412;
+      --bg-3: #1b1b18;
+      --ink: #f3f0e8;
+      --ink-2: rgba(243, 240, 232, .68);
+      --ink-3: rgba(243, 240, 232, .42);
+      --line: rgba(243, 240, 232, .12);
+      --line-2: rgba(243, 240, 232, .22);
+      --lime: #c1ff72;
+      --lime-dim: rgba(193, 255, 114, .14);
+      --rec: #ff4d3d;
+
+      --f-display: "Bricolage Grotesque", "Inter Tight", system-ui, sans-serif;
+      --f-serif: "Instrument Serif", Georgia, serif;
+      --f-body: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+      --gutter: clamp(16px, 4.5vw, 72px);
+      --max: 1360px;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--f-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+
+    ::selection {
+      background: var(--lime);
+      color: var(--bg);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    em,
+    .serif {
+      font-family: var(--f-serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .mono {
+      font-family: var(--f-mono);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* film grain over everything */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: .06;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ---------- Logo ---------- */
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* mark: one block, two slots — three stacked sections forming an S */
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      flex: none;
+    }
+
+    .logo-mark .slot {
+      transition: transform .5s var(--ease);
+    }
+
+    .logo:hover .slot-a {
+      transform: translateX(6px);
+    }
+
+    .logo:hover .slot-b {
+      transform: translateX(-6px);
+    }
+
+    .wordmark {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: 24px;
+      letter-spacing: -.045em;
+      line-height: 1;
+      font-variation-settings: "opsz" 96;
+    }
+
+    /* the dot of the j becomes a lime pixel */
+    .wordmark .j {
+      position: relative;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    /* sized and placed to cover Bricolage 800's j tittle */
+    .wordmark .j::after {
+      content: "";
+      position: absolute;
+      left: .006em;
+      top: .068em;
+      width: .24em;
+      height: .24em;
+      background: var(--lime);
+      box-shadow: 0 0 0 .04em var(--bg);
+    }
+
+    .wordmark .tld {
+      font-family: var(--f-mono);
+      font-weight: 400;
+      font-size: .42em;
+      letter-spacing: 0;
+      color: var(--ink-3);
+      margin-left: .2em;
+      vertical-align: .15em;
+    }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      transition: background .4s, border-color .4s, backdrop-filter .4s;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav.is-scrolled {
+      background: rgba(13, 13, 12, .72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom-color: var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      gap: 24px;
+    }
+
+    .nav-links {
+      position: relative;
+      display: flex;
+      gap: 4px;
+      list-style: none;
+      margin: 0;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(20, 20, 18, .5);
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--ink-2);
+      transition: color .25s, background .25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      background: var(--bg-3);
+    }
+
+    /* scroll-spy: a lime pill slides to the link of the section in view (desktop only) */
+    .nav-pill {
+      display: none;
+    }
+
+    @media (min-width: 1081px) {
+      .nav-links li {
+        position: relative;
+        z-index: 1;
+      }
+
+      .nav-links .nav-pill {
+        display: block;
+        position: absolute;
+        z-index: 0;
+        top: 4px;
+        bottom: 4px;
+        left: 0;
+        width: 0;
+        border-radius: 999px;
+        background: var(--lime);
+        opacity: 0;
+        transition: transform .5s var(--ease), width .5s var(--ease), opacity .3s;
+      }
+
+      .nav-links .nav-pill.on {
+        opacity: 1;
+      }
+
+      .nav-links a.is-active,
+      .nav-links a.is-active:hover {
+        color: var(--bg);
+        background: transparent;
+        font-weight: 500;
+      }
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      white-space: nowrap;
+      transition: transform .3s var(--ease), background .3s, color .3s;
+    }
+
+    .btn-lime {
+      background: var(--lime);
+      color: var(--bg);
+    }
+
+    .btn-lime:hover {
+      transform: translateY(-2px);
+      background: #d4ff9c;
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--line-2);
+    }
+
+    .btn-ghost:hover {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .btn .arrow {
+      transition: transform .3s var(--ease);
+    }
+
+    .btn:hover .arrow {
+      transform: translateX(3px) rotate(-45deg);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--line-2);
+      position: relative;
+    }
+
+    .menu-btn span {
+      position: absolute;
+      left: 13px;
+      right: 13px;
+      height: 1.5px;
+      background: var(--ink);
+      transition: transform .3s var(--ease), top .3s var(--ease);
+    }
+
+    .menu-btn span:first-child {
+      top: 18px;
+    }
+
+    .menu-btn span:last-child {
+      top: 25px;
+    }
+
+    .menu-open .menu-btn span:first-child {
+      top: 21.5px;
+      transform: rotate(45deg);
+    }
+
+    .menu-open .menu-btn span:last-child {
+      top: 21.5px;
+      transform: rotate(-45deg);
+    }
+
+    /* ---------- Hero (full-bleed video cover, text on top) ---------- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 140px 0 clamp(64px, 9vh, 112px);
+      overflow: hidden;
+      isolation: isolate;
+      background: var(--bg-2);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    /* moving glow + grid */
+    .poster-bg {
+      position: absolute;
+      inset: -20%;
+      background:
+        radial-gradient(closest-side, rgba(193, 255, 114, .24), transparent) 0 0 / 50% 50% no-repeat,
+        radial-gradient(closest-side, rgba(130, 100, 255, .22), transparent) 100% 100% / 55% 55% no-repeat;
+      animation: drift 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift {
+      0% {
+        background-position: 10% 20%, 90% 80%;
+      }
+
+      50% {
+        background-position: 70% 30%, 20% 70%;
+      }
+
+      100% {
+        background-position: 40% 80%, 60% 10%;
+      }
+    }
+
+    .poster-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse at 60% 40%, #000 15%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at 60% 40%, #000 15%, transparent 75%);
+    }
+
+    /* outlined type drifting behind the headline */
+    .poster-type {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 13%;
+      display: flex;
+      flex-direction: column;
+      pointer-events: none;
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: clamp(72px, 15vw, 240px);
+      line-height: .84;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+      font-variation-settings: "opsz" 96;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(243, 240, 232, .1);
+    }
+
+    .poster-type .row {
+      display: flex;
+      width: max-content;
+      animation: slide 34s linear infinite;
+    }
+
+    .poster-type .row:nth-child(2) {
+      animation-direction: reverse;
+      animation-duration: 40s;
+    }
+
+    .poster-type .row span {
+      padding-right: .3em;
+    }
+
+    .poster-type em {
+      -webkit-text-stroke: 1.5px rgba(193, 255, 114, .28);
+      letter-spacing: -.03em;
+    }
+
+    @keyframes slide {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* keeps the headline readable over whatever is behind it */
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(0deg, rgba(13, 13, 12, .92) 0%, rgba(13, 13, 12, .55) 32%, transparent 62%),
+        linear-gradient(90deg, rgba(13, 13, 12, .55) 0%, transparent 55%);
+    }
+
+    /* viewfinder chrome */
+    .vf {
+      position: absolute;
+      inset: 96px var(--gutter) 28px;
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity .5s var(--ease);
+    }
+
+    .vf b {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border: 2px solid var(--ink);
+      opacity: .8;
+    }
+
+    .vf b:nth-child(1) {
+      top: 0;
+      left: 0;
+      border-right: 0;
+      border-bottom: 0;
+    }
+
+    .vf b:nth-child(2) {
+      top: 0;
+      right: 0;
+      border-left: 0;
+      border-bottom: 0;
+    }
+
+    .vf b:nth-child(3) {
+      bottom: 0;
+      left: 0;
+      border-right: 0;
+      border-top: 0;
+    }
+
+    .vf b:nth-child(4) {
+      bottom: 0;
+      right: 0;
+      border-left: 0;
+      border-top: 0;
+    }
+
+    .vf .meta {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-2);
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .vf .tl {
+      top: 6px;
+      left: 40px;
+    }
+
+    .vf .tr {
+      top: 6px;
+      right: 40px;
+    }
+
+    .vf .bl {
+      bottom: 6px;
+      left: 40px;
+    }
+
+    .vf .br {
+      bottom: 6px;
+      right: 40px;
+    }
+
+    .rec-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--rec);
+      animation: blink 1.2s steps(2) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      transition: opacity .5s var(--ease), transform .5s var(--ease);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      grid-template-areas:
+        "headline reel"
+        "headline side";
+      gap: 40px 64px;
+      align-items: end;
+    }
+
+    .hero-headline {
+      grid-area: headline;
+    }
+
+    .hero-reel {
+      grid-area: reel;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-side {
+      grid-area: side;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 28px;
+      color: var(--ink-2);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--lime);
+    }
+
+    .hero-title {
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: clamp(48px, 9.2vw, 148px);
+      line-height: .9;
+      letter-spacing: -.055em;
+      margin: 0;
+      font-variation-settings: "opsz" 96;
+      text-shadow: 0 4px 40px rgba(13, 13, 12, .4);
+    }
+
+    .hero-title .ln {
+      display: block;
+      overflow: hidden;
+      padding-bottom: .06em;
+    }
+
+    .hero-title .ln>span {
+      display: inline-block;
+      transform: translateY(105%);
+      animation: rise 1.1s var(--ease) forwards;
+    }
+
+    .hero-title .ln:nth-child(2)>span {
+      animation-delay: .1s;
+    }
+
+    .hero-title .ln:nth-child(3)>span {
+      animation-delay: .2s;
+    }
+
+    .hero-title em {
+      font-size: 1.08em;
+      letter-spacing: -.02em;
+      color: var(--lime);
+      padding-right: .06em;
+    }
+
+    .hero-title .outline {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--ink);
+    }
+
+    @keyframes rise {
+      to {
+        transform: none;
+      }
+    }
+
+    .hero-side {
+      padding-bottom: 14px;
+      opacity: 0;
+      animation: fade 1s .5s var(--ease) forwards;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .hero-side p {
+      margin: 0 0 24px;
+      color: var(--ink-2);
+      font-size: 17px;
+    }
+
+    .hero-side p strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .hero-side .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* play disc — pulled toward the pointer when it comes close */
+    .play {
+      position: relative;
+      flex: none;
+      width: 184px;
+      height: 184px;
+      border-radius: 50%;
+      will-change: transform;
+      opacity: 0;
+      animation: fade 1s .7s var(--ease) forwards;
+      transition: opacity .5s var(--ease);
+    }
+
+    .play::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(13, 13, 12, .5);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .play-ring {
+      position: absolute;
+      inset: 0;
+      animation: spin 16s linear infinite;
+    }
+
+    .play-ring text {
+      font-family: var(--f-mono);
+      font-size: 11.5px;
+      letter-spacing: 2px;
+      fill: var(--ink);
+      text-transform: uppercase;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .play-core {
+      position: absolute;
+      inset: 36px;
+      border-radius: 50%;
+      background: var(--lime);
+      display: grid;
+      place-items: center;
+      transition: transform .5s var(--ease);
+      animation: ping 2.6s infinite;
+    }
+
+    @keyframes ping {
+      0% {
+        box-shadow: 0 0 0 0 rgba(193, 255, 114, .45), 0 20px 60px rgba(193, 255, 114, .25);
+      }
+
+      80%,
+      100% {
+        box-shadow: 0 0 0 28px rgba(193, 255, 114, 0), 0 20px 60px rgba(193, 255, 114, .25);
+      }
+    }
+
+    .play-core svg {
+      width: 34px;
+      height: 34px;
+      margin-left: 5px;
+    }
+
+    .play:hover .play-core {
+      transform: scale(1.1);
+    }
+
+    .play-label {
+      margin: 14px 0 0;
+      white-space: nowrap;
+      font-size: 14px;
+      color: var(--ink-2);
+      opacity: 0;
+      animation: fade 1s .8s var(--ease) forwards;
+    }
+
+    .play-label strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* GIF thumbnail of the intro, under the play button */
+    .reel-thumb {
+      position: relative;
+      display: block;
+      width: 220px;
+      aspect-ratio: 16 / 9;
+      margin-top: 18px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--line-2);
+      background: var(--bg-3);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .45);
+      opacity: 0;
+      animation: fade 1s .9s var(--ease) forwards;
+      transition: border-color .3s, transform .4s var(--ease);
+    }
+
+    .reel-thumb:hover {
+      border-color: var(--lime);
+      transform: translateY(-3px);
+    }
+
+    .reel-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s var(--ease);
+    }
+
+    .reel-thumb:hover img {
+      transform: scale(1.06);
+    }
+
+    .reel-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(13, 13, 12, .6), transparent 50%);
+    }
+
+    .reel-chip,
+    .reel-time {
+      position: absolute;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      color: var(--ink);
+      background: rgba(13, 13, 12, .65);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .reel-chip {
+      left: 8px;
+      top: 8px;
+      padding: 4px 9px;
+      border-radius: 999px;
+    }
+
+    .reel-time {
+      right: 8px;
+      bottom: 8px;
+      padding: 3px 7px;
+      border-radius: 6px;
+    }
+
+    /* playing: the video takes over the hero */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      background: #000;
+      container-type: size;
+      display: none;
+    }
+
+    .hero-video iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: max(100cqw, 100cqh * 16 / 9);
+      height: max(100cqh, 100cqw * 9 / 16);
+      transform: translate(-50%, -50%);
+      border: 0;
+    }
+
+    /* tall screens: show the whole 16:9 frame instead of cropping it */
+    @media (max-aspect-ratio: 1 / 1) {
+      .hero-video iframe {
+        width: 100cqw;
+        height: calc(100cqw * 9 / 16);
+      }
+    }
+
+    .video-close {
+      position: absolute;
+      top: 92px;
+      right: var(--gutter);
+      z-index: 6;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(13, 13, 12, .7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--line-2);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .video-close:hover {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .hero.is-playing .hero-video,
+    .hero.is-playing .video-close {
+      display: block;
+    }
+
+    .hero.is-playing .video-close {
+      display: inline-flex;
+    }
+
+    .hero.is-playing .hero-content,
+    .hero.is-playing .vf,
+    .hero.is-playing .play {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* shutter: two lime panels close then open over the switch */
+    .shutter {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    .shutter i {
+      background: var(--lime);
+      transform: scaleY(0);
+    }
+
+    .shutter i:first-child {
+      transform-origin: top;
+    }
+
+    .shutter i:last-child {
+      transform-origin: bottom;
+    }
+
+    .hero.is-opening .shutter i {
+      animation: shut 1s var(--ease) forwards;
+    }
+
+    @keyframes shut {
+      0% {
+        transform: scaleY(0);
+      }
+
+      45%,
+      55% {
+        transform: scaleY(1);
+      }
+
+      100% {
+        transform: scaleY(0);
+      }
+    }
+
+    /* ---------- Marquee ---------- */
+    .ticker {
+      border-block: 1px solid var(--line);
+      overflow: hidden;
+      padding: 22px 0;
+      background: var(--bg-2);
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: slide 40s linear infinite;
+    }
+
+    .ticker-track span {
+      display: inline-flex;
+      align-items: center;
+      gap: 36px;
+      padding-right: 36px;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: clamp(22px, 2.6vw, 34px);
+      letter-spacing: -.03em;
+      color: var(--ink-2);
+      white-space: nowrap;
+    }
+
+    .ticker-track span::after {
+      content: "✳";
+      color: var(--lime);
+      font-size: .7em;
+    }
+
+    /* ---------- Section scaffolding ---------- */
+    section {
+      position: relative;
+    }
+
+    .section {
+      padding: clamp(88px, 12vw, 160px) 0;
+    }
+
+    .sec-head {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+      margin-bottom: clamp(48px, 6vw, 80px);
+    }
+
+    .sec-label {
+      color: var(--ink-3);
+      padding-top: 14px;
+    }
+
+    .sec-label b {
+      color: var(--lime);
+      font-weight: 500;
+    }
+
+    .sec-title {
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: clamp(38px, 5.6vw, 84px);
+      line-height: .95;
+      letter-spacing: -.05em;
+      margin: 0;
+      max-width: 16ch;
+      font-variation-settings: "opsz" 96;
+    }
+
+    .sec-title em {
+      color: var(--lime);
+      font-size: 1.06em;
+    }
+
+    .sec-intro {
+      margin: 24px 0 0;
+      max-width: 52ch;
+      color: var(--ink-2);
+      font-size: 17px;
+    }
+
+    /* reveal on scroll */
+    .rv {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .9s var(--ease), transform .9s var(--ease);
+    }
+
+    .rv.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ---------- Stats ---------- */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .stat {
+      padding: 36px 28px 8px 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .stat+.stat {
+      padding-left: 28px;
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat-num {
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: clamp(56px, 7vw, 104px);
+      line-height: 1;
+      letter-spacing: -.06em;
+      font-variation-settings: "opsz" 96;
+    }
+
+    .stat-num sup {
+      font-size: .4em;
+      color: var(--lime);
+      vertical-align: .9em;
+      margin-left: .05em;
+    }
+
+    .stat p {
+      margin: 14px 0 0;
+      color: var(--ink-2);
+      font-size: 15px;
+      max-width: 24ch;
+    }
+
+    /* ---------- Work: store dial ---------- */
+    /* Store names sit around a dial; the one in focus shows in the round window in the middle. */
+    .dial {
+      --S: min(600px, 52vw);
+      --r: calc(var(--S) / 2 + 30px);
+      position: relative;
+      height: calc(var(--S) + 140px);
+    }
+
+    .dial-face {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: var(--S);
+      height: var(--S);
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: radial-gradient(circle, var(--bg-2) 55%, var(--bg) 100%);
+    }
+
+    .dial-ticks {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .dial-ticks line {
+      stroke: var(--line-2);
+      stroke-width: .5;
+    }
+
+    .dial-ticks line.major {
+      stroke: var(--ink-3);
+      stroke-width: .9;
+    }
+
+    .dial-ticks .ring {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: .4;
+      stroke-dasharray: 1 2;
+    }
+
+    .dial-marker {
+      transform-origin: 0 0;
+      transition: transform .9s var(--ease);
+    }
+
+    .dial-marker line {
+      stroke: var(--lime);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+    }
+
+    .dial-marker circle {
+      fill: var(--lime);
+    }
+
+    .dial-window {
+      position: absolute;
+      inset: 15%;
+      display: block;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--bg-3);
+      box-shadow: 0 0 0 1px var(--line-2), 0 0 0 12px rgba(193, 255, 114, .05), 0 40px 120px rgba(0, 0, 0, .55);
+      isolation: isolate;
+    }
+
+    .dial-window img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      opacity: 0;
+      transform: scale(1.15) rotate(-6deg);
+      transition: opacity .7s var(--ease), transform 1.2s var(--ease);
+    }
+
+    .dial-window img.on {
+      opacity: 1;
+      transform: none;
+    }
+
+    .dial-window:hover img.on {
+      transform: scale(1.05);
+    }
+
+    .dial-window::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(13, 13, 12, .92) 0%, rgba(13, 13, 12, .45) 40%, transparent 62%);
+    }
+
+    .dial-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 11%;
+      z-index: 1;
+      padding: 0 16%;
+      text-align: center;
+    }
+
+    .dial-caption .mono {
+      color: var(--lime);
+    }
+
+    .dial-caption h3 {
+      margin: 4px 0 0;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: clamp(24px, 2.6vw, 38px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+    }
+
+    .dial-caption .tags {
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .dial-caption .tag {
+      background: rgba(13, 13, 12, .5);
+    }
+
+    .dial-cta {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line-2);
+      font-size: 13px;
+      font-weight: 600;
+      transition: background .3s, color .3s, border-color .3s;
+    }
+
+    .dial-window:hover .dial-cta {
+      background: var(--lime);
+      border-color: var(--lime);
+      color: var(--bg);
+    }
+
+    .dial-items {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* each name sits on the circle at its angle, anchored so it grows away from the dial */
+    .dial-items li {
+      --a: calc(var(--i) * 360deg / var(--n, 12) - 90deg);
+      position: absolute;
+      left: calc(50% + cos(var(--a)) * var(--r));
+      top: calc(50% + sin(var(--a)) * var(--r));
+      transform: translate(calc(-50% + 50% * cos(var(--a))), calc(-50% + 50% * sin(var(--a))));
+    }
+
+    .dial-items a {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 6px 4px;
+      white-space: nowrap;
+      color: var(--ink-3);
+      transition: color .3s;
+    }
+
+    .dial-items .idx {
+      font-family: var(--f-mono);
+      font-size: 11px;
+    }
+
+    .dial-items .name {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 19px;
+      letter-spacing: -.03em;
+    }
+
+    .dial-items a:hover {
+      color: var(--ink);
+    }
+
+    .dial-items a.is-active {
+      color: var(--lime);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      border: 1px solid var(--line-2);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--ink-2);
+      white-space: nowrap;
+    }
+
+    /* ---------- Stack: 3D logo dials ---------- */
+    /* Each row is a drum: logos sit around a cylinder that turns about its vertical axis. */
+    .dials {
+      display: grid;
+      gap: 14px;
+      max-width: 1520px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .dial3d {
+      --tile-w: 136px;
+      --tile-h: 92px;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .dial3d-brands {
+      --tile-w: 200px;
+    }
+
+    .dial3d-label {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink-2);
+    }
+
+    .dial3d-label b {
+      color: var(--lime);
+      font-weight: 500;
+    }
+
+    .dial3d-view {
+      position: relative;
+      height: calc(var(--tile-h) + 84px);
+      perspective: 1100px;
+      /* camera slightly above the dial, so the drum's curve shows */
+      perspective-origin: 50% -40%;
+      cursor: grab;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+      mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+    }
+
+    .dial3d-view.is-dragging {
+      cursor: grabbing;
+    }
+
+    /* the lime pointer at the front of the dial */
+    .dial3d-view::before,
+    .dial3d-view::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 2px;
+      height: 10px;
+      margin-left: -1px;
+      background: var(--lime);
+      z-index: 2;
+    }
+
+    .dial3d-view::before {
+      top: calc(100% - var(--tile-h) - 22px - 18px - 14px);
+    }
+
+    .dial3d-view::after {
+      bottom: 0;
+    }
+
+    .dial3d-drum {
+      position: absolute;
+      left: 50%;
+      top: calc(100% - var(--tile-h) / 2 - 22px);
+      width: 0;
+      height: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      transform-style: preserve-3d;
+    }
+
+    .dial3d-drum>li {
+      position: absolute;
+      left: calc(var(--tile-w) / -2);
+      top: calc(var(--tile-h) / -2);
+      width: var(--tile-w);
+      height: var(--tile-h);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #1c1c19, #121210);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transition: border-color .3s;
+    }
+
+    .dial3d-drum>li:hover {
+      border-color: var(--lime);
+    }
+
+    .dial3d-drum img {
+      max-width: 72%;
+      max-height: 40px;
+      object-fit: contain;
+      opacity: .72;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+
+    .dial3d-brands .dial3d-drum img {
+      max-height: 46px;
+    }
+
+    .dial3d-drum li:hover img {
+      opacity: 1;
+    }
+
+    .dial3d-drum li span {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      white-space: nowrap;
+    }
+
+    .dial3d-drum li .word {
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -.03em;
+      text-transform: none;
+      color: rgba(243, 240, 232, .72);
+    }
+
+    /* rim ticks: short marks above and below the tiles, turning with the drum */
+    .dial3d-drum>.tick {
+      position: absolute;
+      left: -1px;
+      top: calc(var(--tile-h) / -2 - 18px);
+      width: 2px;
+      height: calc(var(--tile-h) + 36px);
+      background: linear-gradient(var(--line-2) 0 8px, transparent 8px calc(100% - 8px), var(--line-2) calc(100% - 8px));
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* ---------- Process ---------- */
+    .process {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-2);
+      border-block: 1px solid var(--line);
+    }
+
+    .process>.wrap {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Three.js wireframe landscape behind the section */
+    .process-bg {
+      position: absolute;
+      inset: 0 0 auto;
+      width: 100%;
+      height: min(1100px, 100%);
+      pointer-events: none;
+      mask-image: linear-gradient(transparent, #000 18%, #000 70%, transparent);
+      -webkit-mask-image: linear-gradient(transparent, #000 18%, #000 70%, transparent);
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .flow-steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .flow-step {
+      position: relative;
+      border-top: 1px solid var(--line);
+    }
+
+    .flow-btn {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 14px 30px 1fr auto;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 0;
+      text-align: left;
+      color: var(--ink-3);
+      transition: color .3s;
+    }
+
+    .flow-btn:hover {
+      color: var(--ink-2);
+    }
+
+    .flow-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid currentColor;
+      transition: background .3s, border-color .3s, box-shadow .3s;
+    }
+
+    .flow-n {
+      font-size: 12px;
+    }
+
+    .flow-title {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: -.03em;
+    }
+
+    .flow-when {
+      font-size: 11px;
+    }
+
+    .flow-step.is-active .flow-btn {
+      color: var(--ink);
+    }
+
+    .flow-step.is-active .flow-dot {
+      background: var(--lime);
+      border-color: var(--lime);
+      box-shadow: 0 0 0 5px var(--lime-dim);
+    }
+
+    .flow-step.is-active .flow-n,
+    .flow-step.is-active .flow-when {
+      color: var(--lime);
+    }
+
+    /* the open step's text slides open; the others stay folded */
+    .flow-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .5s var(--ease);
+    }
+
+    .flow-body>div {
+      overflow: hidden;
+      padding-left: 58px;
+    }
+
+    .flow-step.is-active .flow-body {
+      grid-template-rows: 1fr;
+    }
+
+    .flow-body p {
+      margin: 0 0 14px;
+      color: var(--ink-2);
+      max-width: 46ch;
+    }
+
+    .flow-body .tags {
+      justify-content: flex-start;
+      padding-bottom: 22px;
+    }
+
+    .flow-progress {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      overflow: hidden;
+    }
+
+    .flow-progress i {
+      display: block;
+      height: 100%;
+      background: var(--lime);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    /* the wireframe stage */
+    .flow-stage {
+      position: sticky;
+      top: 110px;
+      border: 1px solid var(--line-2);
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(13, 13, 12, .9);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, .45);
+    }
+
+    .stage-bar,
+    .stage-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 18px;
+      font-size: 11px;
+      color: var(--ink-3);
+    }
+
+    .stage-bar {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stage-foot {
+      border-top: 1px solid var(--line);
+    }
+
+    .stage-bar b,
+    .stage-foot b {
+      color: var(--lime);
+      font-weight: 500;
+    }
+
+    .stage-foot b {
+      flex: 1;
+    }
+
+    .stage-leds {
+      display: flex;
+      gap: 6px;
+    }
+
+    .stage-leds i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--line-2);
+      transition: background .3s, box-shadow .3s;
+    }
+
+    .stage-leds i.on {
+      background: var(--lime);
+      box-shadow: 0 0 8px var(--lime);
+    }
+
+    .stage-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .stage-svg .scene {
+      display: none;
+    }
+
+    .stage-svg .scene.on {
+      display: inline;
+    }
+
+    .stage-svg .ln {
+      fill: none;
+      stroke: rgba(243, 240, 232, .4);
+      stroke-width: 1.5;
+    }
+
+    .stage-svg .lm {
+      fill: none;
+      stroke: var(--lime);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .stage-svg .d {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+    }
+
+    .stage-svg .bar {
+      fill: rgba(243, 240, 232, .16);
+    }
+
+    .stage-svg .lime {
+      fill: var(--lime);
+    }
+
+    .stage-svg .node {
+      fill: var(--bg);
+      stroke: rgba(243, 240, 232, .6);
+      stroke-width: 2;
+    }
+
+    .stage-svg .node.lime {
+      fill: var(--lime);
+      stroke: var(--lime);
+    }
+
+    .stage-svg .dot {
+      fill: rgba(243, 240, 232, .55);
+    }
+
+    .stage-svg .tx,
+    .stage-svg .txl,
+    .stage-svg .dk,
+    .stage-svg .approve-t {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      fill: rgba(243, 240, 232, .6);
+    }
+
+    .stage-svg .txl {
+      fill: var(--lime);
+    }
+
+    .stage-svg .dk {
+      fill: var(--bg);
+      font-weight: 500;
+    }
+
+    .stage-svg .big {
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: 34px;
+      letter-spacing: -.04em;
+      fill: var(--ink);
+    }
+
+    .stage-svg .lime-t {
+      fill: var(--lime);
+    }
+
+    .stage-svg .tick {
+      fill: none;
+      stroke: var(--bg);
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .stage-svg .note {
+      fill: var(--bg-3);
+      stroke: rgba(243, 240, 232, .25);
+    }
+
+    .stage-svg .approve {
+      fill: transparent;
+      stroke: var(--lime);
+      stroke-width: 2;
+    }
+
+    .stage-svg .approve-t {
+      fill: var(--lime);
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .stage-svg .status {
+      fill: var(--rec);
+    }
+
+    /* working style */
+    .style-head {
+      margin: clamp(96px, 10vw, 140px) 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .style-head h3 {
+      margin: 0;
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 56px);
+      letter-spacing: -.05em;
+      line-height: 1;
+    }
+
+    .style-head h3 em {
+      color: var(--lime);
+    }
+
+    .style-head p {
+      margin: 0;
+      color: var(--ink-2);
+      max-width: 42ch;
+    }
+
+    .style-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .trait {
+      padding: 28px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      transition: border-color .3s, transform .4s var(--ease);
+    }
+
+    .trait:hover {
+      border-color: var(--lime);
+      transform: translateY(-4px);
+    }
+
+    .trait .glyph {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: var(--lime-dim);
+      color: var(--lime);
+      font-family: var(--f-mono);
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+
+    .trait h4 {
+      margin: 0 0 8px;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: -.03em;
+    }
+
+    .trait p {
+      margin: 0;
+      color: var(--ink-2);
+      font-size: 15px;
+    }
+
+    .code-card {
+      grid-column: span 2;
+      grid-row: span 2;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .code-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink-3);
+    }
+
+    .code-bar i {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--line-2);
+    }
+
+    .code-bar span {
+      margin-left: 10px;
+    }
+
+    .code-card pre {
+      margin: 0;
+      padding: 24px 22px;
+      flex: 1;
+      overflow-x: auto;
+      font-family: var(--f-mono);
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: var(--ink-2);
+    }
+
+    .c-com {
+      color: var(--ink-3);
+      font-style: italic;
+    }
+
+    .c-tag {
+      color: var(--lime);
+    }
+
+    .c-key {
+      color: #b9a7ff;
+    }
+
+    .c-str {
+      color: #ffc98a;
+    }
+
+    /* ---------- Services ---------- */
+    .svc {
+      border-top: 1px solid var(--line);
+    }
+
+    .svc-row {
+      display: grid;
+      grid-template-columns: 80px 1.1fr 1.4fr;
+      gap: 24px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+      position: relative;
+    }
+
+    .svc-row::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 1px;
+      background: var(--lime);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .7s var(--ease);
+    }
+
+    .svc-row:hover::before {
+      transform: scaleX(1);
+    }
+
+    .svc-row .idx {
+      color: var(--ink-3);
+      padding-top: 10px;
+    }
+
+    .svc-row h3 {
+      margin: 0;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: clamp(28px, 3.4vw, 46px);
+      letter-spacing: -.045em;
+      line-height: 1;
+      transition: color .3s;
+    }
+
+    .svc-row:hover h3 {
+      color: var(--lime);
+    }
+
+    .svc-row p {
+      margin: 6px 0 0;
+      color: var(--ink-2);
+    }
+
+    /* ---------- Retainer ---------- */
+    .retainer {
+      border-radius: 32px;
+      background: var(--lime);
+      color: var(--bg);
+      padding: clamp(32px, 5vw, 72px);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .retainer::after {
+      content: "{%}";
+      position: absolute;
+      right: -2%;
+      bottom: -18%;
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: clamp(160px, 26vw, 380px);
+      letter-spacing: -.08em;
+      line-height: 1;
+      color: rgba(13, 13, 12, .07);
+      pointer-events: none;
+    }
+
+    .retainer .mono {
+      opacity: .6;
+    }
+
+    .retainer h2 {
+      margin: 18px 0 20px;
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: clamp(36px, 4.6vw, 68px);
+      line-height: .95;
+      letter-spacing: -.05em;
+    }
+
+    .retainer p {
+      margin: 0;
+      max-width: 44ch;
+      font-size: 17px;
+      opacity: .78;
+    }
+
+    .price {
+      margin-top: 36px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .price b {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: clamp(56px, 6vw, 88px);
+      letter-spacing: -.06em;
+      line-height: 1;
+    }
+
+    .price span {
+      font-family: var(--f-serif);
+      font-style: italic;
+      font-size: 24px;
+    }
+
+    .retainer .btn {
+      margin-top: 32px;
+      background: var(--bg);
+      color: var(--lime);
+    }
+
+    .retainer .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .retainer ul {
+      position: relative;
+      z-index: 1;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-self: center;
+    }
+
+    /* each point: a dark check badge and a hairline underneath. The entrance animation tweens
+       --pop (badge) and --line (hairline) from 0 to 1; without it they simply sit at 1. */
+    .retainer li {
+      position: relative;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 15px 0;
+      font-weight: 500;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .retainer li::before {
+      content: "";
+      flex: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c1ff72' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 12.5l3.2 3.2L17 9'/%3E%3C/svg%3E") center / 16px no-repeat;
+      transform: scale(var(--pop, 1)) rotate(calc((1 - var(--pop, 1)) * -90deg));
+    }
+
+    .retainer li::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: rgba(13, 13, 12, .18);
+      transform: scaleX(var(--line, 1));
+      transform-origin: left;
+    }
+
+    /* the availability point leads the list: bolder, with a live "on call" pulse */
+    .retainer li.lead {
+      font-weight: 700;
+    }
+
+    .retainer li.lead::before {
+      background-color: var(--bg);
+      box-shadow: 0 0 0 0 rgba(13, 13, 12, .35);
+      animation: on-call 2.4s ease-out infinite;
+    }
+
+    @keyframes on-call {
+      0% {
+        box-shadow: 0 0 0 0 rgba(13, 13, 12, .35);
+      }
+
+      70%,
+      100% {
+        box-shadow: 0 0 0 12px rgba(13, 13, 12, 0);
+      }
+    }
+
+    .price b {
+      display: inline-block;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* the burst when the price lands: a light bloom, a sheen across the card and sparkles */
+    .retainer-fx {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      overflow: hidden;
+      border-radius: inherit;
+    }
+
+    /* bloom and sheen light the card behind the text; sparkles sit on top */
+    .retainer-fx.under {
+      z-index: 0;
+    }
+
+    .retainer-fx .bloom {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      margin: -260px 0 0 -260px;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(255, 255, 255, .7), rgba(255, 255, 255, .18) 50%, transparent);
+      opacity: 0;
+    }
+
+    .retainer-fx .sheen {
+      position: absolute;
+      top: -20%;
+      bottom: -20%;
+      left: 0;
+      width: 38%;
+      background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45) 50%, transparent);
+      transform: translateX(-120%) skewX(-12deg);
+    }
+
+    .retainer-fx .spark {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      margin: -9px 0 0 -9px;
+      background: var(--bg);
+      clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+      opacity: 0;
+    }
+
+    .retainer-fx .spark.light {
+      background: #fff;
+    }
+
+    .retainer.glowing {
+      box-shadow: 0 0 0 1px rgba(193, 255, 114, .4), 0 30px 120px -20px rgba(193, 255, 114, .45);
+      transition: box-shadow 1.2s var(--ease);
+    }
+
+    /* ---------- Testimonials ---------- */
+    /* endless strip of reviews, moved by script: it drifts on its own, and while hovered it stops
+       and can be dragged or scrolled sideways. Without the script it is a plain scrollable row. */
+    .quotes-carousel {
+      overflow-x: auto;
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+
+    .quotes-carousel.is-live {
+      overflow: hidden;
+      cursor: grab;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .quotes-carousel.is-dragging {
+      cursor: grabbing;
+    }
+
+    .quotes-carousel.is-dragging .quote {
+      pointer-events: none;
+    }
+
+    .quotes-track {
+      display: flex;
+      width: max-content;
+    }
+
+    .quotes-sub {
+      margin: 72px 0 24px;
+      color: var(--ink-3);
+    }
+
+    .quotes-sub b {
+      color: var(--lime);
+      font-weight: 400;
+    }
+
+    .quote.peer {
+      width: min(360px, 78vw);
+      padding: 26px 28px;
+    }
+
+    .quote.peer blockquote {
+      margin-bottom: 24px;
+      font-size: 16px;
+      color: var(--ink-2);
+    }
+
+    .quote {
+      flex: none;
+      width: min(420px, 82vw);
+      margin-right: 16px;
+      transition: transform .4s var(--ease), border-color .3s;
+      display: flex;
+      flex-direction: column;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--bg-2);
+    }
+
+    .quote:hover {
+      transform: translateY(-4px);
+      border-color: var(--lime);
+    }
+
+    .quote.feature {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .quote .mark {
+      font-family: var(--f-serif);
+      font-size: 80px;
+      line-height: .6;
+      height: 40px;
+      color: var(--lime);
+    }
+
+    .quote.feature .mark {
+      color: var(--bg);
+    }
+
+    .quote blockquote {
+      margin: 0 0 32px;
+      font-family: var(--f-display);
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 1.45;
+      letter-spacing: -.015em;
+      flex: 1;
+    }
+
+    .quote figcaption {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .quote.feature figcaption {
+      border-top-color: rgba(13, 13, 12, .15);
+    }
+
+    .quote img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .quote figcaption b {
+      display: block;
+      font-weight: 600;
+    }
+
+    .quote figcaption span {
+      font-size: 14px;
+      opacity: .6;
+    }
+
+    .stars {
+      color: var(--lime);
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    .quote.feature .stars {
+      color: var(--bg);
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 64px;
+    }
+
+    details {
+      border-top: 1px solid var(--line);
+    }
+
+    details:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 26px 0;
+      font-family: var(--f-display);
+      font-weight: 500;
+      font-size: 21px;
+      letter-spacing: -.025em;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      font-family: var(--f-body);
+      font-weight: 300;
+      font-size: 28px;
+      line-height: .9;
+      color: var(--lime);
+      transition: transform .4s var(--ease);
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    details p {
+      margin: -6px 0 26px;
+      color: var(--ink-2);
+      max-width: 60ch;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact {
+      padding: clamp(100px, 14vw, 180px) 0 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .contact .eyebrow {
+      justify-content: center;
+    }
+
+    .contact h2 {
+      margin: 0 auto;
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: clamp(52px, 11vw, 180px);
+      line-height: .86;
+      letter-spacing: -.06em;
+      font-variation-settings: "opsz" 96;
+    }
+
+    .contact h2 em {
+      color: var(--lime);
+      font-size: 1.04em;
+    }
+
+    .contact-actions {
+      margin: 48px 0 0;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .mail-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 30px;
+      border-radius: 999px;
+      background: var(--lime);
+      color: var(--bg);
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: clamp(18px, 2.2vw, 26px);
+      letter-spacing: -.03em;
+      transition: transform .3s var(--ease);
+    }
+
+    .mail-btn:hover {
+      transform: scale(1.03);
+    }
+
+    .copy-btn {
+      padding: 20px 26px;
+      border-radius: 999px;
+      border: 1px solid var(--line-2);
+      font-size: 15px;
+      transition: background .3s, color .3s;
+    }
+
+    .copy-btn:hover {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    /* profile card: photo, name and role. On hover it lifts a little, the photo warms from
+       slightly muted to full colour and the arrow nudges out. */
+    .profile-card {
+      margin: 64px auto 0;
+      width: min(560px, 100%);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 22px;
+      padding: 16px 24px 16px 16px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(160deg, var(--bg-3), var(--bg-2));
+      text-align: left;
+      transition: transform .5s var(--ease), border-color .4s, box-shadow .5s var(--ease);
+    }
+
+    .profile-card:hover,
+    .profile-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: rgba(193, 255, 114, .45);
+      box-shadow: 0 24px 60px -24px rgba(0, 0, 0, .7);
+    }
+
+    .pc-photo {
+      position: relative;
+      width: 104px;
+      height: 104px;
+    }
+
+    .pc-photo img {
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      object-fit: cover;
+      filter: grayscale(.35) contrast(1.02);
+      transition: filter .6s var(--ease), transform .6s var(--ease);
+    }
+
+    .profile-card:hover .pc-photo img,
+    .profile-card:focus-visible .pc-photo img {
+      filter: none;
+      transform: scale(1.03);
+    }
+
+    .pc-badge {
+      position: absolute;
+      right: -6px;
+      bottom: -6px;
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 0 4px var(--bg-2);
+    }
+
+    .pc-badge svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .pc-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-3);
+    }
+
+    .pc-status i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 0 3px rgba(193, 255, 114, .18);
+    }
+
+    .pc-name {
+      display: block;
+      margin: 8px 0 4px;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: -.035em;
+      line-height: 1.1;
+    }
+
+    .pc-role {
+      display: block;
+      color: var(--ink-2);
+      font-size: 15px;
+    }
+
+    .pc-cta {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--line-2);
+      font-size: 17px;
+      transition: background .4s, color .4s, border-color .4s, transform .5s var(--ease);
+    }
+
+    .profile-card:hover .pc-cta,
+    .profile-card:focus-visible .pc-cta {
+      background: var(--lime);
+      border-color: var(--lime);
+      color: var(--bg);
+      transform: rotate(45deg);
+    }
+
+    @media (max-width: 520px) {
+      .profile-card {
+        grid-template-columns: auto 1fr;
+      }
+
+      .pc-cta {
+        display: none;
+      }
+
+      .pc-status {
+        font-size: 10px;
+      }
+    }
+
+    .contact-meta {
+      margin-top: 72px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      text-align: left;
+    }
+
+    .contact-meta>div {
+      padding: 28px 0;
+    }
+
+    .contact-meta>div+div {
+      padding-left: 28px;
+      border-left: 1px solid var(--line);
+    }
+
+    .contact-meta .mono {
+      color: var(--ink-3);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .contact-meta a:hover {
+      color: var(--lime);
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 0 40px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .socials {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: var(--ink-2);
+    }
+
+    .socials a:hover {
+      color: var(--lime);
+    }
+
+    .footer small {
+      color: var(--ink-3);
+      font-size: 13px;
+    }
+
+    .bigmark {
+      margin-top: 40px;
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: 23.5vw;
+      line-height: .78;
+      letter-spacing: -.07em;
+      text-align: center;
+      color: var(--bg-3);
+      user-select: none;
+      font-variation-settings: "opsz" 96;
+      overflow: hidden;
+    }
+
+    .bigmark .j::after {
+      box-shadow: none;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1080px) {
+      .dial {
+        --S: min(440px, 100%);
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .dial-face {
+        position: relative;
+        left: auto;
+        top: auto;
+        height: auto;
+        aspect-ratio: 1;
+        transform: none;
+      }
+
+      .dial-items {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 20px;
+        width: 100%;
+      }
+
+      .dial-items li {
+        position: static;
+        transform: none;
+        border-top: 1px solid var(--line);
+      }
+
+      .dial-items a {
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "reel"
+          "headline"
+          "side";
+      }
+
+      .hero-side {
+        max-width: 520px;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .flow {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .flow-stage {
+        position: relative;
+        top: auto;
+        order: -1;
+      }
+
+
+      .style-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .code-card {
+        grid-column: span 2;
+        grid-row: auto;
+      }
+
+      .retainer {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .dial3d,
+      .dial3d-brands {
+        --tile-w: 112px;
+        --tile-h: 76px;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .dial3d-brands {
+        --tile-w: 150px;
+      }
+
+      .dial3d-view {
+        perspective: 700px;
+      }
+
+      .nav-cta .btn {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .menu-open .nav {
+        background: var(--bg);
+        border-bottom-color: var(--line);
+      }
+
+      .menu-open .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        border-radius: 0;
+        border: 0;
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+        padding: 8px var(--gutter) 24px;
+      }
+
+      .menu-open .nav-links a {
+        font-family: var(--f-display);
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: -.04em;
+        color: var(--ink);
+        padding: 10px 0;
+      }
+
+      .hero {
+        padding: 120px 0 64px;
+      }
+
+      .vf {
+        inset: 84px 12px 14px;
+      }
+
+      .vf .tr,
+      .vf .br {
+        display: none;
+      }
+
+      .vf .tl,
+      .vf .bl {
+        left: 34px;
+      }
+
+      .poster-type {
+        top: 12%;
+        font-size: 30vw;
+      }
+
+      .play {
+        width: 140px;
+        height: 140px;
+      }
+
+      .play-core {
+        inset: 28px;
+      }
+
+      .play-label {
+        font-size: 13px;
+      }
+
+      .reel-thumb {
+        width: 200px;
+      }
+
+      .video-close {
+        top: 84px;
+      }
+
+      .sec-head {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .sec-label {
+        padding-top: 0;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat,
+      .stat+.stat {
+        padding: 28px 16px 24px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .stat:nth-child(even) {
+        padding-left: 16px;
+        border-left: 1px solid var(--line);
+      }
+
+      .dial-window {
+        inset: 12%;
+      }
+
+      .dial-caption {
+        padding: 0 12%;
+      }
+
+      .dial-caption h3 {
+        font-size: 22px;
+      }
+
+      .dial-cta {
+        display: none;
+      }
+
+      .dial-items .name {
+        font-size: 17px;
+      }
+
+      .tags {
+        justify-content: flex-start;
+      }
+
+      .flow-btn {
+        grid-template-columns: 12px 24px 1fr;
+        gap: 12px;
+      }
+
+      .flow-when {
+        display: none;
+      }
+
+      .flow-title {
+        font-size: 20px;
+      }
+
+      .flow-body>div {
+        padding-left: 48px;
+      }
+
+      .stage-bar>span:first-child {
+        display: none;
+      }
+
+      /* the drawing scales down to ~60% on phones, so its labels get bigger to stay readable */
+      .stage-svg .tx,
+      .stage-svg .txl,
+      .stage-svg .dk {
+        font-size: 13px;
+        letter-spacing: .06em;
+      }
+
+      .style-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .code-card {
+        grid-column: auto;
+      }
+
+      .svc-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .svc-row .idx {
+        padding-top: 0;
+      }
+
+      .contact-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        gap: 16px;
+        padding: 12px 16px 12px 12px;
+      }
+
+      .pc-photo {
+        width: 76px;
+        height: 76px;
+      }
+
+      .pc-name {
+        font-size: 20px;
+      }
+
+      .pc-role {
+        font-size: 14px;
+      }
+
+      .contact-meta>div+div {
+        padding-left: 0;
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .copy-btn {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .rv {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== Nav ===== -->
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="logo" aria-label="sajaath.com — home">
+        <span class="wordmark">sa<span class="j">j</span>aath</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#retainer">Retainer</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="nav-pill" id="navPill" aria-hidden="true"></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a class="btn btn-lime" href="https://calendly.com/mohamedsajaath0409/30min" target="_blank"
+          rel="noopener">Book a call <span class="arrow">→</span></a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"
+          aria-controls="navLinks"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <!-- The intro video covers the whole hero. Nothing from YouTube loads until the visitor presses play.
+         Swap data-video for your own YouTube video ID. -->
+    <section class="hero" id="hero" data-video="aqz-KE-bpKQ">
+      <div class="hero-media" aria-hidden="true">
+        <span class="poster-bg"></span>
+        <span class="poster-grid"></span>
+        <span class="poster-type">
+          <span class="row">
+            <span>Get to know me</span><span>Get to know me</span>
+            <span>Get to know me</span><span>Get to know me</span>
+          </span>
+          <span class="row">
+            <span>Press <em>play</em></span><span>Say <em>hello</em></span>
+            <span>Press <em>play</em></span><span>Say <em>hello</em></span>
+          </span>
+        </span>
+        <span class="hero-scrim"></span>
+      </div>
+
+      <div class="vf" aria-hidden="true">
+        <b></b><b></b><b></b><b></b>
+        <span class="meta tl"><span class="rec-dot"></span>Rec</span>
+        <span class="meta tr">sajaath_intro.mp4</span>
+        <span class="meta bl" id="timecode">00:00:00:00</span>
+        <span class="meta br">4K · 25fps · ♪ sound on</span>
+      </div>
+
+      <div class="wrap hero-content">
+        <div class="hero-grid">
+          <div class="hero-headline">
+            <h1 class="hero-title">
+              <span class="ln"><span><em>Shopify</em> stores,</span></span>
+              <span class="ln"><span><span class="outline">built</span> to sell.</span></span>
+            </h1>
+          </div>
+
+          <div class="hero-reel">
+            <button class="play" id="play" aria-label="Play intro video: get to know Sajaath">
+              <svg class="play-ring" viewBox="0 0 184 184" aria-hidden="true">
+                <defs>
+                  <path id="ringPath" d="M92,92 m-75,0 a75,75 0 1,1 150,0 a75,75 0 1,1 -150,0" />
+                </defs>
+                <text>
+                  <textPath href="#ringPath" textLength="468">Press play ✦ Meet Sajaath ✦ 90 sec intro ✦ </textPath>
+                </text>
+              </svg>
+              <span class="play-core" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="#0d0d0c">
+                  <path d="M7 4.5v15a1 1 0 0 0 1.52.85l12.2-7.5a1 1 0 0 0 0-1.7L8.52 3.65A1 1 0 0 0 7 4.5Z" />
+                </svg>
+              </span>
+            </button>
+            <p class="play-label"><strong>90 sec</strong> - who I am &amp; how I build</p>
+            <!-- Intro preview: replace assets/images/intro/intro.gif with your own GIF (removes itself if missing) -->
+            <button class="reel-thumb" id="reelThumb" aria-label="Play intro video">
+              <img src="./assets/images/intro/intro.gif" alt="" onerror="this.closest('.reel-thumb').remove()">
+              <span class="reel-chip mono"><span class="rec-dot"></span>Preview</span>
+              <span class="reel-time mono">01:30</span>
+            </button>
+          </div>
+
+          <div class="hero-side">
+            <p>Hi, I'm <strong>Sajaath</strong>. I turn designs into fast, high‑converting Shopify storefronts
+              for D2C brands and agencies across Europe from <strong>Colombo, Sri Lanka</strong>.</p>
+            <div class="actions">
+              <a class="btn btn-lime" href="#work">See my work <span class="arrow">→</span></a>
+              <a class="btn btn-ghost" href="#process">How I work</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-video" id="heroVideo"></div>
+      <button class="video-close" id="videoClose">✕ Close video</button>
+      <div class="shutter" aria-hidden="true"><i></i><i></i></div>
+    </section>
+
+    <!-- ===== Ticker ===== -->
+    <div class="ticker" aria-label="Brands I've built for">
+      <div class="ticker-track">
+        <span>Fuxlshop</span><span>Beargrillz</span><span>KBS — Welt der Steine</span><span>Fingerscrossed</span>
+        <span>Littlecub</span><span>Larrys</span><span>Scale Solutions</span><span>Salz Kultur</span>
+        <span>EasyHeizen</span><span>Klickandsafe</span><span>Laximor</span><span>OOAKLINE</span>
+        <span aria-hidden="true">Fuxlshop</span><span aria-hidden="true">Beargrillz</span><span
+          aria-hidden="true">KBS — Welt der Steine</span><span aria-hidden="true">Fingerscrossed</span>
+        <span aria-hidden="true">Littlecub</span><span aria-hidden="true">Larrys</span><span
+          aria-hidden="true">Scale Solutions</span><span aria-hidden="true">Salz Kultur</span>
+        <span aria-hidden="true">EasyHeizen</span><span aria-hidden="true">Klickandsafe</span><span
+          aria-hidden="true">Laximor</span><span aria-hidden="true">OOAKLINE</span>
+      </div>
+    </div>
+
+    <!-- ===== Stats ===== -->
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="sec-label mono"><b>01</b> / About</span>
+          <div>
+            <h2 class="sec-title">Stores that look right <em>and</em> perform.</h2>
+            <p class="sec-intro">Certified Shopify developer focused on proven experience, trust and a real
+              understanding of your business goals — not just how your store looks.</p>
+          </div>
+        </div>
+        <div class="stats rv">
+          <div class="stat">
+            <div class="stat-num"><span data-count="30">0</span><sup>+</sup></div>
+            <p>Shopify stores built with precision and performance in mind.</p>
+          </div>
+          <div class="stat">
+            <div class="stat-num"><span data-count="20">0</span><sup>+</sup></div>
+            <p>Clients helped with Shopify &amp; software development.</p>
+          </div>
+          <div class="stat">
+            <div class="stat-num"><span data-count="4">0</span><sup>yrs</sup></div>
+            <p>Of hands-on Shopify Liquid development.</p>
+          </div>
+          <div class="stat">
+            <div class="stat-num"><span data-count="2">0</span><sup>DE</sup></div>
+            <p>Leading German Shopify agencies I've shipped storefronts with.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Work ===== -->
+    <section class="section" id="work" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="sec-label mono"><b>02</b> / Selected work</span>
+          <div>
+            <h2 class="sec-title">Featured <em>stores</em></h2>
+            <p class="sec-intro">High-performing Shopify stores crafted with precision, built for conversions and
+              designed to elevate brands.</p>
+          </div>
+        </div>
+
+        <div class="dial" id="dial">
+          <div class="dial-face">
+            <svg class="dial-ticks" viewBox="-100 -100 200 200" aria-hidden="true">
+              <circle class="ring" r="80" />
+              <g id="dialTicks"></g>
+              <!-- outer group is spun by the entrance animation; inner marker by hover -->
+              <g id="dialSweep">
+                <g class="dial-marker" id="dialMarker">
+                  <line x1="0" y1="-73" x2="0" y2="-99" />
+                  <circle cx="0" cy="-99" r="2.2" />
+                </g>
+              </g>
+            </svg>
+            <a class="dial-window" id="dialWindow" href="projects/fuxlshop/">
+              <img src="./assets/images/stores/dial/fuxlshop.jpg" alt="Fuxlshop storefront" class="on">
+              <img data-src="./assets/images/stores/dial/beargrillz.jpg" alt="Beargrillz storefront">
+              <img data-src="./assets/images/stores/dial/kbs.jpg" alt="KBS — Welt der Steine storefront">
+              <img data-src="./assets/images/stores/dial/scalesolutions.jpg" alt="Scale Solutions storefront">
+              <img data-src="./assets/images/stores/dial/larrys.jpg" alt="Larrys storefront">
+              <img data-src="./assets/images/stores/dial/salzkultur.jpg" alt="Salz Kultur storefront">
+              <img data-src="./assets/images/stores/dial/fingersscrossed.jpg" alt="Fingerscrossed storefront">
+              <img data-src="./assets/images/stores/dial/littlecub.jpg" alt="Littlecub storefront">
+              <img data-src="./assets/images/stores/dial/schuldner.jpg" alt="Schuldner Insolvenz Centrum storefront">
+              <img data-src="./assets/images/stores/dial/easyheizen.jpg" alt="EasyHeizen storefront">
+              <img data-src="./assets/images/stores/dial/klickandsafe.jpg" alt="Klickandsafe storefront">
+              <img data-src="./assets/images/stores/dial/laximor.jpg" alt="Laximor storefront">
+              <img data-src="./assets/images/stores/dial/staygolden.jpg" alt="Staygolden storefront">
+              <img data-src="./assets/images/stores/dial/alfreds.jpg" alt="Alfred's Apartment storefront">
+              <img data-src="./assets/images/stores/dial/scalesolutionslive.jpg" alt="Scale Solutions Live storefront">
+              <img data-src="./assets/images/stores/dial/bohle.jpg" alt="Bohle gitterrost-profi storefront">
+              <img data-src="./assets/images/stores/dial/bolzr.jpg" alt="Bolzr storefront">
+              <div class="dial-caption">
+                <span class="mono" id="dialNum">01 / 17</span>
+                <h3 id="dialName">Fuxlshop</h3>
+                <span class="tags" id="dialTags"><span class="tag">Store redesign</span><span class="tag">CRO</span></span>
+                <span class="dial-cta" id="dialCta">View case ↗</span>
+              </div>
+            </a>
+          </div>
+          <ol class="dial-items" style="--n:17">
+          <li style="--i:0"><a href="projects/fuxlshop/" class="is-active" data-name="Fuxlshop" data-tags="Store redesign|CRO"><span class="idx">01</span><span class="name">Fuxlshop</span></a></li>
+          <li style="--i:1"><a href="projects/beargrillz/" data-name="Beargrillz" data-tags="Redesign|CRO|Horizon"><span class="idx">02</span><span class="name">Beargrillz</span></a></li>
+          <li style="--i:2"><a href="projects/kbs/" data-name="KBS — Welt der Steine" data-tags="Store build|Automation"><span class="idx">03</span><span class="name">KBS</span></a></li>
+          <li style="--i:3"><a href="projects/scalesolutions/" data-name="Scale Solutions" data-tags="Relaunch|Custom sections"><span class="idx">04</span><span class="name">Scale Solutions</span></a></li>
+          <li style="--i:4"><a href="projects/larrys/" data-name="Larrys" data-tags="Store build|Optimisation"><span class="idx">05</span><span class="name">Larrys</span></a></li>
+          <li style="--i:5"><a href="projects/salzkultur/" data-name="Salz Kultur" data-tags="Shopware → Shopify|Dawn"><span class="idx">06</span><span class="name">Salz Kultur</span></a></li>
+          <li style="--i:6"><a href="projects/fingerscrossed/" data-name="Fingerscrossed" data-tags="Custom sections|Focal"><span class="idx">07</span><span class="name">Fingerscrossed</span></a></li>
+          <li style="--i:7"><a href="projects/littlecub/" data-name="Littlecub" data-tags="Store build|Horizon"><span class="idx">08</span><span class="name">Littlecub</span></a></li>
+          <li style="--i:8"><a href="projects/schuldner/" data-name="Schuldner Insolvenz Centrum" data-tags="Relaunch|Page migration"><span class="idx">09</span><span class="name">Schuldner</span></a></li>
+          <li style="--i:9"><a href="projects/easyheizen/" data-name="EasyHeizen" data-tags="Store build|Optimisation"><span class="idx">10</span><span class="name">EasyHeizen</span></a></li>
+          <li style="--i:10"><a href="projects/klickandsafe/" data-name="Klickandsafe" data-tags="CRO|Custom sections"><span class="idx">11</span><span class="name">Klickandsafe</span></a></li>
+          <li style="--i:11"><a href="projects/laximor/" data-name="Laximor" data-tags="Store build"><span class="idx">12</span><span class="name">Laximor</span></a></li>
+          <li style="--i:12"><a href="https://staygoldenhi.com/" target="_blank" rel="noopener" data-name="Staygolden" data-tags="Ongoing dev support"><span class="idx">13</span><span class="name">Staygolden</span></a></li>
+          <li style="--i:13"><a href="https://alfredsapartment.com/" target="_blank" rel="noopener" data-name="Alfred's" data-tags="Redesign|CRO"><span class="idx">14</span><span class="name">Alfred's</span></a></li>
+          <li style="--i:14"><a href="https://scalesolutions.live/" target="_blank" rel="noopener" data-name="Scale Solutions Live" data-tags="Store build|Horizon"><span class="idx">15</span><span class="name">Scale Solutions Live</span></a></li>
+          <li style="--i:15"><a href="https://gitterrost-profi.de/" target="_blank" rel="noopener" data-name="Bohle" data-tags="Product configurator|App build"><span class="idx">16</span><span class="name">Bohle</span></a></li>
+          <li style="--i:16"><a href="https://bolzr.store/" target="_blank" rel="noopener" data-name="Bolzr Red" data-tags="CRO"><span class="idx">17</span><span class="name">Bolzr Red</span></a></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Stack: brands, tools, tech ===== -->
+    <section class="section stack" id="stack" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-label mono"><b>03</b> / Stack</span>
+          <div>
+            <h2 class="sec-title">Brands, tools <em>&amp; tech</em></h2>
+            <p class="sec-intro">The stores I've built for, and the kit I build them with. Grab a dial and spin it.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- To add a logo, add an <li> to a dial: <img> for a logo file (plus a <span> name for tools and tech),
+           or <span class="word"> for a name without a logo. The dial spaces them out by itself. -->
+      <div class="dials">
+        <div class="dial3d dial3d-brands" data-speed="7">
+          <div class="dial3d-label"><span class="mono">Brands</span><b class="mono"></b></div>
+          <div class="dial3d-view">
+            <ul class="dial3d-drum" aria-label="Brands I've built for">
+              <li><img src="./assets/images/logos/brands/fuxlshop.png" alt="Fuxlshop" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/beargrillz.png" alt="Bear Grillz" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/kbs.png" alt="KBS – Welt der Steine" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/scalesolutions.png" alt="Scale Solutions" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/larrys.png" alt="Larrys" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/salzkultur.png" alt="Salz Kultur" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/fingerscrossed.png" alt="Fingerscrossed" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/littlecub.png" alt="Little Cub" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/schuldner.png" alt="Schuldner Insolvenz Centrum" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/klickandsafe.png" alt="klickandsafe" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/laximor.png" alt="Laximor" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/staygolden.png" alt="Staygolden" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/alfreds.png" alt="Alfred's Apartment" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/bohle.png" alt="Bohle" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/bolzr.png" alt="Bolzr" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/eshopguide.png" alt="Eshop Guide" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/imarasoft.png" alt="Imarasoft" loading="lazy"></li>
+              <li><img src="./assets/images/logos/brands/baylanka.png" alt="Bay Lanka" loading="lazy"></li>
+              <li><span class="word">EasyHeizen</span></li>
+              <li><span class="word">OOAKLINE</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="dial3d" data-speed="-9">
+          <div class="dial3d-label"><span class="mono">Tools</span><b class="mono"></b></div>
+          <div class="dial3d-view">
+            <ul class="dial3d-drum" aria-label="Tools I use">
+              <li><img src="./assets/images/logos/tools/clickup.png" alt="" loading="lazy"><span>ClickUp</span></li>
+              <li><img src="./assets/images/logos/tools/google.png" alt="" loading="lazy"><span>Google Workspace</span></li>
+              <li><img src="./assets/images/logos/tools/shopify.png" alt="" loading="lazy"><span>Shopify</span></li>
+              <li><img src="./assets/images/logos/tools/vscode.png" alt="" loading="lazy"><span>VS Code</span></li>
+              <li><img src="./assets/images/logos/tools/figma.png" alt="" loading="lazy"><span>Figma</span></li>
+              <li><img src="./assets/images/logos/tools/github.png" alt="" loading="lazy"><span>GitHub</span></li>
+              <li><img src="./assets/images/logos/tools/slack.png" alt="" loading="lazy"><span>Slack</span></li>
+              <li><img src="./assets/images/logos/tools/loom.png" alt="" loading="lazy"><span>Loom</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="dial3d" data-speed="8">
+          <div class="dial3d-label"><span class="mono">Tech</span><b class="mono"></b></div>
+          <div class="dial3d-view">
+            <ul class="dial3d-drum" aria-label="Technologies I use">
+              <li><img src="./assets/images/logos/tech/liquid.png" alt="" loading="lazy"><span>Liquid</span></li>
+              <li><img src="./assets/images/logos/tech/html5.png" alt="" loading="lazy"><span>HTML5</span></li>
+              <li><img src="./assets/images/logos/tech/css3.png" alt="" loading="lazy"><span>CSS3</span></li>
+              <li><img src="./assets/images/logos/tech/javascript.png" alt="" loading="lazy"><span>JavaScript</span></li>
+              <li><img src="./assets/images/logos/tech/sass.png" alt="" loading="lazy"><span>Sass</span></li>
+              <li><img src="./assets/images/logos/tech/git.png" alt="" loading="lazy"><span>Git</span></li>
+              <li><img src="./assets/images/logos/tech/jquery.png" alt="" loading="lazy"><span>jQuery</span></li>
+              <li><img src="./assets/images/logos/tech/nodedotjs.png" alt="" loading="lazy"><span>Node.js</span></li>
+              <li><img src="./assets/images/logos/tech/react.png" alt="" loading="lazy"><span>React</span></li>
+              <li><img src="./assets/images/logos/tech/graphql.png" alt="" loading="lazy"><span>GraphQL</span></li>
+              <li><img src="./assets/images/logos/tech/threedotjs.png" alt="" loading="lazy"><span>Three.js</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Process & style ===== -->
+    <section class="section process" id="process">
+      <canvas class="process-bg" id="processBg" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <div class="sec-head process-head">
+          <span class="sec-label mono"><b>04</b> / Process</span>
+          <div>
+            <h2 class="sec-title">From first message to <em>live.</em></h2>
+            <p class="sec-intro">Eight clear steps. You always know where your change is, and nothing ships without
+              your yes.</p>
+          </div>
+        </div>
+
+        <div class="flow" id="flow">
+          <ol class="flow-steps">
+            <li class="flow-step is-active">
+              <button class="flow-btn" aria-expanded="true"><span class="flow-dot"></span><span
+                  class="flow-n mono">01</span><span class="flow-title">Query</span><span class="flow-when mono">Day
+                  0</span></button>
+              <div class="flow-body"><div>
+                <p>You send the request: a line, a link, a Loom or a ticket. My first reply is questions, not a
+                  quote.</p>
+                <div class="tags"><span class="tag">Your brief</span><span class="tag">My questions</span></div>
+              </div></div>
+              <span class="flow-progress"><i></i></span>
+            </li>
+            <li class="flow-step">
+              <button class="flow-btn" aria-expanded="false"><span class="flow-dot"></span><span
+                  class="flow-n mono">02</span><span class="flow-title">Analyse</span><span class="flow-when mono">≤ 1
+                  day</span></button>
+              <div class="flow-body"><div>
+                <p>I go through the store, theme and apps to check the change is possible, and find the cleanest
+                  way to do it.</p>
+                <div class="tags"><span class="tag">Feasibility</span><span class="tag">Theme &amp; app check</span>
+                </div>
+              </div></div>
+              <span class="flow-progress"><i></i></span>
+            </li>
+            <li class="flow-step">
+              <button class="flow-btn" aria-expanded="false"><span class="flow-dot"></span><span
+                  class="flow-n mono">03</span><span class="flow-title">Estimate</span><span
+                  class="flow-when mono">Projects only</span></button>
+              <div class="flow-body"><div>
+                <p>For a one-off project you get a clear estimate in hours and cost. On a long-term retainer
+                  there's no estimate: the work simply starts.</p>
+                <div class="tags"><span class="tag">Hours &amp; cost</span><span class="tag">Skipped on
+                    retainer</span></div>
+              </div></div>
+              <span class="flow-progress"><i></i></span>
+            </li>
+            <li class="flow-step">
+              <button class="flow-btn" aria-expanded="false"><span class="flow-dot"></span><span
+                  class="flow-n mono">04</span><span class="flow-title">Details</span><span
+                  class="flow-when mono">Before code</span></button>
+              <div class="flow-body"><div>
+                <p>I collect anything still missing (designs, copy, images, store access) so nothing blocks the
+                  build later.</p>
+                <div class="tags"><span class="tag">Figma</span><span class="tag">Content</span><span
+                    class="tag">Access</span></div>
+              </div></div>
+              <span class="flow-progress"><i></i></span>
+            </li>
+            <li class="flow-step">
+              <button class="flow-btn" aria-expanded="false"><span class="flow-dot"></span><span
+                  class="flow-n mono">05</span><span class="flow-title">Build</span><span class="flow-when mono">Git
+                  flow</span></button>
+              <div class="flow-body"><div>
+                <p>Every change is built on its own branch using my Git flow, or your team's flow if you already
+                  have one.</p>
+                <div class="tags"><span class="tag">Feature branches</span><span class="tag">Your flow or
+                    mine</span></div>
+              </div></div>
+              <span class="flow-progress"><i></i></span>
+            </li>
+            <li class="flow-step">
+              <button class="flow-btn" aria-expanded="false"><span class="flow-dot"></span><span
+                  class="flow-n mono">06</span><span class="flow-title">Test</span><span class="flow-when mono">Real
+                  devices</span></button>
+              <div class="flow-body"><div>
+                <p>Tested on real phones, tablets and desktops, not just a resized browser, so it works for every
+                  customer.</p>
+                <div class="tags"><span class="tag">Mobile</span><span class="tag">Tablet</span><span
+                    class="tag">Desktop</span></div>
+              </div></div>
+              <span class="flow-progress"><i></i></span>
+            </li>
+            <li class="flow-step">
+              <button class="flow-btn" aria-expanded="false"><span class="flow-dot"></span><span
+                  class="flow-n mono">07</span><span class="flow-title">Review</span><span class="flow-when mono">Your
+                  feedback</span></button>
+              <div class="flow-body"><div>
+                <p>You review it on a preview theme and leave feedback. Any changes go back through the same flow.
+                </p>
+                <div class="tags"><span class="tag">Preview link</span><span class="tag">Your comments</span></div>
+              </div></div>
+              <span class="flow-progress"><i></i></span>
+            </li>
+            <li class="flow-step">
+              <button class="flow-btn" aria-expanded="false"><span class="flow-dot"></span><span
+                  class="flow-n mono">08</span><span class="flow-title">Live</span><span class="flow-when mono">After
+                  your yes</span></button>
+              <div class="flow-body"><div>
+                <p>Once you confirm the review, it goes live on your store. Nothing ships without your yes.</p>
+                <div class="tags"><span class="tag">Your approval</span><span class="tag">Release</span></div>
+              </div></div>
+              <span class="flow-progress"><i></i></span>
+            </li>
+          </ol>
+
+          <!-- Wireframe stage: one line-drawn scene per step. Phase classes (ph1, ph2...) set the drawing order. -->
+          <div class="flow-stage" aria-hidden="true">
+            <div class="stage-bar mono">
+              <span>Sajaath / process</span>
+              <b id="stageStep">01 · Query</b>
+              <span class="stage-leds"><i class="on"></i><i></i><i></i></span>
+            </div>
+            <svg class="stage-svg" viewBox="0 0 560 360">
+              <defs>
+                <pattern id="bp" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M20 0H0V20" fill="none" stroke="rgba(243,240,232,.05)" />
+                </pattern>
+              </defs>
+              <rect width="560" height="360" fill="url(#bp)" />
+
+              <!-- 01 Query: the brief comes in, I answer with questions -->
+              <g class="scene on">
+                <text class="tx ph1 f" x="70" y="78">Client</text>
+                <rect class="ln ph1 d" pathLength="1" x="70" y="88" width="250" height="64" rx="16" />
+                <rect class="bar ph2 p" x="90" y="108" width="190" height="8" rx="4" />
+                <rect class="bar ph2 p" x="90" y="126" width="120" height="8" rx="4" />
+                <text class="tx ph3 f" x="490" y="178" text-anchor="end">Me</text>
+                <rect class="lm ph3 d" pathLength="1" x="240" y="188" width="250" height="84" rx="16" />
+                <text class="txl ph4 f" x="262" y="218">? What's the goal</text>
+                <text class="txl ph4 f" x="262" y="238">? Which pages</text>
+                <text class="txl ph4 f" x="262" y="258">? Any deadline</text>
+                <circle class="dot ph5 p" cx="452" cy="302" r="4" />
+                <circle class="dot ph5 p" cx="466" cy="302" r="4" />
+                <circle class="dot ph5 p" cx="480" cy="302" r="4" />
+              </g>
+
+              <!-- 02 Analyse: scan the store, check theme / apps / speed -->
+              <g class="scene">
+                <rect class="ln ph1 d" pathLength="1" x="60" y="50" width="300" height="250" rx="10" />
+                <line class="ln ph1 d" pathLength="1" x1="60" y1="74" x2="360" y2="74" />
+                <circle class="bar ph2 p" cx="74" cy="62" r="3" />
+                <circle class="bar ph2 p" cx="86" cy="62" r="3" />
+                <circle class="bar ph2 p" cx="98" cy="62" r="3" />
+                <rect class="ln ph2 d" pathLength="1" x="80" y="90" width="260" height="80" rx="6" />
+                <rect class="ln ph2 d" pathLength="1" x="80" y="186" width="78" height="96" rx="6" />
+                <rect class="ln ph2 d" pathLength="1" x="171" y="186" width="78" height="96" rx="6" />
+                <rect class="ln ph2 d" pathLength="1" x="262" y="186" width="78" height="96" rx="6" />
+                <line class="lm scan ph3 f" x1="64" y1="80" x2="356" y2="80" />
+                <g class="mag ph3 f">
+                  <circle class="lm" r="24" />
+                  <line class="lm" x1="17" y1="17" x2="32" y2="32" />
+                </g>
+                <text class="tx ph4 f" x="392" y="118">Theme</text>
+                <path class="lm ph4 d" pathLength="1" d="M490 110l6 6 12-12" />
+                <text class="tx ph5 f" x="392" y="158">Apps</text>
+                <path class="lm ph5 d" pathLength="1" d="M490 150l6 6 12-12" />
+                <text class="tx ph6 f" x="392" y="198">Speed</text>
+                <path class="lm ph6 d" pathLength="1" d="M490 190l6 6 12-12" />
+                <rect class="lime ph7 p" x="390" y="234" width="130" height="34" rx="17" />
+                <text class="dk ph7 f" x="455" y="255" text-anchor="middle">Possible ✓</text>
+              </g>
+
+              <!-- 03 Estimate: project gets hours; retainer skips it -->
+              <g class="scene">
+                <rect class="ln ph1 d" pathLength="1" x="200" y="36" width="160" height="30" rx="15" />
+                <rect class="lime knob ph1 p" x="203" y="39" width="77" height="24" rx="12" />
+                <text class="dk lbl-proj ph1 f" x="241" y="55" text-anchor="middle">Project</text>
+                <text class="tx lbl-ret ph1 f" x="320" y="55" text-anchor="middle">Retainer</text>
+                <g class="cardA">
+                  <rect class="ln ph2 d" pathLength="1" x="60" y="86" width="200" height="226" rx="12" />
+                  <text class="tx ph2 f" x="80" y="114">One-off project</text>
+                  <text class="tx ph3 f" x="80" y="150">Section</text>
+                  <rect class="bar ph3 p" x="160" y="143" width="50" height="8" rx="4" />
+                  <text class="tx ph3 f" x="240" y="150" text-anchor="end">6h</text>
+                  <text class="tx ph3 f" x="80" y="180">Testing</text>
+                  <rect class="bar ph3 p" x="160" y="173" width="22" height="8" rx="4" />
+                  <text class="tx ph3 f" x="240" y="180" text-anchor="end">2h</text>
+                  <text class="tx ph3 f" x="80" y="210">Review</text>
+                  <rect class="bar ph3 p" x="160" y="203" width="12" height="8" rx="4" />
+                  <text class="tx ph3 f" x="240" y="210" text-anchor="end">1h</text>
+                  <line class="ln ph4 d" pathLength="1" x1="80" y1="236" x2="240" y2="236" />
+                  <text class="tx ph4 f" x="80" y="276">Estimate</text>
+                  <text class="big lime-t ph4 f" x="240" y="282" text-anchor="end">≈ 9h</text>
+                </g>
+                <g class="cardB">
+                  <rect class="ln ph2 d" pathLength="1" x="300" y="86" width="200" height="226" rx="12" />
+                  <rect class="lm cardB-ring" x="300" y="86" width="200" height="226" rx="12" opacity="0" />
+                  <text class="txl ph2 f" x="320" y="114">Long-term retainer</text>
+                  <text class="big ph3 f" x="320" y="186">No</text>
+                  <text class="big ph3 f" x="320" y="222">estimate</text>
+                  <text class="tx ph4 f" x="320" y="282">Work just starts →</text>
+                </g>
+              </g>
+
+              <!-- 04 Details: everything collected before the build -->
+              <g class="scene">
+                <rect class="ln ph1 d" pathLength="1" x="150" y="40" width="240" height="284" rx="14" />
+                <rect class="ln ph1 d" pathLength="1" x="230" y="30" width="80" height="22" rx="6" />
+                <rect class="ln ph2 d" pathLength="1" x="178" y="86" width="20" height="20" rx="5" />
+                <text class="tx ph2 f" x="214" y="100">Designs · Figma</text>
+                <rect class="ln ph2 d" pathLength="1" x="178" y="146" width="20" height="20" rx="5" />
+                <text class="tx ph2 f" x="214" y="160">Copy &amp; content</text>
+                <rect class="ln ph2 d" pathLength="1" x="178" y="206" width="20" height="20" rx="5" />
+                <text class="tx ph2 f" x="214" y="220">Images &amp; assets</text>
+                <rect class="ln ph2 d" pathLength="1" x="178" y="266" width="20" height="20" rx="5" />
+                <text class="tx ph2 f" x="214" y="280">Store access</text>
+                <path class="lm ph3 d" pathLength="1" d="M182 96l5 5 9-10" />
+                <path class="lm ph4 d" pathLength="1" d="M182 156l5 5 9-10" />
+                <path class="lm ph5 d" pathLength="1" d="M182 216l5 5 9-10" />
+                <path class="lm ph6 d" pathLength="1" d="M182 276l5 5 9-10" />
+                <g class="file"><rect class="ln" x="430" y="70" width="44" height="54" rx="6" /><line class="ln" x1="440" y1="88" x2="464" y2="88" /><line class="ln" x1="440" y1="100" x2="458" y2="100" /></g>
+                <g class="file"><rect class="ln" x="440" y="150" width="44" height="54" rx="6" /><line class="ln" x1="450" y1="168" x2="474" y2="168" /><line class="ln" x1="450" y1="180" x2="468" y2="180" /></g>
+                <g class="file"><rect class="ln" x="430" y="230" width="44" height="54" rx="6" /><line class="ln" x1="440" y1="248" x2="464" y2="248" /><line class="ln" x1="440" y1="260" x2="458" y2="260" /></g>
+              </g>
+
+              <!-- 05 Build: Git flow, feature branch merged back, released with a tag -->
+              <g class="scene">
+                <text class="tx ph1 f" x="40" y="104">Main</text>
+                <text class="tx ph1 f" x="40" y="184">Develop</text>
+                <text class="tx ph1 f" x="40" y="264">Feature</text>
+                <line class="ln ph1 d" pathLength="1" x1="110" y1="100" x2="530" y2="100" />
+                <line class="ln ph1 d" pathLength="1" x1="110" y1="180" x2="530" y2="180" />
+                <path class="lm ph2 d" pathLength="1" d="M200 180C230 180 230 260 260 260H380C410 260 410 180 440 180" />
+                <path class="lm ph3 d" pathLength="1" d="M460 180C480 180 480 100 500 100" />
+                <circle class="node ph2 p" cx="140" cy="180" r="6" />
+                <circle class="node ph2 p" cx="200" cy="180" r="6" />
+                <circle class="node lime ph2 p" cx="290" cy="260" r="6" />
+                <circle class="node lime ph2 p" cx="330" cy="260" r="6" />
+                <circle class="node lime ph2 p" cx="370" cy="260" r="6" />
+                <circle class="node ph3 p" cx="440" cy="180" r="6" />
+                <circle class="node ph3 p" cx="150" cy="100" r="6" />
+                <circle class="node lime ph3 p" cx="500" cy="100" r="7" />
+                <g class="gtag ph4 p">
+                  <rect class="lime" x="472" y="58" width="56" height="22" rx="11" />
+                  <text class="dk" x="500" y="73" text-anchor="middle">v1.4</text>
+                </g>
+                <text class="txl ph4 f" x="300" y="318" text-anchor="middle">Your Git flow, or mine</text>
+              </g>
+
+              <!-- 06 Test: real desktop, tablet and phone -->
+              <g class="scene">
+                <rect class="ln ph1 d" pathLength="1" x="46" y="70" width="230" height="150" rx="8" />
+                <path class="ln ph1 d" pathLength="1" d="M146 220l-8 28h46l-8-28M120 248h82" />
+                <rect class="ln ph1 d" pathLength="1" x="306" y="84" width="120" height="164" rx="12" />
+                <rect class="ln ph1 d" pathLength="1" x="452" y="112" width="66" height="132" rx="12" />
+                <rect class="bar ph2 p" x="62" y="88" width="120" height="10" rx="5" />
+                <rect class="bar ph2 p" x="62" y="108" width="198" height="60" rx="6" />
+                <rect class="bar ph2 p" x="322" y="102" width="70" height="8" rx="4" />
+                <rect class="bar ph2 p" x="322" y="120" width="88" height="60" rx="6" />
+                <rect class="bar ph2 p" x="462" y="128" width="40" height="6" rx="3" />
+                <rect class="bar ph2 p" x="462" y="142" width="46" height="46" rx="5" />
+                <line class="lm sweep ph2 f" x1="46" y1="62" x2="46" y2="256" />
+                <g class="ph3 p"><circle class="lime" cx="270" cy="72" r="13" /><path class="tick" d="M264 72l4 4 8-8" /></g>
+                <g class="ph4 p"><circle class="lime" cx="420" cy="88" r="13" /><path class="tick" d="M414 88l4 4 8-8" /></g>
+                <g class="ph5 p"><circle class="lime" cx="514" cy="114" r="13" /><path class="tick" d="M508 114l4 4 8-8" /></g>
+                <text class="tx ph3 f" x="161" y="282" text-anchor="middle">Desktop</text>
+                <text class="tx ph4 f" x="366" y="282" text-anchor="middle">Tablet</text>
+                <text class="tx ph5 f" x="485" y="282" text-anchor="middle">Phone</text>
+                <text class="txl ph6 f" x="280" y="326" text-anchor="middle">Real devices, not a resized browser</text>
+              </g>
+
+              <!-- 07 Review: feedback pins on the preview, then approve -->
+              <g class="scene">
+                <rect class="ln ph1 d" pathLength="1" x="80" y="36" width="400" height="236" rx="10" />
+                <line class="ln ph1 d" pathLength="1" x1="80" y1="60" x2="480" y2="60" />
+                <text class="txl ph1 f" x="466" y="53" text-anchor="end">Preview theme</text>
+                <rect class="ln ph2 d" pathLength="1" x="100" y="76" width="200" height="110" rx="6" />
+                <rect class="bar ph2 p" x="320" y="86" width="140" height="8" rx="4" />
+                <rect class="bar ph2 p" x="320" y="106" width="100" height="8" rx="4" />
+                <rect class="bar ph2 p" x="320" y="126" width="120" height="8" rx="4" />
+                <rect class="ln ph2 d" pathLength="1" x="100" y="202" width="360" height="54" rx="6" />
+                <g class="ph3 p"><circle class="lime" cx="300" cy="92" r="11" /><text class="dk" x="300" y="96" text-anchor="middle">1</text></g>
+                <g class="ph3 f"><rect class="note" x="316" y="146" width="132" height="26" rx="8" /><text class="tx" x="328" y="163">Move CTA up</text></g>
+                <g class="ph4 p"><circle class="lime" cx="446" cy="214" r="11" /><text class="dk" x="446" y="218" text-anchor="middle">2</text></g>
+                <g class="ph4 f"><rect class="note" x="300" y="222" width="132" height="26" rx="8" /><text class="tx" x="312" y="239">Bigger image</text></g>
+                <rect class="approve ph5 d" pathLength="1" x="200" y="290" width="160" height="40" rx="20" />
+                <text class="approve-t ph5 f" x="280" y="315" text-anchor="middle">Approve ✓</text>
+              </g>
+
+              <!-- 08 Live: status goes green after your yes -->
+              <g class="scene">
+                <rect class="ln ph1 d" pathLength="1" x="60" y="36" width="440" height="236" rx="10" />
+                <rect class="ln ph1 d" pathLength="1" x="80" y="50" width="290" height="24" rx="12" />
+                <text class="tx ph2 f" x="98" y="66">yourstore.com</text>
+                <circle class="ring lm" cx="478" cy="62" r="6" opacity="0" />
+                <circle class="status ph2 p" cx="478" cy="62" r="6" />
+                <g class="ph4 p"><rect class="lime" x="390" y="50" width="62" height="24" rx="12" /><text class="dk" x="421" y="66" text-anchor="middle">Live</text></g>
+                <rect class="bar ph2 p" x="80" y="92" width="180" height="70" rx="6" />
+                <rect class="bar ph2 p" x="276" y="92" width="204" height="10" rx="5" />
+                <rect class="bar ph2 p" x="276" y="112" width="150" height="10" rx="5" />
+                <polyline class="lm ph3 d" pathLength="1" points="80,252 140,240 200,244 260,222 320,226 380,202 440,192 480,172" />
+                <text class="tx ph3 f" x="80" y="188">Orders</text>
+                <text class="txl ph5 f" x="280" y="318" text-anchor="middle">Live, after your yes</text>
+              </g>
+            </svg>
+            <div class="stage-foot mono">
+              <span>Status</span>
+              <b id="stageStatus">Request received</b>
+              <span id="stageCount">01 / 08</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="style-head rv">
+          <h3>My working <em>style</em></h3>
+        </div>
+
+        <div class="style-grid">
+          <div class="trait code-card rv">
+            <div class="code-bar"><i></i><i></i><i></i><span class="mono">sections/featured-product.liquid</span>
+            </div>
+<pre><span class="c-com">{% comment %} Clean, reusable, documented. {% endcomment %}</span>
+<span class="c-tag">{%- liquid</span>
+  <span class="c-key">assign</span> product = section.settings.product
+  <span class="c-key">assign</span> lazy = section.index <span class="c-key">&gt;</span> 1
+<span class="c-tag">-%}</span>
+
+&lt;section <span class="c-key">class</span>=<span class="c-str">"featured {{ section.settings.scheme }}"</span>&gt;
+  <span class="c-tag">{%- render</span> <span class="c-str">'product-media'</span>, product: product, lazy: lazy <span class="c-tag">-%}</span>
+  <span class="c-tag">{%- render</span> <span class="c-str">'buy-buttons'</span>, product: product <span class="c-tag">-%}</span>
+&lt;/section&gt;
+
+<span class="c-tag">{% schema %}</span>
+  { <span class="c-str">"name"</span>: <span class="c-str">"Featured product"</span>, <span class="c-str">"presets"</span>: [...] }
+<span class="c-tag">{% endschema %}</span></pre>
+          </div>
+          <div class="trait rv">
+            <div class="glyph">AI</div>
+            <h4>AI-assisted development</h4>
+            <p>AI speeds up the build, and I review every line before it ships, so you get speed without losing quality.</p>
+          </div>
+          <div class="trait rv">
+            <div class="glyph">⏱</div>
+            <h4>Honest about time</h4>
+            <p>Clear estimates up front and straight answers on how long things really took.</p>
+          </div>
+          <div class="trait rv">
+            <div class="glyph">⚡</div>
+            <h4>Performance first</h4>
+            <p>Fewer apps, lighter JS, proper image handling. Speed is part of the build, not an add-on.</p>
+          </div>
+          <div class="trait rv">
+            <div class="glyph">🧩</div>
+            <h4>Editable by you</h4>
+            <p>Sections built for the theme editor, so your team can change content without calling a dev.</p>
+          </div>
+          <div class="trait rv">
+            <div class="glyph">EU</div>
+            <h4>Fits agency teams</h4>
+            <p>Used to agency deadlines and handoffs. GMT+5:30 overlaps with the European working day.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Services ===== -->
+    <section class="section" id="services">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="sec-label mono"><b>05</b> / Services</span>
+          <div>
+            <h2 class="sec-title">What I <em>do</em></h2>
+          </div>
+        </div>
+        <div class="svc">
+          <div class="svc-row rv">
+            <span class="idx mono">(01)</span>
+            <h3>Store builds</h3>
+            <p>Shopify Liquid storefronts from scratch — fully custom themes or tailored existing ones —
+              implemented pixel-perfect from your design specs.</p>
+          </div>
+          <div class="svc-row rv">
+            <span class="idx mono">(02)</span>
+            <h3>Speed &amp; CRO</h3>
+            <p>Find the bottlenecks in apps and JavaScript, fix image handling, and lift speed scores on mobile
+              and desktop — plus conversion-focused improvements.</p>
+          </div>
+          <div class="svc-row rv">
+            <span class="idx mono">(03)</span>
+            <h3>Store design</h3>
+            <p>Concepts in Figma, reviewed with you before development, created together with an experienced
+              eCommerce designer.</p>
+          </div>
+          <div class="svc-row rv">
+            <span class="idx mono">(04)</span>
+            <h3>Apps &amp; automation</h3>
+            <p>Choosing, integrating and styling the right apps, and automating store operations with Shopify
+              Flow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Retainer ===== -->
+    <section id="retainer" style="padding-bottom:clamp(88px,12vw,160px)">
+      <div class="wrap">
+        <div class="retainer rv">
+          <div style="position:relative;z-index:1">
+            <span class="mono">06 / Liquid retainer</span>
+            <h2>Unlimited Shopify development. One flat rate.</h2>
+            <p>For stores that need regular dev work but don't want to hire in-house or manage a rotating cast
+              of freelancers.</p>
+            <div class="price"><b>$1,499</b><span>/ month</span></div>
+            <a class="btn" href="https://calendly.com/mohamedsajaath0409/30min" target="_blank"
+              rel="noopener">Let's chat <span class="arrow">→</span></a>
+          </div>
+          <ul>
+            <li class="lead">Available 12h a day, 5 days a week (IST) for support with anything Shopify</li>
+            <li>Custom sections</li>
+            <li>Landing pages</li>
+            <li>Product templates</li>
+            <li>Theme updates</li>
+            <li>App styling &amp; integrations</li>
+            <li>Bug fixes &amp; storefront improvements</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Testimonials ===== -->
+    <section class="section" id="testimonials" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="sec-label mono"><b>07</b> / Kind words</span>
+          <div>
+            <h2 class="sec-title">Stories from <em>clients</em></h2>
+          </div>
+        </div>
+      </div>
+      <!-- Add new reviews as more <figure class="quote"> cards; the carousel loops however many there are. -->
+      <div class="quotes-carousel rv" aria-label="Client testimonials">
+        <div class="quotes-track" id="quotesTrack">
+          <figure class="quote">
+            <div class="mark">“</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>Sajaath is a standout developer who does an amazing job supporting our e-commerce agency on
+              various client projects. He was instrumental in our Shopify theme development, consistently
+              delivering clean, high-performance code under tight agency deadlines.</blockquote>
+            <figcaption><img src="./assets/images/clients/daniel-geiger.jpg" alt="" loading="lazy">
+              <div><b>Daniel Geiger</b><span>Scale Solutions</span></div>
+            </figcaption>
+          </figure>
+          <figure class="quote feature">
+            <div class="mark">“</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>Very happy with the work of Mohamed. We were working together on a CRO project for a D2C
+              brand. He is a great developer and made every request possible. Communication was seamless and he
+              is honest about the time it took. We from OOAKLINE really recommend him!</blockquote>
+            <figcaption><img src="./assets/images/clients/jan-moritz.jpg" alt="" loading="lazy">
+              <div><b>Jan Moritz</b><span>OOAKLINE</span></div>
+            </figcaption>
+          </figure>
+          <figure class="quote">
+            <div class="mark">“</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>I have been working with Sajaath on several Shopify frontend development projects, and I
+              really enjoyed the collaboration. Sajaath is very responsible, pays attention to detail and is a
+              versatile, skilled Shopify frontend developer.</blockquote>
+            <figcaption><img src="./assets/images/clients/oliver.jpg" alt="" loading="lazy">
+              <div><b>Oliver Schönbett</b><span>Eshop Guide</span></div>
+            </figcaption>
+          </figure>
+          <figure class="quote">
+            <div class="mark">“</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>Always a pleasure working with Sajaath. His deliveries are right on time and also very high quality.
+              We did a lot of Shopify projects and custom features with him and it always worked out great.</blockquote>
+            <figcaption><img src="./assets/images/clients/julian-fritsch.jpg" alt="" loading="lazy">
+              <div><b>Julian Fritsch</b><span>Scale Solutions</span></div>
+            </figcaption>
+          </figure>
+          <figure class="quote feature">
+            <div class="mark">“</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>He demonstrated strong technical expertise, attention to detail, and a clear understanding of Shopify
+              development. Communication was always prompt and professional, and he consistently delivered tasks on
+              time while maintaining a high standard of quality.</blockquote>
+            <figcaption><img src="./assets/images/clients/prath-losh.jpg" alt="" loading="lazy">
+              <div><b>Prath Losh</b><span>Tectera</span></div>
+            </figcaption>
+          </figure>
+          <figure class="quote">
+            <div class="mark">“</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>Sajaath has good working ethics and is very responsive. He's very humble and open for constructive
+              feedback.</blockquote>
+            <figcaption><img src="./assets/images/clients/van-nguyen.jpg" alt="" loading="lazy">
+              <div><b>Van Nguyen</b><span>StayGoldenHi</span></div>
+            </figcaption>
+          </figure>
+          <figure class="quote">
+            <div class="mark">“</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>Anyone who tries their service will never lose anything. They don't ask for anything extra, they know
+              exactly what they're doing, and they fix everything quickly and easily. Real trust, real quality, and
+              outstanding service.</blockquote>
+            <figcaption><img src="./assets/images/clients/tarek-jaber.png" alt="" loading="lazy">
+              <div><b>Tarek Jaber</b><span>FuxlShop</span></div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="wrap">
+        <p class="quotes-sub mono rv"><b>//</b> From colleagues, on LinkedIn</p>
+      </div>
+      <div class="quotes-carousel peers rv" data-dir="-1" aria-label="Recommendations from colleagues">
+        <div class="quotes-track">
+          <figure class="quote peer">
+            <blockquote>He is an exceptionally talented Shopify developer, always delivering clean, efficient, and creative
+              solutions. Working with him taught me a lot about development best practices and problem-
+              solving.</blockquote>
+            <figcaption>
+              <div><b>Francis Silva</b><span>Shopify Plus Developer · Eshop Guide</span></div>
+            </figcaption>
+          </figure>
+          <figure class="quote peer">
+            <blockquote>I had the pleasure of working with Sajaath on multiple Shopify projects. His structured approach,
+              technical expertise and clear communication made the collaboration smooth and effective.</blockquote>
+            <figcaption>
+              <div><b>Patricia Kats</b><span>E-commerce Project Manager</span></div>
+            </figcaption>
+          </figure>
+          <figure class="quote peer">
+            <blockquote>Sajaath excels as a software developer at our company, showcasing an open-minded approach and a rapid
+              learning curve. I highly appreciate him!</blockquote>
+            <figcaption>
+              <div><b>Dr. Markus Lehmann</b><span>Custom software & AI automation</span></div>
+            </figcaption>
+          </figure>
+          <figure class="quote peer">
+            <blockquote>Sajaath's commitment to excellence and his proactive approach make him a standout team member. His
+              passion for continuous learning is evident in his ability to adapt and contribute
+              effectively to any project.</blockquote>
+            <figcaption>
+              <div><b>Mohamed Ajhar</b><span>Senior Software Engineer</span></div>
+            </figcaption>
+          </figure>
+          <figure class="quote peer">
+            <blockquote>Sajaath is a dynamic person who could capture any technology faster and always over-delivers. He is a
+              valuable asset to any employer who gets his service.</blockquote>
+            <figcaption>
+              <div><b>Ishthiyaque Ahmed</b><span>AI & Senior Software Engineer</span></div>
+            </figcaption>
+          </figure>
+          <figure class="quote peer">
+            <blockquote>An exceptional software developer who combines rapid learning with a strong commitment to software
+              engineering best practices. His dedication and adaptability make him a valuable asset to
+              any company.</blockquote>
+            <figcaption>
+              <div><b>Mohamed Faalil</b><span>Senior Software Engineer · mentor</span></div>
+            </figcaption>
+          </figure>
+          <figure class="quote peer">
+            <blockquote>Sajaath is an excellent front-end developer who delivered so many eye-catching and elegant solutions.</blockquote>
+            <figcaption>
+              <div><b>Rajabdeen Ajmal</b><span>Senior Technical Lead</span></div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section" id="faq" style="padding-top:0">
+      <div class="wrap faq-grid">
+        <div class="rv">
+          <span class="sec-label mono"><b>08</b> / FAQ</span>
+          <h2 class="sec-title" style="margin-top:20px">Good <em>questions</em></h2>
+        </div>
+        <div class="rv">
+          <details open>
+            <summary>Do you build custom themes or use pre-built ones?</summary>
+            <p>Both. I build fully custom Shopify themes from scratch, or customise existing themes like Horizon,
+              Dawn and Focal to match your brand and goals.</p>
+          </details>
+          <details>
+            <summary>Can you improve my existing store?</summary>
+            <p>Yes. I can improve performance, UI/UX and conversion rates, and add new features without
+              rebuilding your store from scratch.</p>
+          </details>
+          <details>
+            <summary>How long does a store build take?</summary>
+            <p>It depends on complexity. A simple store can take 1–2 weeks; a fully custom build takes several
+              weeks.</p>
+          </details>
+          <details>
+            <summary>What do you work with?</summary>
+            <p>Shopify Liquid, HTML, CSS and JavaScript, plus Shopify CLI, Git, Shopify Flow and the Shopify APIs.
+            </p>
+          </details>
+          <details>
+            <summary>Do you work with agencies?</summary>
+            <p>Yes — a lot of my work is white-label theme development for European Shopify agencies, including
+              two leading agencies in Germany.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <p class="eyebrow mono rv">Have a project in mind?</p>
+        <h2 class="rv">Let's build<br>something that <em>sells.</em></h2>
+        <div class="contact-actions rv">
+          <a class="mail-btn" href="mailto:hello@sajaath.com">hello@sajaath.com <span>↗</span></a>
+          <button class="copy-btn" id="copyBtn" data-copy="hello@sajaath.com">Copy email</button>
+        </div>
+
+        <a class="profile-card rv" href="https://www.linkedin.com/in/sajaathmohamed/" target="_blank" rel="noopener"
+          aria-label="Sajaath Mohamed on LinkedIn">
+          <span class="pc-photo">
+            <img src="./assets/images/team/sajaath-profile.jpg" alt="Sajaath Mohamed" width="240" height="240" loading="lazy">
+            <span class="pc-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#0d0d0c"
+                stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.5l4 4L18 8" /></svg></span>
+          </span>
+          <span>
+            <!-- <span class="pc-status mono"><i></i>Available for new projects</span> -->
+            <b class="pc-name">Sajaath Mohamed</b>
+            <span class="pc-role">Shopify Developer · Colombo, Sri Lanka</span>
+          </span>
+          <span class="pc-cta" aria-hidden="true">→</span>
+        </a>
+
+        <div class="contact-meta rv">
+          <div><span class="mono">Book a call</span><a href="https://calendly.com/mohamedsajaath0409/30min"
+              target="_blank" rel="noopener">Free 30-minute intro call ↗</a></div>
+          <div><span class="mono">WhatsApp</span><a href="https://wa.me/94775265646" target="_blank"
+              rel="noopener">+94 775 265 646 ↗</a></div>
+          <div><span class="mono">Local time</span><span id="clock">Colombo, Sri Lanka</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a href="#top" class="logo" aria-label="Back to top">
+        <span class="wordmark">sa<span class="j">j</span>aath<span class="tld">.com</span></span>
+      </a>
+      <nav class="socials" aria-label="Social">
+        <a href="https://www.linkedin.com/in/sajaathmohamed/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/mohamedsajaath" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.instagram.com/sajaath.mohamed/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://web.facebook.com/profile.php?id=61569993419912" target="_blank" rel="noopener">Facebook</a>
+      </nav>
+      <small>© <span id="year">2026</span> Sajaath Mohamed</small>
+    </div>
+    <div class="bigmark wordmark" aria-hidden="true">sa<span class="j">j</span>aath</div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    (() => {
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const $ = (s, r = document) => r.querySelector(s);
+      const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+      // Nav background on scroll + mobile menu
+      const nav = $('#nav');
+      const onScroll = () => nav.classList.toggle('is-scrolled', scrollY > 24);
+      addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      const menuBtn = $('#menuBtn');
+      menuBtn.addEventListener('click', () => {
+        const open = document.body.classList.toggle('menu-open');
+        menuBtn.setAttribute('aria-expanded', open);
+      });
+      $$('#navLinks a').forEach(a => a.addEventListener('click', () => {
+        document.body.classList.remove('menu-open');
+        menuBtn.setAttribute('aria-expanded', false);
+      }));
+
+      // Scroll-spy: highlight the nav link of the section crossing 40% of the viewport.
+      // Sections without a nav link (hero, about, testimonials, FAQ) clear the highlight.
+      const navPill = $('#navPill');
+      const navLinkFor = new Map($$('#navLinks a').map(a => [a.getAttribute('href').slice(1), a]));
+      const spySections = $$('main > section');
+      let activeLink = null;
+      const placePill = () => {
+        if (!activeLink) return;
+        const li = activeLink.parentElement;
+        navPill.style.transform = `translateX(${li.offsetLeft}px)`;
+        navPill.style.width = `${li.offsetWidth}px`;
+      };
+      const spy = () => {
+        const probe = innerHeight * .4;
+        const current = spySections.find(sec => {
+          const r = sec.getBoundingClientRect();
+          return r.top <= probe && r.bottom > probe;
+        });
+        const link = (current && navLinkFor.get(current.id)) || null;
+        if (link === activeLink) return;
+        activeLink?.classList.remove('is-active');
+        activeLink?.removeAttribute('aria-current');
+        activeLink = link;
+        if (link) {
+          link.classList.add('is-active');
+          link.setAttribute('aria-current', 'true');
+          placePill();
+        }
+        navPill.classList.toggle('on', !!link);
+      };
+      let spyQueued = false;
+      addEventListener('scroll', () => {
+        if (spyQueued) return;
+        spyQueued = true;
+        requestAnimationFrame(() => { spyQueued = false; spy(); });
+      }, { passive: true });
+      addEventListener('resize', placePill);
+      document.fonts.ready.then(placePill);
+      spy();
+
+      // Intro video: full-hero poster first, YouTube iframe only after the click
+      const hero = $('#hero');
+      const play = $('#play');
+      const heroVideo = $('#heroVideo');
+      const videoClose = $('#videoClose');
+
+      const openVideo = () => {
+        hero.classList.add('is-opening');
+        setTimeout(() => {
+          const iframe = document.createElement('iframe');
+          iframe.src = `https://www.youtube-nocookie.com/embed/${hero.dataset.video}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+          iframe.title = 'Intro video — Sajaath Mohamed';
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          iframe.allowFullscreen = true;
+          heroVideo.replaceChildren(iframe);
+          hero.classList.add('is-playing');
+          videoClose.focus();
+        }, reduce ? 0 : 450);
+        setTimeout(() => hero.classList.remove('is-opening'), 1000);
+      };
+      play.addEventListener('click', openVideo);
+      $('#reelThumb')?.addEventListener('click', openVideo);
+
+      const closeVideo = () => {
+        if (!hero.classList.contains('is-playing')) return;
+        heroVideo.replaceChildren();
+        hero.classList.remove('is-playing');
+        play.focus();
+      };
+      videoClose.addEventListener('click', closeVideo);
+      addEventListener('keydown', e => e.key === 'Escape' && closeVideo());
+
+      // Play disc is pulled toward the pointer when it comes close
+      if (!reduce && matchMedia('(hover: hover)').matches) {
+        let tx = 0, ty = 0, x = 0, y = 0, raf;
+        const loop = () => {
+          x += (tx - x) * .14;
+          y += (ty - y) * .14;
+          play.style.transform = `translate(${x}px, ${y}px)`;
+          if (Math.abs(tx - x) > .3 || Math.abs(ty - y) > .3) raf = requestAnimationFrame(loop);
+          else raf = null;
+        };
+        const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
+        hero.addEventListener('pointermove', e => {
+          const r = play.getBoundingClientRect();
+          const dx = e.clientX - (r.left - x + r.width / 2);
+          const dy = e.clientY - (r.top - y + r.height / 2);
+          const near = Math.hypot(dx, dy) < 280;
+          tx = near ? dx * .35 : 0;
+          ty = near ? dy * .35 : 0;
+          kick();
+        });
+        hero.addEventListener('pointerleave', () => { tx = 0; ty = 0; kick(); });
+      }
+
+      // Ticking viewfinder timecode
+      const tc = $('#timecode');
+      if (!reduce) {
+        const t0 = performance.now();
+        const pad = n => String(n).padStart(2, '0');
+        setInterval(() => {
+          if (hero.classList.contains('is-playing')) return;
+          const f = Math.floor((performance.now() - t0) / 40);
+          tc.textContent = `${pad(Math.floor(f / 90000))}:${pad(Math.floor(f / 1500) % 60)}:${pad(Math.floor(f / 25) % 60)}:${pad(f % 25)}`;
+        }, 40);
+      }
+
+      // Review carousels: repeat the cards until one set is wider than the screen, then double it,
+      // so the strip can wrap round by half its width with no visible seam.
+      // It drifts on its own; hovering stops it, and it can then be dragged or scrolled sideways.
+      if (!reduce) $$('.quotes-carousel').forEach(carousel => {
+        const track = $('.quotes-track', carousel);
+        const originals = [...track.children];
+        const cloneSet = () => originals.forEach(card => {
+          const copy = card.cloneNode(true);
+          copy.setAttribute('aria-hidden', 'true');
+          copy.inert = true;
+          track.appendChild(copy);
+        });
+        const target = Math.max(innerWidth, screen.width || 0);
+        while (track.scrollWidth < target) cloneSet();
+        const setCount = track.children.length;
+        for (let i = 0; i < setCount; i++) {
+          const copy = track.children[i].cloneNode(true);
+          copy.setAttribute('aria-hidden', 'true');
+          copy.inert = true;
+          track.appendChild(copy);
+        }
+        carousel.classList.add('is-live');
+        $$('img', track).forEach(img => (img.draggable = false));
+
+        const drift = 45 * (Number(carousel.dataset.dir) || 1); // px per second, + moves left
+        let half = track.scrollWidth / 2;
+        let x = 0, vel = 0, held = false, visible = false, drag = null, last = 0, running = false;
+        const wrap = () => { x = ((x % half) + half) % half; };
+        const render = () => (track.style.transform = `translate3d(${-x}px, 0, 0)`);
+
+        const frame = now => {
+          const dt = Math.min(.05, (now - last) / 1000);
+          last = now;
+          if (!drag) {
+            // after a fling, ease back to the drift (or to rest while hovered)
+            const goal = held ? 0 : drift;
+            vel += (goal - vel) * Math.min(1, dt * (held ? 5 : 2));
+            x += vel * dt;
+          }
+          wrap();
+          render();
+          running = visible;
+          if (running) requestAnimationFrame(frame);
+        };
+        const start = () => {
+          if (running || !visible) return;
+          running = true;
+          last = performance.now();
+          requestAnimationFrame(frame);
+        };
+
+        carousel.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') held = true; });
+        carousel.addEventListener('pointerleave', () => { if (!drag) held = false; });
+        carousel.addEventListener('focusin', () => (held = true));
+        carousel.addEventListener('focusout', () => (held = false));
+
+        carousel.addEventListener('pointerdown', e => {
+          if (e.button !== 0) return;
+          drag = { id: e.pointerId, startX: e.clientX, lastX: e.clientX, lastT: performance.now(), moved: false };
+          vel = 0;
+        });
+        carousel.addEventListener('pointermove', e => {
+          if (!drag || e.pointerId !== drag.id) return;
+          const dx = e.clientX - drag.lastX, now = performance.now();
+          if (!drag.moved && Math.abs(e.clientX - drag.startX) > 4) {
+            drag.moved = true;
+            carousel.classList.add('is-dragging');
+            try { carousel.setPointerCapture(e.pointerId); } catch {}
+          }
+          if (!drag.moved) return;
+          x -= dx;
+          vel = -dx / Math.max(.008, (now - drag.lastT) / 1000);
+          drag.lastX = e.clientX;
+          drag.lastT = now;
+        });
+        const endDrag = e => {
+          if (!drag || e.pointerId !== drag.id) return;
+          // a fling keeps going, capped so it can't race off
+          vel = performance.now() - drag.lastT > 80 ? 0 : Math.max(-2400, Math.min(2400, vel));
+          if (e.type === 'pointercancel' || !carousel.matches(':hover')) held = false;
+          drag = null;
+          carousel.classList.remove('is-dragging');
+        };
+        carousel.addEventListener('pointerup', endDrag);
+        carousel.addEventListener('pointercancel', endDrag);
+
+        // sideways scroll (trackpad swipe, shift + wheel) moves it; plain vertical wheel still scrolls the page
+        carousel.addEventListener('wheel', e => {
+          const dx = e.deltaX || (e.shiftKey ? e.deltaY : 0);
+          if (!dx) return;
+          e.preventDefault();
+          x += dx;
+          vel = 0;
+        }, { passive: false });
+
+        addEventListener('resize', () => { half = track.scrollWidth / 2; });
+        new IntersectionObserver(([en]) => {
+          visible = en.isIntersecting;
+          start();
+        }).observe(carousel);
+        vel = drift;
+      });
+
+      // Reveal on scroll
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            en.target.classList.add('in');
+            io.unobserve(en.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      $$('.rv').forEach((el, i) => {
+        el.style.transitionDelay = `${(i % 3) * 70}ms`;
+        io.observe(el);
+      });
+
+      // Count-up stats
+      const counter = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (!en.isIntersecting) return;
+          const el = en.target, end = +el.dataset.count;
+          counter.unobserve(el);
+          if (reduce) { el.textContent = end; return; }
+          const t0 = performance.now(), dur = 1400;
+          const tick = now => {
+            const p = Math.min((now - t0) / dur, 1);
+            el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        });
+      }, { threshold: .6 });
+      $$('[data-count]').forEach(el => counter.observe(el));
+
+      // Stack dials: logos sit around 3D drums that turn slowly. Hover slows a dial down,
+      // dragging spins it (with a little inertia), and each one whirls up when the section arrives.
+      const dials3d = $$('.dial3d').map(dial => {
+        const view = $('.dial3d-view', dial);
+        const drum = $('.dial3d-drum', dial);
+        const originals = [...drum.children];
+        $('.dial3d-label b', dial).textContent = String(originals.length).padStart(2, '0');
+        // repeat the whole set until the ring is wide enough to span the row (~1.2x its width across)
+        const slotsWanted = Math.max(16, Math.ceil(2 * Math.PI * view.clientWidth * .6 / (originals[0].offsetWidth + 14)));
+        while (drum.children.length < slotsWanted) {
+          originals.forEach(li => {
+            const copy = li.cloneNode(true);
+            copy.setAttribute('aria-hidden', 'true');
+            drum.appendChild(copy);
+          });
+        }
+        const tiles = [...drum.children];
+        const ticks = Array.from({ length: tiles.length * 4 }, () => {
+          const tick = document.createElement('i');
+          tick.className = 'tick';
+          drum.appendChild(tick);
+          return tick;
+        });
+        const speed = reduce ? 0 : +dial.dataset.speed;
+        const state = { dial, view, drum, tiles, ticks, speed, angle: 0, vel: speed, target: speed, radius: 0, dragging: false };
+
+        state.layout = () => {
+          const gap = 14;
+          state.radius = Math.round((tiles[0].offsetWidth + gap) * tiles.length / (2 * Math.PI));
+          tiles.forEach((li, i) => (li.style.transform = `rotateY(${i * 360 / tiles.length}deg) translateZ(${state.radius}px)`));
+          ticks.forEach((t, i) => (t.style.transform = `rotateY(${i * 360 / ticks.length + 180 / ticks.length}deg) translateZ(${state.radius}px)`));
+        };
+
+        view.addEventListener('pointerenter', e => e.pointerType === 'mouse' && (state.target = speed * .15));
+        view.addEventListener('pointerleave', () => (state.target = speed));
+        let lastX = 0, lastT = 0;
+        view.addEventListener('pointerdown', e => {
+          state.dragging = true;
+          lastX = e.clientX;
+          lastT = performance.now();
+          view.classList.add('is-dragging');
+          view.setPointerCapture(e.pointerId);
+        });
+        view.addEventListener('pointermove', e => {
+          if (!state.dragging) return;
+          const now = performance.now();
+          // move the drum so the tile under the pointer follows it
+          const d = (e.clientX - lastX) * 180 / (Math.PI * state.radius);
+          state.angle += d;
+          state.vel = Math.max(-600, Math.min(600, d / Math.max(.016, (now - lastT) / 1000)));
+          lastX = e.clientX;
+          lastT = now;
+        });
+        const release = () => {
+          state.dragging = false;
+          view.classList.remove('is-dragging');
+        };
+        view.addEventListener('pointerup', release);
+        view.addEventListener('pointercancel', release);
+        return state;
+      });
+
+      if (dials3d.length) {
+        const layoutAll = () => dials3d.forEach(s => s.layout());
+        layoutAll();
+        addEventListener('resize', layoutAll);
+        document.fonts.ready.then(layoutAll);
+
+        let stackVisible = false, stackRaf = null, lastFrame = 0;
+        const render = now => {
+          const dt = Math.min(.05, (now - lastFrame) / 1000 || 0);
+          lastFrame = now;
+          dials3d.forEach(s => {
+            if (!s.dragging) {
+              s.vel += (s.target - s.vel) * Math.min(1, dt * 1.6);
+              s.angle += s.vel * dt;
+            }
+            s.drum.style.transform = `translateZ(${-s.radius}px) rotateY(${s.angle}deg)`;
+            // tiles dim as they turn away from the front
+            const step = 360 / s.tiles.length;
+            s.tiles.forEach((li, i) => {
+              const c = Math.cos((i * step + s.angle) * Math.PI / 180);
+              li.style.opacity = c > .05 ? (.1 + .9 * c).toFixed(3) : 0;
+            });
+          });
+          stackRaf = stackVisible ? requestAnimationFrame(render) : null;
+        };
+        new IntersectionObserver(([en]) => {
+          stackVisible = en.isIntersecting;
+          if (stackVisible && !stackRaf) {
+            lastFrame = performance.now();
+            stackRaf = requestAnimationFrame(render);
+          }
+        }).observe($('.dials'));
+        requestAnimationFrame(render);
+
+        // arrival: rows slide up one by one and each dial whirls round before settling to its pace
+        if (window.gsap && window.ScrollTrigger && !reduce) {
+          gsap.from('.dial3d', {
+            y: 40, opacity: 0, duration: 1, ease: 'expo.out', stagger: .14,
+            scrollTrigger: { trigger: '.dials', start: 'top 80%', once: true },
+            onStart: () => dials3d.forEach((s, i) => (s.vel = Math.sign(s.speed) * (260 - i * 40))),
+          });
+        }
+      }
+
+      // Process backdrop: a lime wireframe landscape (Three.js) that rises when the section arrives
+      // and sends a ripple out each time the step changes. Skipped without WebGL or with reduced motion.
+      const processBg = (() => {
+        const canvas = $('#processBg');
+        if (!window.THREE || !window.gsap || !canvas || reduce) return null;
+        let renderer;
+        try {
+          renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+        } catch {
+          return null;
+        }
+        const small = innerWidth < 760;
+        renderer.setPixelRatio(Math.min(devicePixelRatio, 1.25));
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(50, 1, .1, 100);
+        const look = () => camera.lookAt(0, 0, -3);
+        camera.position.set(0, 3.4, 9);
+        look();
+        const geo = new THREE.PlaneGeometry(34, 20, small ? 40 : 72, small ? 24 : 42);
+        geo.rotateX(-Math.PI / 2);
+        const mat = new THREE.MeshBasicMaterial({ color: 0xc1ff72, wireframe: true, transparent: true, opacity: 0 });
+        scene.add(new THREE.Mesh(geo, mat));
+        const pos = geo.attributes.position;
+        const base = Float32Array.from(pos.array);
+        const state = { amp: 0, opacity: 0, ripple: 0, rippleAt: 0 };
+        const t0 = performance.now();
+        let visible = false, raf = null;
+
+        const resize = () => {
+          const w = canvas.clientWidth, h = canvas.clientHeight;
+          if (!w || !h) return;
+          renderer.setSize(w, h, false);
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+        };
+        new ResizeObserver(resize).observe(canvas);
+
+        const frame = now => {
+          const t = (now - t0) / 1000;
+          const wave = (t - state.rippleAt) * 5;
+          for (let i = 0; i < pos.count; i++) {
+            const x = base[i * 3], z = base[i * 3 + 2];
+            const d = Math.hypot(x, z + 3);
+            let y = Math.sin(x * .42 + t * .6) * .35 + Math.cos(z * .5 + t * .45) * .3;
+            y += state.ripple * Math.exp(-((d - wave) ** 2) * .5) * .9;
+            pos.array[i * 3 + 1] = y * state.amp;
+          }
+          pos.needsUpdate = true;
+          mat.opacity = state.opacity;
+          renderer.render(scene, camera);
+          raf = visible ? requestAnimationFrame(frame) : null;
+        };
+        new IntersectionObserver(([en]) => {
+          visible = en.isIntersecting;
+          if (visible && !raf) raf = requestAnimationFrame(frame);
+        }).observe(canvas);
+
+        return {
+          rise() {
+            gsap.to(state, { amp: 1, opacity: .17, duration: 2.6, ease: 'power3.out' });
+            gsap.fromTo(camera.position, { y: 8, z: 13 }, { y: 3.4, z: 9, duration: 2.6, ease: 'power3.out', onUpdate: look });
+          },
+          pulse() {
+            state.rippleAt = (performance.now() - t0) / 1000;
+            gsap.fromTo(state, { ripple: 1 }, { ripple: 0, duration: 3, ease: 'power1.out' });
+          },
+        };
+      })();
+
+      // Process: the steps advance on their own like a sequencer (paused while hovered),
+      // and each one plays its own wireframe scene on the stage.
+      const flow = $('#flow');
+      const flowSteps = $$('.flow-step', flow);
+      const flowScenes = $$('.stage-svg .scene', flow);
+      const flowLeds = $$('.stage-leds i', flow);
+      const FLOW_STATUS = [
+        'Request received', 'Change is possible', 'Estimate sent · retainer: none', 'Everything collected',
+        'On a feature branch', 'Passed on real devices', 'Waiting for your yes', 'Live on your store',
+      ];
+      const STEP_SECONDS = 6.5;
+      const canAnimate = !!window.gsap && !reduce;
+      let flowIndex = 0, flowProgress = null, flowScene = null, flowHeld = false, flowVisible = false, flowStarted = false;
+
+      // Each scene draws itself phase by phase: lines (.d) draw on, shapes (.p) pop in, text (.f) fades in.
+      // Extras add the small loops that make a scene feel alive.
+      const sceneExtras = [
+        (q, at) => gsap.to(q('.dot'), { y: -5, duration: .35, yoyo: true, repeat: -1, stagger: .15, delay: at }),
+        (q) => {
+          gsap.fromTo(q('.scan'), { attr: { y1: 80, y2: 80 } }, { attr: { y1: 292, y2: 292 }, duration: 2.2, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+          gsap.fromTo(q('.mag'), { x: 120, y: 140 }, { keyframes: [{ x: 290, y: 130 }, { x: 230, y: 240 }, { x: 110, y: 230 }, { x: 120, y: 140 }], duration: 6, repeat: -1, ease: 'sine.inOut' });
+        },
+        (q, at) => gsap.timeline({ repeat: -1, yoyo: true, repeatDelay: 1.4, delay: at + .6 })
+          .to(q('.knob'), { x: 77, duration: .6, ease: 'power3.inOut' })
+          .to(q('.cardA'), { opacity: .28, duration: .4 }, '<')
+          .to(q('.cardB-ring'), { opacity: 1, duration: .4 }, '<')
+          .to(q('.lbl-proj'), { fill: 'rgba(243,240,232,.6)', duration: .3 }, '<')
+          .to(q('.lbl-ret'), { fill: '#0d0d0c', duration: .3 }, '<'),
+        (q) => gsap.fromTo(q('.file'), { x: 0, opacity: 1 }, { x: -70, opacity: 0, duration: .9, ease: 'power2.in', stagger: .6, repeat: -1, repeatDelay: 1.2 }),
+        (q, at) => gsap.to(q('.gtag'), { scale: 1.1, transformOrigin: '50% 50%', duration: .7, yoyo: true, repeat: -1, delay: at }),
+        (q) => gsap.fromTo(q('.sweep'), { attr: { x1: 46, x2: 46 } }, { attr: { x1: 518, x2: 518 }, duration: 2.6, yoyo: true, repeat: -1, ease: 'power1.inOut' }),
+        (q, at) => gsap.timeline({ delay: at + .3 })
+          .to(q('.approve'), { fill: '#c1ff72', duration: .4 })
+          .to(q('.approve-t'), { fill: '#0d0d0c', duration: .3 }, '<'),
+        (q) => {
+          gsap.to(q('.status'), { fill: '#c1ff72', duration: .3, delay: 1.1 });
+          gsap.fromTo(q('.ring'), { scale: 1, opacity: .8, transformOrigin: '50% 50%' }, { scale: 3.4, opacity: 0, duration: 1.5, repeat: -1, ease: 'power2.out', delay: 1.2 });
+        },
+      ];
+
+      const playScene = i => {
+        flowScene?.revert();
+        flowScenes.forEach((s, j) => s.classList.toggle('on', j === i));
+        if (!canAnimate) return;
+        const el = flowScenes[i];
+        flowScene = gsap.context(() => {
+          const q = gsap.utils.selector(el);
+          const tl = gsap.timeline();
+          for (let k = 1; k <= 7; k++) {
+            const d = q(`.ph${k}.d`), p = q(`.ph${k}.p`), f = q(`.ph${k}.f`);
+            if (!d.length && !p.length && !f.length) continue;
+            const at = tl.duration() ? tl.duration() - .2 : 0;
+            if (d.length) tl.fromTo(d, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: .7, ease: 'power2.inOut', stagger: .07 }, at);
+            if (p.length) tl.from(p, { scale: 0, opacity: 0, transformOrigin: '50% 50%', duration: .45, ease: 'back.out(2)', stagger: .09 }, at + .15);
+            if (f.length) tl.from(f, { opacity: 0, duration: .4, stagger: .06 }, at + .1);
+          }
+          sceneExtras[i]?.(q, tl.duration());
+        }, el);
+      };
+
+      const goToStep = i => {
+        flowIndex = i;
+        flowSteps.forEach((li, j) => {
+          li.classList.toggle('is-active', j === i);
+          $('.flow-btn', li).setAttribute('aria-expanded', j === i);
+          $('.flow-progress i', li).style.transform = 'scaleX(0)';
+        });
+        $('#stageStep').textContent = `${String(i + 1).padStart(2, '0')} · ${$('.flow-title', flowSteps[i]).textContent}`;
+        $('#stageStatus').textContent = FLOW_STATUS[i];
+        $('#stageCount').textContent = `${String(i + 1).padStart(2, '0')} / ${String(flowSteps.length).padStart(2, '0')}`;
+        flowLeds.forEach((led, j) => led.classList.toggle('on', j === (i < 4 ? 0 : i < 6 ? 1 : 2)));
+        playScene(i);
+        processBg?.pulse();
+
+        flowProgress?.kill();
+        if (canAnimate) {
+          flowProgress = gsap.fromTo($('.flow-progress i', flowSteps[i]), { scaleX: 0 }, {
+            scaleX: 1, duration: STEP_SECONDS, ease: 'none',
+            onComplete: () => goToStep((i + 1) % flowSteps.length),
+          });
+          if (flowHeld || !flowVisible) flowProgress.pause();
+        }
+      };
+
+      flowSteps.forEach((li, i) => $('.flow-btn', li).addEventListener('click', () => goToStep(i)));
+      flow.addEventListener('pointerenter', e => {
+        if (e.pointerType !== 'mouse') return;
+        flowHeld = true;
+        flowProgress?.pause();
+      });
+      flow.addEventListener('pointerleave', () => {
+        flowHeld = false;
+        if (flowVisible) flowProgress?.resume();
+      });
+      new IntersectionObserver(([en]) => {
+        flowVisible = en.isIntersecting;
+        if (!flowVisible) flowProgress?.pause();
+        else if (flowStarted && !flowHeld) flowProgress?.resume();
+      }, { threshold: .25 }).observe(flow);
+
+      // Section entrance: heading lifts in, steps slide in one by one, the stage opens from its centre,
+      // the landscape rises, then the sequence starts at step 01.
+      const startFlow = () => {
+        if (flowStarted) return;
+        flowStarted = true;
+        goToStep(0);
+      };
+      if (canAnimate && window.ScrollTrigger) {
+        gsap.timeline({
+          scrollTrigger: { trigger: '#process', start: 'top 65%', once: true },
+          defaults: { ease: 'expo.out' },
+          onStart: () => processBg?.rise(),
+        })
+          .from('.process-head > *', { y: 50, opacity: 0, duration: 1.1, stagger: .12 })
+          .from('.flow-step', { x: -40, opacity: 0, duration: .9, stagger: .06 }, .25)
+          .fromTo('.flow-stage', { clipPath: 'inset(50% 50% 50% 50% round 20px)' },
+            { clipPath: 'inset(0% 0% 0% 0% round 20px)', duration: 1.3, ease: 'expo.inOut', clearProps: 'clipPath' }, .2)
+          .add(startFlow, .9);
+      } else {
+        startFlow();
+      }
+
+      // Featured stores dial: hover (or tap) a name to show that store in the centre window
+      const dial = $('#dial');
+      const dialLinks = $$('.dial-items a', dial);
+      const dialImgs = $$('.dial-window img', dial);
+      const dialWindow = $('#dialWindow');
+      const dialMarker = $('#dialMarker');
+      const dialCount = dialLinks.length;
+      const canHover = matchMedia('(hover: hover)').matches;
+      let dialIndex = 0, markerAngle = 0, lastTouch = 0, dialHeld = false, dialVisible = false, dialReady = true;
+
+      // a major tick at each store, four minor ones between
+      $('#dialTicks').innerHTML = Array.from({ length: dialCount * 5 }, (_, t) => {
+        const major = t % 5 === 0;
+        return `<line class="${major ? 'major' : ''}" x1="0" y1="${major ? -86 : -89}" x2="0" y2="-94" transform="rotate(${t * 72 / dialCount})" />`;
+      }).join('');
+
+      const loadImg = i => {
+        const img = dialImgs[i];
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          delete img.dataset.src;
+        }
+      };
+
+      const selectStore = i => {
+        if (i === dialIndex) return;
+        // turn the marker the short way round
+        let delta = ((i - dialIndex) * 360 / dialCount) % 360;
+        if (delta > 180) delta -= 360;
+        if (delta < -180) delta += 360;
+        markerAngle += delta;
+        dialMarker.style.transform = `rotate(${markerAngle}deg)`;
+
+        dialLinks[dialIndex].classList.remove('is-active');
+        dialImgs[dialIndex].classList.remove('on');
+        loadImg(i);
+        dialImgs[i].classList.add('on');
+        loadImg((i + 1) % dialCount);
+
+        const link = dialLinks[i];
+        link.classList.add('is-active');
+        dialWindow.href = link.getAttribute('href');
+        dialWindow.target = link.target;
+        dialWindow.rel = link.rel;
+        $('#dialCta').textContent = link.target ? 'Visit store ↗' : 'View case ↗';
+        $('#dialNum').textContent = `${String(i + 1).padStart(2, '0')} / ${dialCount}`;
+        $('#dialName').textContent = link.dataset.name;
+        $('#dialTags').replaceChildren(...link.dataset.tags.split('|').map(t =>
+          Object.assign(document.createElement('span'), { className: 'tag', textContent: t })));
+        dialIndex = i;
+      };
+
+      dialLinks.forEach((link, i) => {
+        if (canHover) {
+          link.addEventListener('pointerenter', () => selectStore(i));
+          link.addEventListener('focus', () => selectStore(i));
+        } else {
+          // touch: first tap shows the store, second tap opens it
+          link.addEventListener('click', e => {
+            lastTouch = Date.now();
+            if (i !== dialIndex) {
+              e.preventDefault();
+              selectStore(i);
+            }
+          });
+        }
+      });
+      loadImg(1);
+
+      // turn through the stores on its own until someone interacts
+      dial.addEventListener('pointerenter', () => (dialHeld = true));
+      dial.addEventListener('pointerleave', () => (dialHeld = false));
+      dial.addEventListener('focusin', () => (dialHeld = true));
+      dial.addEventListener('focusout', () => (dialHeld = false));
+      new IntersectionObserver(([en]) => {
+        dialVisible = en.isIntersecting;
+        // the dial copies are small (~1.2 MB total): fetch them all once it's on screen so switching is instant
+        if (dialVisible) dialImgs.forEach((_, i) => loadImg(i));
+      }, { rootMargin: '300px 0px' }).observe(dial);
+      if (!reduce) {
+        setInterval(() => {
+          if (dialReady && dialVisible && !dialHeld && Date.now() - lastTouch > 8000) selectStore((dialIndex + 1) % dialCount);
+        }, 3200);
+      }
+
+      // Retainer entrance: the price counts up from 0, the points come in one by one, and when the
+      // price lands the card gets a bloom, a sheen and a sprinkle of sparkles.
+      const retainer = $('.retainer');
+      if (retainer && window.gsap && window.ScrollTrigger && !reduce) {
+        gsap.registerPlugin(ScrollTrigger);
+        const priceEl = $('.price b', retainer);
+        const points = $$('li', retainer);
+        const finalText = priceEl.textContent;
+        const amount = Number(finalText.replace(/[^\d]/g, ''));
+        const fmt = n => '$' + Math.round(n).toLocaleString('en-US');
+        priceEl.style.minWidth = `${priceEl.offsetWidth}px`; // the number grows without the layout shifting
+        priceEl.textContent = fmt(0);
+        gsap.set(points, { opacity: 0, x: 36, '--pop': 0, '--line': 0 });
+
+        const under = document.createElement('div');
+        under.className = 'retainer-fx under';
+        under.innerHTML = '<div class="bloom"></div><div class="sheen"></div>';
+        const fx = document.createElement('div');
+        fx.className = 'retainer-fx';
+        under.setAttribute('aria-hidden', 'true');
+        fx.setAttribute('aria-hidden', 'true');
+        retainer.prepend(under);
+        retainer.appendChild(fx);
+
+        const sparkle = () => {
+          const card = retainer.getBoundingClientRect();
+          const p = priceEl.getBoundingClientRect();
+          const cx = p.left - card.left + p.width / 2, cy = p.top - card.top + p.height / 2;
+          const bloom = $('.bloom', under);
+          gsap.set(bloom, { left: cx, top: cy });
+          gsap.fromTo(bloom, { scale: .2, opacity: 0 }, { scale: 1.6, opacity: 1, duration: .5, ease: 'power2.out' });
+          gsap.to(bloom, { opacity: 0, duration: 1.4, delay: .45, ease: 'power2.inOut' });
+          gsap.fromTo($('.sheen', under), { xPercent: -120 }, { xPercent: 380, duration: 1.3, ease: 'power2.inOut' });
+          gsap.fromTo(priceEl, { scale: 1 }, { scale: 1.08, duration: .18, yoyo: true, repeat: 1, ease: 'power2.out' });
+          retainer.classList.add('glowing');
+
+          // a burst out of the price...
+          for (let i = 0; i < 22; i++) {
+            const s = document.createElement('i');
+            s.className = 'spark' + (i % 3 ? '' : ' light');
+            fx.appendChild(s);
+            const a = Math.random() * Math.PI * 2, d = 70 + Math.random() * 170, size = .4 + Math.random() * .9;
+            gsap.set(s, { left: cx, top: cy, scale: 0 });
+            gsap.timeline({ onComplete: () => s.remove() })
+              .to(s, { opacity: 1, scale: size, duration: .2, ease: 'power2.out' })
+              .to(s, { x: Math.cos(a) * d, y: Math.sin(a) * d, rotation: (Math.random() - .5) * 360,
+                duration: 1 + Math.random() * .6, ease: 'expo.out' }, 0)
+              .to(s, { opacity: 0, scale: 0, duration: .5, ease: 'power2.in' }, .7 + Math.random() * .5);
+          }
+          // ...and twinkles sprinkled across the rest of the card
+          for (let i = 0; i < 16; i++) {
+            const s = document.createElement('i');
+            s.className = 'spark' + (i % 2 ? ' light' : '');
+            fx.appendChild(s);
+            gsap.set(s, { left: `${5 + Math.random() * 90}%`, top: `${8 + Math.random() * 84}%`, scale: 0 });
+            gsap.timeline({ delay: .15 + Math.random() * 1.1, onComplete: () => s.remove() })
+              .to(s, { opacity: .9, scale: .3 + Math.random() * .6, rotation: 90, duration: .35, ease: 'back.out(3)' })
+              .to(s, { opacity: 0, scale: 0, rotation: 180, duration: .45, ease: 'power2.in' }, '+=.15');
+          }
+        };
+
+        const counter = { n: 0 };
+        gsap.timeline({ scrollTrigger: { trigger: retainer, start: 'top 70%', once: true } })
+          .to(counter, {
+            n: amount, duration: 2, ease: 'power3.out',
+            onUpdate: () => (priceEl.textContent = fmt(counter.n)),
+            onComplete: () => { priceEl.textContent = finalText; sparkle(); },
+          }, .25)
+          .to(points, { opacity: 1, x: 0, duration: .8, ease: 'expo.out', stagger: .1 }, .35)
+          .to(points, { '--pop': 1, duration: .6, ease: 'back.out(2.4)', stagger: .1 }, .45)
+          .to(points, { '--line': 1, duration: .9, ease: 'power3.inOut', stagger: .1 }, .5);
+      }
+
+      // Dial entrance (GSAP + ScrollTrigger): it opens from the centre outward the first time it scrolls into view.
+      // If the CDN scripts fail to load, the dial simply shows without the intro.
+      if (window.gsap && window.ScrollTrigger && !reduce) {
+        gsap.registerPlugin(ScrollTrigger);
+        const face = $('.dial-face', dial);
+        const ticksSvg = $('.dial-ticks', dial);
+        const tickLines = $$('#dialTicks line', dial);
+        const caption = $$('.dial-caption > *', dial);
+        const labels = $$('.dial-items a', dial);
+        dialReady = false;
+
+        const intro = () => gsap.timeline({
+          defaults: { ease: 'expo.out' },
+          scrollTrigger: { trigger: dial, start: 'top 72%', once: true },
+          onComplete: () => (dialReady = true),
+        })
+          // iris opens from the centre
+          .fromTo(face, { clipPath: 'circle(0% at 50% 50%)' },
+            { clipPath: 'circle(75% at 50% 50%)', duration: 1.4, ease: 'expo.inOut', clearProps: 'clipPath' }, 0)
+          .from(ticksSvg, { rotation: -140, scale: .55, duration: 1.8 }, 0)
+          .from($('#dialWindow'), { scale: 0, duration: 1.3 }, .2)
+          // ticks grow outward one after another round the ring
+          .from(tickLines, {
+            attr: { y2: (i, el) => el.getAttribute('y1') },
+            opacity: 0, duration: .5, ease: 'power2.out', stagger: .012,
+          }, .35)
+          // needle spins a full turn, then settles on the current store
+          .from('#dialSweep', { rotation: -360, svgOrigin: '0 0', duration: 1.8, ease: 'expo.inOut' }, .2)
+          .from(caption, { y: 18, opacity: 0, duration: .8, stagger: .08 }, 1);
+
+        gsap.matchMedia().add({ desktop: '(min-width: 1081px)', compact: '(max-width: 1080px)' }, ctx => {
+          const tl = intro();
+          if (ctx.conditions.desktop) {
+            // names fly out from the centre to their place on the ring
+            const dialRect = () => dial.getBoundingClientRect();
+            tl.from(labels, {
+              x: (i, el) => { const r = el.getBoundingClientRect(), d = dialRect(); return d.left + d.width / 2 - (r.left + r.width / 2); },
+              y: (i, el) => { const r = el.getBoundingClientRect(), d = dialRect(); return d.top + d.height / 2 - (r.top + r.height / 2); },
+              scale: .3, opacity: 0, duration: 1.2, stagger: .06,
+            }, .55);
+          } else {
+            tl.from(labels, { y: 24, opacity: 0, duration: .8, stagger: .05, ease: 'power3.out' }, .7);
+          }
+        });
+      }
+
+      // Copy email
+      const copyBtn = $('#copyBtn');
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(copyBtn.dataset.copy);
+          copyBtn.textContent = 'Copied ✓';
+        } catch {
+          copyBtn.textContent = copyBtn.dataset.copy;
+        }
+        setTimeout(() => (copyBtn.textContent = 'Copy email'), 2000);
+      });
+
+      // Local time in Sri Lanka
+      const clock = $('#clock');
+      const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Colombo', hour: '2-digit', minute: '2-digit' });
+      const tickClock = () => (clock.textContent = `${fmt.format(new Date())} in Colombo, Sri Lanka (GMT+5:30)`);
+      tickClock();
+      setInterval(tickClock, 30000);
+
+      $('#year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+
+</html>
