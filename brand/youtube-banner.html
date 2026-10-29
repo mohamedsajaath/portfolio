@@ -1,0 +1,250 @@
+<!doctype html>
+<!-- YouTube channel art, 2560 × 1440.
+     TVs show all of it; desktop shows the middle strip (2560 × 423, y 508–931);
+     phones show only the centre of that strip (1546 × 423, x 507–2053), so everything that matters sits there. -->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>YouTube banner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=block"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0c;
+      --ink: #f3f0e8;
+      --ink-2: rgba(243, 240, 232, .68);
+      --ink-3: rgba(243, 240, 232, .42);
+      --line: rgba(243, 240, 232, .08);
+      --lime: #c1ff72;
+      --f-display: "Bricolage Grotesque", sans-serif;
+      --f-serif: "Instrument Serif", serif;
+      --f-mono: "JetBrains Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 2560px;
+      height: 1440px;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .art {
+      position: relative;
+      width: 2560px;
+      height: 1440px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    /* glows, grid and outlined type, as in the site's hero */
+    .glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(900px 620px at 34% 44%, rgba(193, 255, 114, .2), transparent 70%),
+        radial-gradient(1000px 700px at 84% 70%, rgba(130, 100, 255, .2), transparent 70%);
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 80px 80px;
+      background-position: 40px 30px;
+      mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, #000 25%, transparent 80%);
+    }
+
+    .type {
+      position: absolute;
+      left: -120px;
+      top: 70px;
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: 330px;
+      line-height: .9;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+      font-variation-settings: "opsz" 96;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(243, 240, 232, .08);
+    }
+
+    .type em {
+      font-family: var(--f-serif);
+      font-weight: 400;
+      letter-spacing: -.02em;
+    }
+
+    .type div:nth-child(2) {
+      margin-left: -520px;
+    }
+
+    .type div:nth-child(3) {
+      margin-left: -180px;
+    }
+
+    .type div:nth-child(4) {
+      margin-left: -640px;
+    }
+
+    .scrim {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 55% 34% at 50% 50%, rgba(13, 13, 12, .78), transparent 100%);
+    }
+
+    /* viewfinder frame around the strip every device shows */
+    .vf {
+      position: absolute;
+      left: 507px;
+      right: 507px;
+      top: 508px;
+      height: 423px;
+    }
+
+    .vf b {
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      border: 3px solid var(--ink);
+      opacity: .75;
+    }
+
+    .vf b:nth-child(1) { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+    .vf b:nth-child(2) { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+    .vf b:nth-child(3) { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+    .vf b:nth-child(4) { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+    .meta {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--f-mono);
+      font-size: 17px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+
+    .meta.tl { top: 6px; left: 54px; }
+    .meta.tr { top: 6px; right: 54px; }
+    .meta.bl { bottom: 4px; left: 54px; }
+    .meta.br { bottom: 4px; right: 54px; }
+
+    .rec {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ff4d3d;
+      box-shadow: 0 0 14px rgba(255, 77, 61, .7);
+    }
+
+    /* the message, inside the phone-safe area */
+    .copy {
+      position: absolute;
+      left: 600px;
+      top: 612px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: 110px;
+      line-height: .9;
+      letter-spacing: -.055em;
+      font-variation-settings: "opsz" 96;
+      white-space: nowrap;
+    }
+
+    h1 em {
+      font-family: var(--f-serif);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -.025em;
+      color: var(--lime);
+      font-size: 1.08em;
+    }
+
+    h1 .outline {
+      color: transparent;
+      -webkit-text-stroke: 3px var(--ink);
+    }
+
+    .side {
+      position: absolute;
+      left: 1650px;
+      top: 606px;
+      width: 360px;
+      padding-left: 40px;
+      border-left: 2px solid rgba(243, 240, 232, .14);
+    }
+
+    .side img {
+      display: block;
+      width: 300px;
+    }
+
+    .side p {
+      margin: 26px 0 0;
+      font-family: var(--f-mono);
+      font-size: 18px;
+      line-height: 1.7;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+
+    .side p b {
+      color: var(--lime);
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="art">
+    <div class="glow"></div>
+    <div class="grid"></div>
+    <div class="type">
+      <div>Get to know me · Get to know me</div>
+      <div>Say <em>hello</em> · Let's build · Say <em>hello</em></div>
+      <div>Built better · Built better · Built</div>
+      <div>Press <em>play</em> · Shopify · Press <em>play</em></div>
+    </div>
+    <div class="scrim"></div>
+
+    <div class="vf">
+      <b></b><b></b><b></b><b></b>
+      <span class="meta tl"><span class="rec"></span>Rec</span>
+      <span class="meta tr">sajaath.com</span>
+      <span class="meta bl">Shopify · Liquid · CRO</span>
+      <span class="meta br">4K · 25fps · Sound on</span>
+    </div>
+
+    <div class="copy">
+      <h1><em>Shopify</em> development,<br><span class="outline">Built</span> better.</h1>
+    </div>
+
+    <div class="side">
+      <img src="logo/svg/sajaath-logo-primary-dark.svg" alt="sajaath">
+      <p>Shopify developer<br>Colombo, Sri Lanka<br><b>sajaath.com</b></p>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -775,6 +775,89 @@
       flex-wrap: wrap;
     }
 
+    /* countries I've worked with: flags stacked like a hand of cards, Germany on top.
+       On hover the hand fans out and straightens. */
+    .trust-flags {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      margin: -6px 0 26px;
+      padding: 10px 20px 10px 14px;
+      border: 1px solid var(--line-2);
+      border-radius: 18px;
+      background: linear-gradient(160deg, rgba(27, 27, 24, .8), rgba(13, 13, 12, .6));
+    }
+
+    .tf-stack {
+      display: flex;
+      flex: none;
+      padding: 4px 0;
+    }
+
+    .tf-stack img {
+      position: relative;
+      width: 36px;
+      height: 27px;
+      border-radius: 5px;
+      object-fit: cover;
+      box-shadow: 0 0 0 2px var(--bg-2), 0 6px 14px -4px rgba(0, 0, 0, .6);
+      transform: rotate(var(--r, 0deg));
+      transition: margin .5s var(--ease), transform .5s var(--ease);
+    }
+
+    /* the first flag (Germany) leads: a touch bigger and above the rest */
+    .tf-stack img:nth-child(1) {
+      --r: -8deg;
+      z-index: 4;
+      width: 40px;
+      height: 30px;
+    }
+
+    .tf-stack img:nth-child(2) {
+      --r: -2deg;
+      z-index: 3;
+    }
+
+    .tf-stack img:nth-child(3) {
+      --r: 4deg;
+      z-index: 2;
+    }
+
+    .tf-stack img:nth-child(4) {
+      --r: 9deg;
+      z-index: 1;
+    }
+
+    .tf-stack img + img {
+      margin-left: -13px;
+    }
+
+    .trust-flags:hover .tf-stack img {
+      --r: 0deg;
+    }
+
+    .trust-flags:hover .tf-stack img + img {
+      margin-left: 6px;
+    }
+
+    .tf-stack img:hover {
+      transform: translateY(-3px) scale(1.1);
+    }
+
+    .tf-text {
+      display: grid;
+      gap: 2px;
+      font-size: 14px;
+      line-height: 1.35;
+      color: var(--ink-2);
+    }
+
+    .tf-text .mono {
+      font-size: 10.5px;
+      color: var(--lime);
+    }
+
+
     /* play disc — pulled toward the pointer when it comes close */
     .play {
       position: relative;
@@ -1915,17 +1998,41 @@
     }
 
     .trait {
+      position: relative;
+      overflow: hidden;
       padding: 28px;
       border-radius: 20px;
       border: 1px solid var(--line);
       background: var(--bg);
-      transition: border-color .3s, transform .4s var(--ease);
+      transition: border-color .3s, transform .4s var(--ease), opacity .9s var(--ease);
+    }
+
+    /* a soft lime light follows the pointer across each card */
+    .trait::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(193, 255, 114, .09), transparent 60%);
+      opacity: 0;
+      transition: opacity .4s;
+      pointer-events: none;
+    }
+
+    .trait:hover::before {
+      opacity: 1;
     }
 
     .trait:hover {
-      border-color: var(--lime);
+      border-color: rgba(193, 255, 114, .55);
       transform: translateY(-4px);
     }
+
+    .style-grid .trait:nth-child(2) { transition-delay: .06s; }
+    .style-grid .trait:nth-child(3) { transition-delay: .12s; }
+    .style-grid .trait:nth-child(4) { transition-delay: .18s; }
+    .style-grid .trait:nth-child(5) { transition-delay: .24s; }
+    .style-grid .trait:nth-child(6) { transition-delay: .3s; }
+    .style-grid .trait.in:hover { transition-delay: 0s; }
 
     .trait .glyph {
       width: 44px;
@@ -1997,6 +2104,506 @@
       font-size: 13.5px;
       line-height: 1.75;
       color: var(--ink-2);
+    }
+
+    /* code card: numbered lines that type in one after another, then a status bar */
+    .code-card pre {
+      counter-reset: ln;
+    }
+
+    .code-card .cl {
+      display: block;
+      position: relative;
+      margin: 0 -22px;
+      padding: 0 22px 0 56px;
+      white-space: pre;
+    }
+
+    .code-card .cl::before {
+      counter-increment: ln;
+      content: counter(ln);
+      position: absolute;
+      left: 0;
+      width: 34px;
+      text-align: right;
+      color: rgba(243, 240, 232, .18);
+      font-style: normal;
+    }
+
+    .code-card .cl > .txt {
+      display: inline-block;
+    }
+
+    .code-card pre.will-type .cl > .txt {
+      clip-path: inset(0 100% 0 0);
+    }
+
+    .code-card pre.will-type .cl.typed > .txt {
+      animation: cl-type var(--t, .3s) steps(var(--n, 10)) forwards;
+    }
+
+    @keyframes cl-type {
+      to {
+        clip-path: inset(0 0 0 0);
+      }
+    }
+
+    .code-card .cl.cur {
+      background: rgba(193, 255, 114, .06);
+    }
+
+    .code-card .cl.cur::after {
+      content: "";
+      display: inline-block;
+      width: .55em;
+      height: 1.15em;
+      margin-left: 2px;
+      vertical-align: -.2em;
+      background: var(--lime);
+      animation: caret 1s steps(2) infinite;
+    }
+
+    @keyframes caret {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .code-status {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 18px;
+      border-top: 1px solid var(--line);
+      font-size: 11px;
+      color: var(--ink-3);
+    }
+
+    .cs-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--lime);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity .5s, transform .5s var(--ease);
+    }
+
+    .code-card.done .cs-check,
+    .code-card:not(.will-animate) .cs-check {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* project tools row under the working-style cards */
+    .pm-tools {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px 32px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      padding: 20px 24px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+    }
+
+    .pm-label {
+      color: var(--ink-3);
+    }
+
+    .pm-tools ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .pm-tool {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px 10px 12px;
+      border: 1px solid var(--line-2);
+      border-radius: 999px;
+      background: var(--bg-2);
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: -.02em;
+      color: var(--ink-2);
+      transition: border-color .35s, color .35s, transform .45s var(--ease), box-shadow .45s var(--ease);
+    }
+
+    .pm-ico {
+      width: 22px;
+      height: 22px;
+      color: var(--ink-2);
+      transition: color .35s, transform .45s var(--ease);
+    }
+
+    /* each tool takes its own brand colour on hover */
+    .pm-tool:hover {
+      color: var(--ink);
+      border-color: var(--brand);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px -14px var(--brand);
+    }
+
+    .pm-tool:hover .pm-ico {
+      color: var(--brand);
+      transform: rotate(-8deg) scale(1.1);
+    }
+
+    @media (max-width: 760px) {
+      .pm-tools {
+        padding: 18px;
+      }
+
+      .pm-tool {
+        font-size: 15px;
+        padding: 9px 14px 9px 10px;
+      }
+    }
+
+    /* ---- little animated visuals on each card ---- */
+    .tv {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      height: 64px;
+      margin-bottom: 30px;
+    }
+
+    .tv .glyph {
+      flex: none;
+      margin: 0;
+    }
+
+    .tv-body {
+      position: relative;
+      flex: 1;
+      height: 100%;
+      display: grid;
+      align-content: center;
+      gap: 8px;
+    }
+
+    /* pause the loops while the cards are off screen */
+    .style-grid:not(.live) .tv * {
+      animation-play-state: paused !important;
+    }
+
+    /* AI: lines get scanned, then each one is ticked as reviewed */
+    .tv-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tv-row b {
+      height: 6px;
+      width: var(--w);
+      border-radius: 3px;
+      background: var(--line-2);
+    }
+
+    .tv-row .ico {
+      width: 14px;
+      height: 14px;
+      color: var(--lime);
+      animation: tv-tick 4.8s var(--ease) infinite;
+      animation-delay: calc(var(--i) * .45s);
+    }
+
+    @keyframes tv-tick {
+      0%, 10% { opacity: 0; transform: scale(.3); }
+      22%, 100% { opacity: 1; transform: none; }
+    }
+
+    .tv-scan {
+      position: absolute;
+      left: -4px;
+      right: 20%;
+      top: 8px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--lime);
+      box-shadow: 0 0 12px var(--lime);
+      opacity: 0;
+      animation: tv-scan 4.8s ease-in-out infinite;
+    }
+
+    @keyframes tv-scan {
+      0% { transform: translateY(0); opacity: 0; }
+      8% { opacity: 1; }
+      40% { transform: translateY(44px); opacity: 1; }
+      48%, 100% { transform: translateY(44px); opacity: 0; }
+    }
+
+    /* Time: an estimate bar and an actual bar that land almost together; the watch hand ticks round */
+    .tv-hand {
+      transform-box: view-box;
+      transform-origin: 12px 13.5px;
+      animation: tv-hand 6s linear infinite;
+    }
+
+    @keyframes tv-hand {
+      to { transform: rotate(360deg); }
+    }
+
+    .tv-bar {
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tv-bar em,
+    .tz-row em {
+      font-style: normal;
+      font-size: 10px;
+      color: var(--ink-3);
+    }
+
+    .tv-bar i,
+    .tz-row i {
+      position: relative;
+      height: 8px;
+      border-radius: 4px;
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .tv-bar b {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: var(--w);
+      border-radius: 4px;
+      background: var(--lime);
+      transform-origin: left;
+      animation: tv-fill 5s var(--ease) infinite;
+      animation-delay: var(--d, 0s);
+    }
+
+    .tv-bar + .tv-bar b {
+      background: rgba(193, 255, 114, .55);
+    }
+
+    @keyframes tv-fill {
+      0%, 6% { transform: scaleX(0); }
+      40%, 100% { transform: scaleX(1); }
+    }
+
+    /* Performance: the gauge sweeps up and the needle settles high */
+    .tv-perf .tv-body {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .tv-gauge {
+      width: 96px;
+      height: 54px;
+      flex: none;
+      overflow: visible;
+    }
+
+    .g-track,
+    .g-fill {
+      fill: none;
+      stroke-width: 8;
+      stroke-linecap: round;
+    }
+
+    .g-track {
+      stroke: var(--line);
+    }
+
+    .g-fill {
+      stroke: var(--lime);
+      stroke-dasharray: 1;
+      stroke-dashoffset: .1;
+      animation: g-fill 5s var(--ease) infinite;
+    }
+
+    @keyframes g-fill {
+      0%, 6% { stroke-dashoffset: 1; }
+      45%, 100% { stroke-dashoffset: .1; }
+    }
+
+    .g-needle {
+      stroke: var(--ink);
+      stroke-width: 3;
+      stroke-linecap: round;
+      transform-box: view-box;
+      transform-origin: 60px 60px;
+      transform: rotate(72deg);
+      animation: g-needle 5s var(--ease) infinite;
+    }
+
+    @keyframes g-needle {
+      0%, 6% { transform: rotate(-90deg); }
+      45%, 100% { transform: rotate(72deg); }
+    }
+
+    .g-hub {
+      fill: var(--ink);
+    }
+
+    .tv-tags {
+      display: grid;
+      gap: 4px;
+      font-size: 10px;
+      color: var(--ink-3);
+    }
+
+    .tv-tags i {
+      font-style: normal;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    /* each weight drops: a small arrow pointing down */
+    .tv-tags i::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      width: 6px;
+      height: 6px;
+      border-right: 1.5px solid var(--lime);
+      border-bottom: 1.5px solid var(--lime);
+      transform: rotate(45deg);
+    }
+
+    /* Editable: a section gets dragged above another, like in the theme editor */
+    .tv-edit .tv-body {
+      gap: 5px;
+    }
+
+    .tv-block {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 16px;
+      padding-left: 18px;
+      border: 1px solid var(--line-2);
+      border-radius: 5px;
+      background: var(--bg-2);
+    }
+
+    .tv-block::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 4px;
+      width: 2px;
+      height: 6px;
+      border-left: 2px dotted var(--ink-3);
+      border-right: 2px dotted var(--ink-3);
+      width: 4px;
+      box-sizing: border-box;
+    }
+
+    .tv-block em {
+      font-style: normal;
+      font-size: 9px;
+      color: var(--ink-3);
+    }
+
+    .tv-block.b1 {
+      animation: tv-b1 4.6s var(--ease) infinite;
+    }
+
+    .tv-block.b2 {
+      z-index: 1;
+      animation: tv-b2 4.6s var(--ease) infinite;
+    }
+
+    @keyframes tv-b1 {
+      0%, 25% { transform: none; }
+      45%, 75% { transform: translateY(21px); }
+      95%, 100% { transform: none; }
+    }
+
+    @keyframes tv-b2 {
+      0%, 15% { transform: none; border-color: var(--line-2); box-shadow: none; }
+      22% { transform: scale(1.04); border-color: var(--lime); box-shadow: 0 8px 20px -8px rgba(193, 255, 114, .5); }
+      45%, 75% { transform: translateY(-21px) scale(1.04); border-color: var(--lime); box-shadow: 0 8px 20px -8px rgba(193, 255, 114, .5); }
+      85% { transform: translateY(-21px); border-color: var(--line-2); box-shadow: none; }
+      95%, 100% { transform: none; border-color: var(--line-2); box-shadow: none; }
+    }
+
+    .tv-cursor {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      left: 56%;
+      top: 26px;
+      opacity: 0;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .5));
+      animation: tv-cursor 4.6s var(--ease) infinite;
+    }
+
+    @keyframes tv-cursor {
+      0% { transform: translate(14px, 14px); opacity: 0; }
+      12% { transform: none; opacity: 1; }
+      45%, 75% { transform: translateY(-21px); opacity: 1; }
+      90%, 100% { transform: translate(14px, -10px); opacity: 0; }
+    }
+
+    /* Agency: the Sri Lanka day and the European day, with their overlap lit up */
+    .tz-row {
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tz-row b {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--a);
+      right: calc(100% - var(--b));
+      border-radius: 4px;
+      background: rgba(243, 240, 232, .35);
+      transform-origin: left;
+      animation: tv-fill 5.4s var(--ease) infinite;
+    }
+
+    .tz-row + .tz-row b {
+      animation-delay: .3s;
+    }
+
+    .tz-overlap {
+      position: absolute;
+      top: 6px;
+      bottom: 6px;
+      left: 72px;
+      right: 0;
+      pointer-events: none;
+    }
+
+    .tz-overlap i {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--a);
+      right: calc(100% - var(--b));
+      border: 1.5px solid var(--lime);
+      border-radius: 6px;
+      background: rgba(193, 255, 114, .12);
+      box-shadow: 0 0 18px rgba(193, 255, 114, .25);
+      animation: tz-glow 5.4s var(--ease) infinite;
+    }
+
+    @keyframes tz-glow {
+      0%, 30% { opacity: 0; transform: scaleY(.6); }
+      45%, 100% { opacity: 1; transform: none; }
     }
 
     .c-com {
@@ -2073,6 +2680,145 @@
     }
 
     /* ---------- Retainer ---------- */
+    /* ---------- Pricing: hourly plans ---------- */
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .plan {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--bg-2);
+      transition: border-color .4s, opacity .9s var(--ease), transform .9s var(--ease);
+    }
+
+    .plan:hover {
+      border-color: var(--line-2);
+    }
+
+    .plans .plan:nth-child(2) {
+      transition-delay: .1s;
+    }
+
+    .plans .plan:nth-child(3) {
+      transition-delay: .2s;
+    }
+
+    .plan.featured {
+      border-color: rgba(193, 255, 114, .5);
+      background:
+        radial-gradient(360px 200px at 100% 0%, rgba(193, 255, 114, .12), transparent 70%),
+        var(--bg-2);
+    }
+
+    .plan-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      min-height: 30px;
+    }
+
+    .plan-name {
+      color: var(--ink-2);
+    }
+
+    .plan-badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--lime);
+      color: var(--bg);
+      font-size: 10.5px;
+    }
+
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin: 28px 0 10px;
+    }
+
+    .plan-price b {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: clamp(48px, 5vw, 68px);
+      letter-spacing: -.06em;
+      line-height: 1;
+    }
+
+    .plan-price span {
+      font-family: var(--f-serif);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--ink-2);
+    }
+
+    .plan.featured .plan-price b {
+      color: var(--lime);
+    }
+
+    .plan-desc {
+      margin: 0 0 22px;
+      color: var(--ink-2);
+      font-size: 15px;
+    }
+
+    .plan ul {
+      list-style: none;
+      margin: 0 0 28px;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 12px;
+    }
+
+    .plan li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .plan li .ico {
+      flex: none;
+      width: 18px;
+      height: 18px;
+      padding: 3px;
+      border-radius: 50%;
+      background: var(--lime-dim);
+      color: var(--lime);
+    }
+
+    .plan .btn {
+      margin-top: auto;
+      justify-content: center;
+      padding: 15px 20px;
+      font-size: 15px;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .plan .btn-ghost {
+      border: 1px solid var(--line-2);
+    }
+
+    @media (max-width: 980px) {
+      .plans {
+        grid-template-columns: 1fr;
+      }
+
+      .plan {
+        padding: 26px;
+      }
+    }
+
     .retainer {
       border-radius: 32px;
       background: var(--lime);
@@ -2547,12 +3293,21 @@
       border: 1px solid var(--line);
       border-radius: 24px;
       background: linear-gradient(160deg, var(--bg-3), var(--bg-2));
+      position: relative;
       text-align: left;
       transition: transform .5s var(--ease), border-color .4s, box-shadow .5s var(--ease);
     }
 
+    /* the LinkedIn link covers the whole card; the alliance row sits above it with its own link */
+    .pc-link {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: inherit;
+    }
+
     .profile-card:hover,
-    .profile-card:focus-visible {
+    .profile-card:has(.pc-link:focus-visible) {
       transform: translateY(-4px);
       border-color: rgba(193, 255, 114, .45);
       box-shadow: 0 24px 60px -24px rgba(0, 0, 0, .7);
@@ -2574,7 +3329,7 @@
     }
 
     .profile-card:hover .pc-photo img,
-    .profile-card:focus-visible .pc-photo img {
+    .profile-card:has(.pc-link:focus-visible) .pc-photo img {
       filter: none;
       transform: scale(1.03);
     }
@@ -2640,11 +3395,69 @@
     }
 
     .profile-card:hover .pc-cta,
-    .profile-card:focus-visible .pc-cta {
+    .profile-card:has(.pc-link:focus-visible) .pc-cta {
       background: var(--lime);
       border-color: var(--lime);
       color: var(--bg);
       transform: rotate(-45deg);
+    }
+
+    /* pointing at the alliance row lights that up instead of the LinkedIn arrow */
+    .profile-card:has(.pc-alliance:hover) .pc-cta {
+      background: none;
+      border-color: var(--line-2);
+      color: var(--ink);
+      transform: none;
+    }
+
+    .pc-alliance {
+      position: relative;
+      z-index: 2;
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: -6px -8px -4px 0;
+      padding: 14px 0 2px 4px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--ink-2);
+    }
+
+    .pc-alliance img {
+      flex: none;
+      width: 18px;
+      height: auto;
+      transition: transform .5s var(--ease);
+    }
+
+    .pc-alliance b {
+      color: var(--ink);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .pc-al-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-2);
+      white-space: nowrap;
+      transition: background .35s, color .35s;
+    }
+
+    .pc-alliance:hover img {
+      transform: rotate(-8deg) scale(1.1);
+    }
+
+    .pc-alliance:hover .pc-al-cta {
+      background: rgba(255, 149, 97, .14);
+      color: #ff9561;
     }
 
     @media (max-width: 520px) {
@@ -2658,6 +3471,11 @@
 
       .pc-status {
         font-size: 10px;
+      }
+
+      /* phones: just the arrow, so the alliance name stays on one line */
+      .pc-al-txt {
+        display: none;
       }
     }
 
@@ -3712,6 +4530,10 @@
       <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10.5 13.5M21 3l-6.5 18-4-7.5L3 9.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
       <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4h0A1.5 1.5 0 0 1 4 14.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 8.2a2 2 0 1 1 2.6 1.9c-.4.2-.6.5-.6 1v.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="13.6" r="1" fill="currentColor"/></symbol>
       <symbol id="i-quote" viewBox="0 0 24 24"><path d="M6 2.5h8.5L19 7v12.5A2 2 0 0 1 17 21.5H6a2 2 0 0 1-2-2v-15a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 2.5V7h5M8 12.5h7M8 16.5h4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-clickup" viewBox="0 0 24 24"><path fill="currentColor" d="M2 18.439l3.69-2.828c1.961 2.56 4.044 3.739 6.363 3.739 2.307 0 4.33-1.166 6.203-3.704L22 18.405C19.298 22.065 15.941 24 12.053 24 8.178 24 4.788 22.078 2 18.439zM12.04 6.15l-6.568 5.66-3.036-3.52L12.055 0l9.543 8.296-3.05 3.509z"/></symbol>
+      <symbol id="i-asana" viewBox="0 0 24 24"><path fill="currentColor" d="M18.78 12.653c-2.882 0-5.22 2.336-5.22 5.22s2.338 5.22 5.22 5.22 5.22-2.34 5.22-5.22-2.336-5.22-5.22-5.22zm-13.56 0c-2.88 0-5.22 2.337-5.22 5.22s2.338 5.22 5.22 5.22 5.22-2.338 5.22-5.22-2.336-5.22-5.22-5.22zm12-6.525c0 2.883-2.337 5.22-5.22 5.22-2.882 0-5.22-2.337-5.22-5.22 0-2.88 2.338-5.22 5.22-5.22 2.883 0 5.22 2.34 5.22 5.22z"/></symbol>
+      <symbol id="i-todoist" viewBox="0 0 24 24"><path fill="currentColor" d="M21 0H3C1.35 0 0 1.35 0 3v3.858s3.854 2.24 4.098 2.38c.31.18.694.177 1.004 0 .26-.147 8.02-4.608 8.136-4.675.279-.161.58-.107.748-.01.164.097.606.348.84.48.232.134.221.502.013.622l-9.712 5.59c-.346.2-.69.204-1.048.002C3.478 10.907.998 9.463 0 8.882v2.02l4.098 2.38c.31.18.694.177 1.004 0 .26-.147 8.02-4.609 8.136-4.676.279-.16.58-.106.748-.008.164.096.606.347.84.48.232.133.221.5.013.62-.208.121-9.288 5.346-9.712 5.59-.346.2-.69.205-1.048.002C3.478 14.951.998 13.506 0 12.926v2.02l4.098 2.38c.31.18.694.177 1.004 0 .26-.147 8.02-4.609 8.136-4.676.279-.16.58-.106.748-.009.164.097.606.348.84.48.232.133.221.502.013.622l-9.712 5.59c-.346.199-.69.204-1.048.001C3.478 18.994.998 17.55 0 16.97V21c0 1.65 1.35 3 3 3h18c1.65 0 3-1.35 3-3V3c0-1.65-1.35-3-3-3z"/></symbol>
+      <symbol id="i-slack" viewBox="0 0 24 24"><path fill="currentColor" d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></symbol>
     </defs>
   </svg>
 
@@ -3726,7 +4548,7 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#retainer">Retainer</a></li>
+        <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
         <li class="nav-pill" id="navPill" aria-hidden="true"></li>
         <li class="menu-actions">
@@ -3782,8 +4604,8 @@
         <div class="hero-grid">
           <div class="hero-headline">
             <h1 class="hero-title">
-              <span class="ln"><span><em>Shopify</em> stores,</span></span>
-              <span class="ln"><span><span class="outline">built</span> to sell.</span></span>
+              <span class="ln"><span><em>Shopify</em> development,</span></span>
+              <span class="ln"><span><span class="outline">Built</span> better.</span></span>
             </h1>
           </div>
 
@@ -3815,6 +4637,15 @@
           <div class="hero-side">
             <p>Hi, I'm <strong>Sajaath</strong>. I turn designs into fast, high-converting Shopify storefronts
               for D2C brands and agencies across Europe from <strong>Colombo, Sri Lanka</strong>.</p>
+            <div class="trust-flags">
+              <span class="tf-stack">
+                <img src="./assets/images/flags/de.svg" alt="Germany" title="Germany" width="30" height="30">
+                <img src="./assets/images/flags/au.svg" alt="Australia" title="Australia" width="30" height="30">
+                <img src="./assets/images/flags/us.svg" alt="United States" title="United States" width="30" height="30">
+                <img src="./assets/images/flags/lk.svg" alt="Sri Lanka" title="Sri Lanka" width="30" height="30">
+              </span>
+              <span class="tf-text"><span class="mono">Clients worldwide</span>Germany · Australia · USA · Sri&nbsp;Lanka</span>
+            </div>
             <div class="actions">
               <a class="btn btn-lime" href="#work">See my work <svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
               <a class="btn btn-ghost" href="#process">How I work</a>
@@ -4355,32 +5186,84 @@
 <span class="c-tag">{% schema %}</span>
   { <span class="c-str">"name"</span>: <span class="c-str">"Featured product"</span>, <span class="c-str">"presets"</span>: [...] }
 <span class="c-tag">{% endschema %}</span></pre>
+            <div class="code-status mono"><span>Liquid</span><span class="cs-check"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg> Theme check passed</span><span id="codePos">Ln 1, Col 1</span></div>
           </div>
           <div class="trait rv">
-            <div class="glyph">AI</div>
+            <div class="tv tv-ai" aria-hidden="true">
+              <div class="glyph">AI</div>
+              <div class="tv-body">
+                <span class="tv-row" style="--w:78%;--i:0"><b></b><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>
+                <span class="tv-row" style="--w:56%;--i:1"><b></b><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>
+                <span class="tv-row" style="--w:68%;--i:2"><b></b><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>
+                <span class="tv-scan"></span>
+              </div>
+            </div>
             <h4>AI-assisted development</h4>
             <p>AI speeds up the build, and I review every line before it ships, so you get speed without losing quality.</p>
           </div>
           <div class="trait rv">
-            <div class="glyph"><svg class="ico" aria-hidden="true"><use href="#i-timer"/></svg></div>
+            <div class="tv tv-time" aria-hidden="true">
+              <div class="glyph"><svg class="ico" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13.5" r="7.5"/><path d="M9.5 2.5h5M18.5 6.5l1.5-1.5"/><path class="tv-hand" d="M12 13.5V9"/></g></svg></div>
+              <div class="tv-body">
+                <span class="tv-bar" style="--w:72%"><em class="mono">Estimate</em><i><b></b></i></span>
+                <span class="tv-bar" style="--w:68%;--d:.35s"><em class="mono">Actual</em><i><b></b></i></span>
+              </div>
+            </div>
             <h4>Honest about time</h4>
             <p>Clear estimates up front and straight answers on how long things really took.</p>
           </div>
           <div class="trait rv">
-            <div class="glyph"><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg></div>
+            <div class="tv tv-perf" aria-hidden="true">
+              <div class="glyph"><svg class="ico"><use href="#i-bolt"/></svg></div>
+              <div class="tv-body">
+                <svg class="tv-gauge" viewBox="0 0 120 66">
+                  <path class="g-track" d="M12 60a48 48 0 0 1 96 0" />
+                  <path class="g-fill" pathLength="1" d="M12 60a48 48 0 0 1 96 0" />
+                  <line class="g-needle" x1="60" y1="60" x2="60" y2="22" />
+                  <circle class="g-hub" cx="60" cy="60" r="4.5" />
+                </svg>
+                <span class="tv-tags mono"><i>Apps</i><i>JS</i><i>Images</i></span>
+              </div>
+            </div>
             <h4>Performance first</h4>
             <p>Fewer apps, lighter JS, proper image handling. Speed is part of the build, not an add-on.</p>
           </div>
           <div class="trait rv">
-            <div class="glyph"><svg class="ico" aria-hidden="true"><use href="#i-blocks"/></svg></div>
+            <div class="tv tv-edit" aria-hidden="true">
+              <div class="glyph"><svg class="ico"><use href="#i-blocks"/></svg></div>
+              <div class="tv-body">
+                <span class="tv-block b1"><em class="mono">Hero</em></span>
+                <span class="tv-block b2"><em class="mono">Product</em></span>
+                <span class="tv-block b3"><em class="mono">FAQ</em></span>
+                <svg class="tv-cursor" viewBox="0 0 24 24"><path d="M5 3l14 7-6 2-2 6z" fill="#f3f0e8" stroke="#0d0d0c" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
             <h4>Editable by you</h4>
             <p>Sections built for the theme editor, so your team can change content without calling a dev.</p>
           </div>
           <div class="trait rv">
-            <div class="glyph">EU</div>
+            <div class="tv tv-zone" aria-hidden="true">
+              <div class="glyph">EU</div>
+              <div class="tv-body">
+                <span class="tz-row"><em class="mono">Sri Lanka</em><i><b style="--a:16.7%;--b:83.3%"></b></i></span>
+                <span class="tz-row"><em class="mono">Europe</em><i><b style="--a:41.7%;--b:86.1%"></b></i></span>
+                <span class="tz-overlap"><i style="--a:41.7%;--b:83.3%"></i></span>
+              </div>
+            </div>
             <h4>Fits agency teams</h4>
             <p>Used to agency deadlines and handoffs. GMT+5:30 overlaps with the European working day.</p>
           </div>
+        </div>
+
+        <!-- project management tools; add one with an <li> and a logo symbol in the sprite -->
+        <div class="pm-tools rv">
+          <span class="pm-label mono">Project tools I work in</span>
+          <ul aria-label="Project management tools">
+          <li class="pm-tool" style="--brand:#7b68ee"><svg class="pm-ico" aria-hidden="true"><use href="#i-clickup"/></svg><span>ClickUp</span></li>
+          <li class="pm-tool" style="--brand:#f06a6a"><svg class="pm-ico" aria-hidden="true"><use href="#i-asana"/></svg><span>Asana</span></li>
+          <li class="pm-tool" style="--brand:#e44332"><svg class="pm-ico" aria-hidden="true"><use href="#i-todoist"/></svg><span>Todoist</span></li>
+          <li class="pm-tool" style="--brand:#e01e5a"><svg class="pm-ico" aria-hidden="true"><use href="#i-slack"/></svg><span>Slack</span></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -4392,6 +5275,8 @@
           <span class="sec-label mono"><b>05</b> / Services</span>
           <div>
             <h2 class="sec-title">What I <em>do</em></h2>
+            <p class="sec-intro">Development first, but not only code. I also handle the day-to-day Shopify work
+              around it, as a hands-on generalist.</p>
           </div>
         </div>
         <div class="svc">
@@ -4416,19 +5301,69 @@
           <div class="svc-row rv">
             <span class="idx mono">(04)</span>
             <h3>Apps &amp; automation</h3>
-            <p>Choosing, integrating and styling the right apps, and automating store operations with Shopify
-              Flow.</p>
+            <p>Integrating and styling the right apps, and automating store operations with Shopify Flow and
+              Make.com.</p>
+          </div>
+          <div class="svc-row rv">
+            <span class="idx mono">(05)</span>
+            <h3>Store management &amp; app research</h3>
+            <p>The generalist side: day-to-day Shopify admin like products, collections and settings, installing
+              and setting up apps, and testing the options side by side before you commit to one.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Retainer ===== -->
-    <section id="retainer" style="padding-bottom:clamp(88px,12vw,160px)">
+    <!-- ===== Pricing: hourly plans + the monthly retainer ===== -->
+    <section class="section" id="pricing" style="padding-top:0;padding-bottom:clamp(88px,12vw,160px)">
       <div class="wrap">
+        <div class="sec-head rv">
+          <span class="sec-label mono"><b>06</b> / Pricing</span>
+          <div>
+            <h2 class="sec-title">Rates for agencies <em>&amp; stores</em></h2>
+            <p class="sec-intro">Freelance by the hour, or one flat monthly rate. Pick what fits the work. All prices in USD.</p>
+          </div>
+        </div>
+
+        <div class="plans">
+          <article class="plan rv">
+            <div class="plan-top"><span class="plan-name mono">Short-term</span></div>
+            <div class="plan-price"><b>$40</b><span>/ hour</span></div>
+            <p class="plan-desc">For one-off fixes, small features and quick jobs.</p>
+            <ul>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>No minimum hours</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Billed for the hours worked</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>For agencies and stores</li>
+            </ul>
+            <button class="btn btn-ghost" type="button" data-open-inquiry>Start a project <svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </article>
+          <article class="plan featured rv">
+            <div class="plan-top"><span class="plan-name mono">Long-term</span><span class="plan-badge mono">Best rate</span></div>
+            <div class="plan-price"><b>$30</b><span>/ hour</span></div>
+            <p class="plan-desc">For agencies and stores with ongoing Shopify work.</p>
+            <ul>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Minimum 20 hours per month</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>The lower rate for steady work</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>For agencies and stores</li>
+            </ul>
+            <button class="btn btn-lime" type="button" data-open-inquiry>Start a project <svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </article>
+          <article class="plan rv">
+            <div class="plan-top"><span class="plan-name mono">Custom</span></div>
+            <div class="plan-price"><b>Custom</b></div>
+            <p class="plan-desc">For bigger builds or a setup that doesn't fit an hourly plan.</p>
+            <ul>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Scope agreed together first</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>A quote once everything is clear</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Hourly, fixed or a mix</li>
+            </ul>
+            <button class="btn btn-ghost" type="button" data-open-inquiry>Request a quote <svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </article>
+        </div>
+
         <div class="retainer rv">
           <div style="position:relative;z-index:1">
-            <span class="mono">06 / Liquid retainer</span>
+            <span class="mono">Monthly retainer</span>
             <h2>Unlimited Shopify development. One flat rate.</h2>
             <p>For stores that need regular dev work but don't want to hire in-house or manage a rotating cast
               of freelancers.</p>
@@ -4556,7 +5491,7 @@
             <blockquote>Sajaath excels as a software developer at our company, showcasing an open-minded approach and a rapid
               learning curve. I highly appreciate him!</blockquote>
             <figcaption>
-              <div><b>Dr. Markus Lehmann</b><span>Custom software & AI automation</span></div>
+              <div><b>Dr. Markus Lehmann</b><span>Managing Director, comAlpine</span></div>
             </figcaption>
           </figure>
           <figure class="quote peer">
@@ -4757,8 +5692,9 @@
           <button class="copy-btn" id="copyBtn" data-copy="hello@sajaath.com">Copy email</button>
         </div>
 
-        <a class="profile-card rv" href="https://www.linkedin.com/in/sajaathmohamed/" target="_blank" rel="noopener"
-          aria-label="Sajaath Mohamed on LinkedIn">
+        <div class="profile-card rv">
+          <a class="pc-link" href="https://www.linkedin.com/in/sajaathmohamed/" target="_blank" rel="noopener"
+            aria-label="Sajaath Mohamed on LinkedIn"></a>
           <span class="pc-photo">
             <img src="./assets/images/team/sajaath-profile.jpg" alt="Sajaath Mohamed" width="240" height="240" loading="lazy">
             <span class="pc-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#0d0d0c"
@@ -4767,10 +5703,16 @@
           <span>
             <!-- <span class="pc-status mono"><i></i>Available for new projects</span> -->
             <b class="pc-name">Sajaath Mohamed</b>
-            <span class="pc-role">Shopify Developer · Colombo, Sri Lanka</span>
+            <span class="pc-role">Shopify Developer · Colombo, Sri&nbsp;Lanka</span>
           </span>
           <span class="pc-cta" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-        </a>
+          <a class="pc-alliance" href="https://shopdevalliance.com/pages/members/mohamed-sajaath" target="_blank"
+            rel="noopener">
+            <img src="./assets/images/logos/badges/shopdev-alliance.svg" alt="" width="18" height="20">
+            <span>Member of <b>ShopDev Alliance</b></span>
+            <span class="pc-al-cta"><span class="pc-al-txt">View profile</span> <svg class="ico" aria-hidden="true"><use href="#i-arrow-out"/></svg></span>
+          </a>
+        </div>
 
         <div class="contact-meta rv">
           <div><span class="mono">Book a call</span><a href="https://calendly.com/mohamedsajaath0409/30min"
@@ -5668,6 +6610,57 @@
             if (en.isIntersecting && !started) { started = true; show(0); }
             inqFlow.classList.toggle('offscreen', !en.isIntersecting);
           }, { threshold: .25 }).observe(inqFlow);
+        }
+      }
+
+      // Working style: the code card types itself in line by line; the cards' loops only run while on screen;
+      // a soft light follows the pointer across each card.
+      const styleGrid = $('.style-grid');
+      if (styleGrid) {
+        new IntersectionObserver(([en]) => styleGrid.classList.toggle('live', en.isIntersecting)).observe(styleGrid);
+        $$('.trait', styleGrid).forEach(card => card.addEventListener('pointermove', e => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+          card.style.setProperty('--my', `${e.clientY - r.top}px`);
+        }));
+
+        const codeCard = $('.code-card', styleGrid);
+        const pre = $('pre', codeCard);
+        const pos = $('#codePos');
+        const lines = pre.innerHTML.split('\n');
+        pre.innerHTML = lines.map(l => `<span class="cl"><span class="txt">${l || ' '}</span></span>`).join('');
+        const rows = $$('.cl', pre);
+        const setPos = (i, col) => (pos.textContent = `Ln ${i + 1}, Col ${col}`);
+        if (!reduce) {
+          codeCard.classList.add('will-animate');
+          pre.classList.add('will-type');
+          let started = false;
+          new IntersectionObserver(([en], obs) => {
+            if (!en.isIntersecting || started) return;
+            started = true;
+            obs.disconnect();
+            let i = 0;
+            const next = () => {
+              rows.forEach(r => r.classList.remove('cur'));
+              if (i > 0) rows[i - 1].classList.add('cur');
+              if (i >= rows.length) {
+                codeCard.classList.add('done');
+                return;
+              }
+              const row = rows[i];
+              const n = Math.max(1, row.textContent.trimEnd().length);
+              const t = Math.min(900, 60 + n * 16);
+              row.style.setProperty('--n', n);
+              row.style.setProperty('--t', `${t}ms`);
+              row.classList.add('typed');
+              setPos(i, n + 1);
+              i++;
+              setTimeout(next, t + 70);
+            };
+            next();
+          }, { threshold: .35 }).observe(codeCard);
+        } else {
+          setPos(rows.length - 1, rows[rows.length - 1].textContent.length + 1);
         }
       }
 

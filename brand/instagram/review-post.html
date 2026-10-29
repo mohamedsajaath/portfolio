@@ -1,0 +1,353 @@
+<!doctype html>
+<!-- Instagram review post, 1080 × 1350 (4:5). Pick a review with ?i=0, ?i=1 ... from the list below. -->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Review post</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=block"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0c;
+      --bg-2: #141412;
+      --ink: #f3f0e8;
+      --ink-2: rgba(243, 240, 232, .68);
+      --ink-3: rgba(243, 240, 232, .42);
+      --line: rgba(243, 240, 232, .08);
+      --lime: #c1ff72;
+      --f-display: "Bricolage Grotesque", sans-serif;
+      --f-serif: "Instrument Serif", serif;
+      --f-mono: "JetBrains Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .post {
+      position: relative;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(620px 520px at 18% 20%, rgba(193, 255, 114, .17), transparent 70%),
+        radial-gradient(700px 560px at 92% 92%, rgba(130, 100, 255, .2), transparent 70%);
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 60px 60px;
+      background-position: 30px 30px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 20%, transparent 85%);
+    }
+
+    .type {
+      position: absolute;
+      left: -40px;
+      bottom: 150px;
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: 230px;
+      line-height: .86;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+      font-variation-settings: "opsz" 96;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(243, 240, 232, .07);
+    }
+
+    .type em {
+      font-family: var(--f-serif);
+      font-weight: 400;
+      letter-spacing: -.02em;
+    }
+
+    /* viewfinder frame */
+    .vf {
+      position: absolute;
+      inset: 44px;
+    }
+
+    .vf > b {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border: 2.5px solid var(--ink);
+      opacity: .75;
+    }
+
+    .vf > b:nth-child(1) { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+    .vf > b:nth-child(2) { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+    .vf > b:nth-child(3) { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+    .vf > b:nth-child(4) { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+    .meta {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--f-mono);
+      font-size: 17px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+
+    .meta.tl { top: 5px; left: 48px; }
+    .meta.tr { top: 5px; right: 48px; }
+
+    .meta .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 12px rgba(193, 255, 114, .8);
+    }
+
+    .meta b {
+      color: var(--lime);
+      font-weight: 500;
+    }
+
+    /* the review */
+    .body {
+      position: absolute;
+      left: 96px;
+      right: 96px;
+      top: 150px;
+    }
+
+    .mark {
+      height: 118px;
+      font-family: var(--f-serif);
+      font-size: 330px;
+      line-height: .8;
+      color: var(--lime);
+    }
+
+    .stars {
+      display: flex;
+      gap: 8px;
+      margin: 0 0 36px;
+      color: var(--lime);
+    }
+
+    .stars svg {
+      width: 34px;
+      height: 34px;
+    }
+
+    blockquote {
+      margin: 0;
+      font-family: var(--f-display);
+      font-weight: 500;
+      font-size: var(--fs, 64px);
+      line-height: 1.14;
+      letter-spacing: -.035em;
+      font-variation-settings: "opsz" 96;
+      color: var(--ink);
+    }
+
+    blockquote mark {
+      background: none;
+      color: var(--lime);
+      font-family: var(--f-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.12em;
+      letter-spacing: -.02em;
+    }
+
+    /* who said it */
+    .by {
+      position: absolute;
+      left: 96px;
+      right: 96px;
+      bottom: 110px;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      padding: 22px 26px 22px 22px;
+      border: 1.5px solid rgba(243, 240, 232, .16);
+      border-radius: 32px;
+      background: linear-gradient(160deg, rgba(27, 27, 24, .92), rgba(13, 13, 12, .75));
+    }
+
+    .photo {
+      flex: none;
+      width: 104px;
+      height: 104px;
+      border-radius: 26px;
+      overflow: hidden;
+      background: var(--bg-2);
+      display: grid;
+      place-items: center;
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: 38px;
+      color: var(--lime);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: var(--pos, 50% 30%);
+    }
+
+    .who {
+      flex: 1;
+      display: grid;
+      gap: 6px;
+    }
+
+    .who b {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 36px;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+    }
+
+    .who span {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--f-mono);
+      font-size: 17px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+
+    .who span img {
+      width: 30px;
+      height: 22px;
+      border-radius: 4px;
+    }
+
+    .logo {
+      flex: none;
+      width: 170px;
+      opacity: .95;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="post">
+    <div class="glow"></div>
+    <div class="grid"></div>
+    <div class="type">
+      <div>Kind words ·</div>
+      <div>Say <em>hello</em> · Built</div>
+    </div>
+
+    <div class="vf">
+      <b></b><b></b><b></b><b></b>
+      <span class="meta tl"><span class="dot"></span>Client review <b id="num"></b></span>
+      <span class="meta tr">sajaath.com</span>
+    </div>
+
+    <div class="body">
+      <div class="mark">&ldquo;</div>
+      <div class="stars" aria-label="5 out of 5 stars"></div>
+      <blockquote id="quote"></blockquote>
+    </div>
+
+    <div class="by">
+      <div class="photo" id="photo"></div>
+      <div class="who">
+        <b id="name"></b>
+        <span id="role"></span>
+      </div>
+      <img class="logo" src="../logo/svg/sajaath-logo-primary-dark.svg" alt="sajaath">
+    </div>
+  </div>
+
+  <script>
+    // quote: the review text; the part in [brackets] is picked out in lime
+    const REVIEWS = [
+      {
+        name: 'Julian Fritsch', role: 'Scale Solutions', flag: 'de', photo: 'julian.png', fs: 68,
+        quote: 'Always a pleasure working with Sajaath. His deliveries are right on time and also very high quality. If you need an experienced, fast front-end developer, [Sajaath is your guy!]',
+      },
+      {
+        name: 'Daniel Geiger', role: 'Scale Solutions', flag: 'de', photo: 'daniel-geiger.jpg', fs: 70,
+        quote: 'Sajaath is a standout developer who does an amazing job supporting our e-commerce agency on various client projects, consistently delivering [clean, high-performance code] under tight agency deadlines.',
+      },
+      {
+        name: 'Jan Moritz', role: 'OOAKLINE', flag: 'de', photo: 'jan-moritz.jpg', fs: 66,
+        quote: "Very happy with the work of Mohamed. He is a great developer and made every request possible. Communication was seamless and he is honest about the time it took. [We from OOAKLINE really recommend him!]",
+      },
+      {
+        name: 'Oliver Schönbett', role: 'Eshop Guide', flag: 'de', photo: 'oliver.jpg', fs: 68,
+        quote: 'I have been working with Sajaath on several Shopify frontend projects, and I really enjoyed the collaboration. Sajaath is very responsible, pays attention to detail and is [a versatile, skilled Shopify developer.]',
+      },
+      {
+        name: 'Prath Losh', role: 'Tectera', flag: 'lk', photo: 'prath-losh.jpg', fs: 64,
+        quote: 'He demonstrated strong technical expertise, attention to detail, and a clear understanding of Shopify development. [I would highly recommend him] to anyone looking for a skilled and dependable Shopify developer.',
+      },
+      {
+        name: 'Van Nguyen', role: 'StayGoldenHi', flag: 'us', photo: 'van.png', fs: 82,
+        quote: "Sajaath has [good working ethics] and is very responsive. He's very humble and open to constructive feedback.",
+      },
+      {
+        name: 'Tarek Jaber', role: 'FuxlShop', flag: 'de', photo: 'tarek-jaber.png', fs: 66,
+        quote: "Anyone who tries their service will never lose anything. They know exactly what they're doing, and they fix everything quickly and easily. [Real trust, real quality, and outstanding service.]",
+      },
+    ];
+
+    const i = Number(new URLSearchParams(location.search).get('i') || 0);
+    const r = REVIEWS[i];
+    const star = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.6 2.85 5.95 6.55.8-4.83 4.5 1.24 6.5L12 17.15 6.19 20.35l1.24-6.5L2.6 9.35l6.55-.8Z"/></svg>';
+    document.querySelector('.stars').innerHTML = star.repeat(5);
+    document.getElementById('num').textContent = `${String(i + 1).padStart(2, '0')} / ${String(REVIEWS.length).padStart(2, '0')}`;
+    const q = document.getElementById('quote');
+    q.innerHTML = r.quote.replace(/&/g, '&amp;').replace(/\[(.+?)\]/g, '<mark>$1</mark>');
+    let fs = r.fs || 64;
+    const fit = () => {
+      q.style.setProperty('--fs', `${fs}px`);
+      const gap = document.querySelector('.by').getBoundingClientRect().top - q.getBoundingClientRect().bottom;
+      if (gap < 70 && fs > 40) { fs -= 2; fit(); }
+    };
+    // measure once the real fonts are in, starting again from the chosen size
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { fs = r.fs || 64; fit(); });
+    document.getElementById('name').textContent = r.name;
+    document.getElementById('role').innerHTML =
+      `${r.flag ? `<img src="../../assets/images/flags/${r.flag}.svg" alt="">` : ''}${r.role}`;
+    const ph = document.getElementById('photo');
+    if (r.photo) {
+      ph.innerHTML = `<img src="../../assets/images/clients/${r.photo}" alt="">`;
+      if (r.pos) ph.style.setProperty('--pos', r.pos);
+    } else {
+      ph.textContent = r.name.split(' ').map(w => w[0]).join('').slice(0, 2);
+    }
+  </script>
+</body>
+
+</html>
