@@ -1,0 +1,1165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Experience — Sajaath Mohamed, Shopify Developer</title>
+  <meta name="description"
+    content="Work experience of Sajaath Mohamed: Shopify development for German agencies and brands, software development, and how it started.">
+  <link rel="canonical" href="https://sajaath.com/experience/" />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/sajaath-mark.svg" />
+  <meta name="theme-color" content="#0d0d0c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0c;
+      --bg-2: #141412;
+      --bg-3: #1b1b18;
+      --ink: #f3f0e8;
+      --ink-2: rgba(243, 240, 232, .68);
+      --ink-3: rgba(243, 240, 232, .42);
+      --line: rgba(243, 240, 232, .12);
+      --line-2: rgba(243, 240, 232, .22);
+      --lime: #c1ff72;
+      --lime-dim: rgba(193, 255, 114, .14);
+
+      --f-display: "Bricolage Grotesque", "Inter Tight", system-ui, sans-serif;
+      --f-serif: "Instrument Serif", Georgia, serif;
+      --f-body: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+      --gutter: clamp(16px, 4.5vw, 72px);
+      --max: 1240px;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--f-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      overflow-x: clip;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mono {
+      font-family: var(--f-mono);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .ico {
+      display: inline-block;
+      flex: none;
+      width: 1em;
+      height: 1em;
+      vertical-align: -.14em;
+    }
+
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(700px 520px at 12% 8%, rgba(193, 255, 114, .12), transparent 70%),
+        radial-gradient(800px 600px at 95% 50%, rgba(130, 100, 255, .12), transparent 70%);
+    }
+
+    .backdrop::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(243, 240, 232, .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(243, 240, 232, .05) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, #000 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, #000 20%, transparent 80%);
+    }
+
+    /* ---------- nav ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(13, 13, 12, .78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 76px;
+    }
+
+    .wordmark {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: 24px;
+      letter-spacing: -.045em;
+      line-height: 1;
+      font-variation-settings: "opsz" 96;
+    }
+
+    .wordmark .j {
+      position: relative;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    .wordmark .j::after {
+      content: "";
+      position: absolute;
+      left: .006em;
+      top: .068em;
+      width: .24em;
+      height: .24em;
+      background: var(--lime);
+      box-shadow: 0 0 0 .04em var(--bg);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      white-space: nowrap;
+      transition: transform .3s var(--ease), background .3s, color .3s, border-color .3s;
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--line-2);
+      color: var(--ink-2);
+    }
+
+    .btn-ghost:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .btn-lime {
+      background: var(--lime);
+      color: var(--bg);
+    }
+
+    .btn-lime:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn .ico {
+      transition: transform .3s var(--ease);
+    }
+
+    .btn:hover .ico {
+      transform: translateX(2px) rotate(-45deg);
+    }
+
+    .btn-ghost:hover .ico.back {
+      transform: translateX(-3px);
+    }
+
+    /* ---------- header ---------- */
+    .head {
+      padding: clamp(64px, 9vw, 120px) 0 clamp(48px, 6vw, 80px);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink-3);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--lime);
+    }
+
+    .head h1 {
+      margin: 22px 0 0;
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: clamp(50px, 9vw, 140px);
+      line-height: .9;
+      letter-spacing: -.055em;
+      font-variation-settings: "opsz" 96;
+    }
+
+    .head h1 em {
+      font-family: var(--f-serif);
+      font-weight: 400;
+      letter-spacing: -.025em;
+      color: var(--lime);
+      font-size: 1.06em;
+    }
+
+    .head-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 32px 48px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .head p {
+      margin: 0;
+      max-width: 54ch;
+      color: var(--ink-2);
+      font-size: 18px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 12px;
+    }
+
+    .stat {
+      min-width: 130px;
+      padding: 16px 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(20, 20, 18, .7);
+    }
+
+    .stat b {
+      display: block;
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: 40px;
+      letter-spacing: -.05em;
+      line-height: 1;
+    }
+
+    .stat:first-child b {
+      color: var(--lime);
+    }
+
+    .stat span {
+      color: var(--ink-3);
+      font-size: 10.5px;
+    }
+
+    /* ---------- timeline ----------
+       Columns: dates | rail | card. A lime line fills the rail as you scroll; each stop's node lights up
+       and its card slides in as the line reaches it. Current roles keep a slow pulse. */
+    .timeline {
+      position: relative;
+      list-style: none;
+      margin: 0;
+      padding: 0 0 clamp(64px, 8vw, 110px);
+      --rail-x: 210px;
+    }
+
+    .timeline::before,
+    .timeline .fill {
+      content: "";
+      position: absolute;
+      top: 10px;
+      bottom: 0;
+      left: var(--rail-x);
+      width: 2px;
+      margin-left: -1px;
+      border-radius: 2px;
+    }
+
+    .timeline::before {
+      background: linear-gradient(var(--line-2), var(--line-2) 92%, transparent);
+    }
+
+    .timeline .fill {
+      bottom: auto;
+      height: calc(var(--p, 0) * (100% - 10px));
+      background: linear-gradient(var(--lime), rgba(193, 255, 114, .65));
+      box-shadow: 0 0 18px rgba(193, 255, 114, .55);
+    }
+
+    /* the glowing head of the line */
+    .timeline .fill::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      width: 12px;
+      height: 12px;
+      margin-left: -6px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 0 6px rgba(193, 255, 114, .18), 0 0 24px var(--lime);
+    }
+
+    .stop {
+      position: relative;
+      display: grid;
+      grid-template-columns: calc(var(--rail-x) - 34px) 68px minmax(0, 1fr);
+      padding-bottom: 28px;
+    }
+
+    .when {
+      padding-top: 26px;
+      text-align: right;
+      opacity: .35;
+      transform: translateX(-12px);
+      transition: opacity .6s var(--ease), transform .7s var(--ease);
+    }
+
+    .when b {
+      display: block;
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: 30px;
+      letter-spacing: -.04em;
+      line-height: 1;
+    }
+
+    .when span {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink-3);
+      font-size: 11px;
+    }
+
+    .node {
+      position: relative;
+      justify-self: center;
+      width: 18px;
+      height: 18px;
+      margin-top: 32px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--line-2);
+      transform: scale(.7);
+      transition: transform .6s cubic-bezier(.3, 1.6, .5, 1), background .4s, border-color .4s, box-shadow .6s;
+      z-index: 1;
+    }
+
+    .card {
+      position: relative;
+      padding: 26px 28px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(170deg, var(--bg-3), var(--bg-2));
+      overflow: hidden;
+      opacity: 0;
+      transform: translateX(46px) scale(.98);
+      transition: opacity .8s var(--ease), transform .9s var(--ease), border-color .4s, box-shadow .5s var(--ease);
+    }
+
+    /* a light that follows the pointer across the card */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 0%), rgba(193, 255, 114, .08), transparent 60%);
+      opacity: 0;
+      transition: opacity .4s;
+      pointer-events: none;
+    }
+
+    .stop.on .when {
+      opacity: 1;
+      transform: none;
+    }
+
+    .stop.on .node {
+      transform: scale(1);
+      background: var(--lime);
+      border-color: var(--lime);
+      box-shadow: 0 0 0 6px rgba(193, 255, 114, .16), 0 0 20px rgba(193, 255, 114, .6);
+    }
+
+    .stop.on .card {
+      opacity: 1;
+      transform: none;
+    }
+
+    .card:hover {
+      border-color: rgba(193, 255, 114, .45);
+      box-shadow: 0 30px 60px -34px rgba(0, 0, 0, .9);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    /* current roles: a ring that keeps pulsing out of the node */
+    .stop.now .node::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      border: 2px solid var(--lime);
+      opacity: 0;
+    }
+
+    .stop.now.on .node::after {
+      animation: ring 2.2s ease-out infinite;
+    }
+
+    @keyframes ring {
+      0% {
+        transform: scale(1);
+        opacity: .8;
+      }
+
+      100% {
+        transform: scale(2.6);
+        opacity: 0;
+      }
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .role {
+      margin: 0;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: clamp(22px, 2.2vw, 28px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+
+    .company {
+      display: block;
+      margin-top: 6px;
+      color: var(--ink-2);
+      font-weight: 500;
+    }
+
+    .logo {
+      flex: none;
+      display: grid;
+      place-items: center;
+      width: 116px;
+      height: 54px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(243, 240, 232, .03);
+      transition: transform .5s var(--ease), border-color .4s, background .4s;
+    }
+
+    .logo img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 32px;
+      object-fit: contain;
+      opacity: .85;
+    }
+
+    .logo b {
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -.03em;
+      color: var(--ink-2);
+    }
+
+    .logo .ico {
+      width: 24px;
+      height: 24px;
+      color: var(--ink-2);
+    }
+
+    .card:hover .logo {
+      transform: rotate(-3deg) scale(1.04);
+      border-color: rgba(193, 255, 114, .35);
+      background: rgba(193, 255, 114, .06);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--ink-2);
+    }
+
+    .pill img {
+      width: 18px;
+      height: 13px;
+      border-radius: 2px;
+    }
+
+    .pill.now {
+      border-color: transparent;
+      background: var(--lime);
+      color: var(--bg);
+      font-weight: 600;
+    }
+
+    .pill.now::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--bg);
+    }
+
+    .desc {
+      margin: 18px 0 0;
+      color: var(--ink-2);
+      font-size: 15.5px;
+    }
+
+    .desc+.desc {
+      margin-top: 10px;
+    }
+
+    .desc strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .points {
+      list-style: none;
+      margin: 14px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .points li {
+      position: relative;
+      padding-left: 22px;
+      color: var(--ink-2);
+      font-size: 15px;
+    }
+
+    .points li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: .62em;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background: var(--lime);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 18px;
+    }
+
+    .skills i {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(243, 240, 232, .06);
+      font-style: normal;
+      font-size: 12.5px;
+      color: var(--ink-2);
+    }
+
+    /* a company with more than one role: the roles sit on a small inner track */
+    .roles {
+      list-style: none;
+      margin: 20px 0 0;
+      padding: 0 0 0 22px;
+      border-left: 1px dashed var(--line-2);
+      display: grid;
+      gap: 22px;
+    }
+
+    .roles>li {
+      position: relative;
+    }
+
+    .roles>li::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: 8px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bg-2);
+      border: 2px solid var(--lime);
+    }
+
+    .roles h4 {
+      margin: 0;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 19px;
+      letter-spacing: -.025em;
+    }
+
+    .roles .sub {
+      display: block;
+      margin-top: 2px;
+      color: var(--ink-3);
+      font-size: 11px;
+    }
+
+    .roles .desc {
+      margin-top: 10px;
+    }
+
+    /* the career-change stops are quieter */
+    .stop.muted .card {
+      background: rgba(20, 20, 18, .6);
+      border-style: dashed;
+    }
+
+    /* ---------- closing ---------- */
+    .cta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: clamp(56px, 7vw, 96px);
+      padding: clamp(28px, 4vw, 48px);
+      border-radius: 28px;
+      background: var(--lime);
+      color: var(--bg);
+    }
+
+    .cta h2 {
+      margin: 0;
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: clamp(28px, 3.6vw, 48px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .cta h2 em {
+      font-family: var(--f-serif);
+      font-weight: 400;
+    }
+
+    .cta .btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .cta .btn {
+      padding: 16px 24px;
+      font-size: 15px;
+    }
+
+    .cta .btn-dark {
+      background: var(--bg);
+      color: var(--lime);
+    }
+
+    .cta .btn-line {
+      border: 1.5px solid rgba(13, 13, 12, .35);
+    }
+
+    .cta .btn-line:hover {
+      border-color: var(--bg);
+    }
+
+    footer {
+      padding: 0 0 48px;
+      color: var(--ink-3);
+      font-size: 13px;
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    footer nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer a:hover {
+      color: var(--lime);
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 860px) {
+      .timeline {
+        --rail-x: 11px;
+      }
+
+      .stop {
+        grid-template-columns: 22px minmax(0, 1fr);
+        gap: 0 16px;
+      }
+
+      .node {
+        grid-column: 1;
+        grid-row: 1;
+        margin-top: 28px;
+      }
+
+      .when {
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        padding: 22px 0 12px;
+        text-align: left;
+        transform: translateY(-8px);
+      }
+
+      .when b {
+        font-size: 24px;
+      }
+
+      .when span {
+        margin: 0;
+      }
+
+      .card {
+        grid-column: 2;
+        grid-row: 2;
+        padding: 22px;
+        transform: translateY(30px);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .card-top {
+        flex-direction: column-reverse;
+      }
+
+      .logo {
+        width: 100px;
+        height: 46px;
+      }
+
+      .logo img {
+        max-height: 26px;
+      }
+
+      .stats {
+        width: 100%;
+      }
+
+      .stat {
+        flex: 1;
+        min-width: 0;
+        padding: 14px;
+      }
+
+      .stat b {
+        font-size: 32px;
+      }
+
+      .head p {
+        font-size: 16px;
+      }
+
+      .nav-actions .btn-ghost span {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .when,
+      .card,
+      .node {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .timeline .fill {
+        height: calc(100% - 10px);
+      }
+
+      .stop.now.on .node::after {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 12h5"/></g></symbol>
+      <symbol id="i-cam" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l14-3 1.5 5L4.5 12z"/><path d="M18 6.5 21 6v5l-2.4.4M8 11.5V16M5 16h6M8 16v4"/></g></symbol>
+    </defs>
+  </svg>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="../" class="wordmark" aria-label="sajaath.com — home">sa<span class="j">j</span>aath</a>
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="../"><svg class="ico back" aria-hidden="true"><use href="#i-back"/></svg><span>Back to site</span></a>
+        <a class="btn btn-lime" href="../#inquiry">Start a project <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="head">
+      <div class="wrap">
+        <span class="eyebrow mono">Experience</span>
+        <h1>Where I've <em>worked</em></h1>
+        <div class="head-row">
+          <p>From fixing CCTV systems to building Shopify stores for German agencies and brands: the roles, the
+            teams and the work behind them.</p>
+          <div class="stats">
+            <div class="stat"><b data-count="2">2</b><span class="mono">Current roles</span></div>
+            <div class="stat"><b data-count="7">7</b><span class="mono">Companies</span></div>
+            <div class="stat"><b>2023</b><span class="mono">First dev role</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <ol class="timeline" id="timeline">
+          <li class="fill" aria-hidden="true"></li>
+
+          <li class="stop now">
+            <div class="when"><b>2026</b><span class="mono">Jul 2026 – Present</span></div>
+            <span class="node" aria-hidden="true"></span>
+            <article class="card">
+              <div class="card-top">
+                <div>
+                  <h2 class="role">Freelance Shopify Developer</h2>
+                  <span class="company">Stay Golden HI Jewelry</span>
+                </div>
+                <span class="logo"><img src="../assets/images/logos/brands/staygolden.png" alt="Stay Golden"></span>
+              </div>
+              <div class="meta">
+                <span class="pill now">Current</span>
+                <span class="pill">Freelance</span>
+                <span class="pill"><img src="../assets/images/flags/us.svg" alt="">Hawaii brand · Remote</span>
+              </div>
+              <p class="desc">Creating new designs, configuring and integrating apps, managing development workflows
+                and working closely with the CRO manager to improve the overall store experience and performance.</p>
+              <div class="skills"><i>Shopify</i><i>Liquid</i><i>Apps</i><i>CRO</i></div>
+            </article>
+          </li>
+
+          <li class="stop now">
+            <div class="when"><b>2025</b><span class="mono">May 2025 – Present</span></div>
+            <span class="node" aria-hidden="true"></span>
+            <article class="card">
+              <div class="card-top">
+                <div>
+                  <h2 class="role">Scale Solutions</h2>
+                  <span class="company">Shopify agency · 1 yr 6 mos</span>
+                </div>
+                <span class="logo"><img src="../assets/images/logos/brands/scalesolutions.png" alt="Scale Solutions"></span>
+              </div>
+              <div class="meta">
+                <span class="pill now">Current</span>
+                <span class="pill"><img src="../assets/images/flags/de.svg" alt="">Germany · Remote</span>
+              </div>
+              <ol class="roles">
+                <li>
+                  <h4>Freelance Shopify Developer</h4>
+                  <span class="sub mono">Freelance · May 2025 – Present</span>
+                  <p class="desc">Ongoing freelance Shopify work for the agency, including Shopify app work.</p>
+                </li>
+                <li>
+                  <h4>Shopify Developer</h4>
+                  <span class="sub mono">Full-time · Jun 2025 – Feb 2026 · 9 mos</span>
+                  <p class="desc">Built and customised <strong>more than 15 Shopify stores</strong> for German clients:
+                    stores from scratch, reusable sections and theme blocks, and modern storefronts on Shopify's
+                    Horizon theme architecture.</p>
+                  <p class="desc">Worked closely with designers to turn Figma designs into responsive,
+                    high-performance themes, and built automations with Make.com and Shopify Flow to cut manual
+                    work.</p>
+                </li>
+              </ol>
+              <div class="skills"><i>Shopify</i><i>Liquid</i><i>Horizon</i><i>Figma</i><i>Make.com</i><i>Shopify Flow</i></div>
+            </article>
+          </li>
+
+          <li class="stop">
+            <div class="when"><b>2024</b><span class="mono">May 2024 – May 2025</span></div>
+            <span class="node" aria-hidden="true"></span>
+            <article class="card">
+              <div class="card-top">
+                <div>
+                  <h2 class="role">Shopify Developer</h2>
+                  <span class="company">Eshop Guide – Die Shopify Plus Agentur</span>
+                </div>
+                <span class="logo"><img src="../assets/images/logos/brands/eshopguide.png" alt="Eshop Guide"></span>
+              </div>
+              <div class="meta">
+                <span class="pill">Contract · 1 yr 1 mo</span>
+                <span class="pill"><img src="../assets/images/flags/de.svg" alt="">Germany · Remote</span>
+              </div>
+              <p class="desc">Staff-augmented Shopify developer through comAlpine, working directly with the German
+                development team. Trained by Eshop Guide's experienced developers and contributed to the development,
+                customisation and maintenance of <strong>more than 30 Shopify stores</strong>.</p>
+              <p class="desc">Later mentored and trained two trainee developers to take over my responsibilities, for
+                a smooth handover and project continuity.</p>
+              <div class="skills"><i>Shopify</i><i>Liquid</i><i>Shopify Plus</i><i>Mentoring</i></div>
+            </article>
+          </li>
+
+          <li class="stop">
+            <div class="when"><b>2023</b><span class="mono">Oct 2023 – May 2025</span></div>
+            <span class="node" aria-hidden="true"></span>
+            <article class="card">
+              <div class="card-top">
+                <div>
+                  <h2 class="role">Software Developer</h2>
+                  <span class="company">comAlpine Informationssysteme GmbH</span>
+                </div>
+                <span class="logo"><b>cA</b></span>
+              </div>
+              <div class="meta">
+                <span class="pill">Full-time · 1 yr 8 mos</span>
+                <span class="pill"><img src="../assets/images/flags/de.svg" alt="">Germany · Remote</span>
+              </div>
+              <p class="desc">Design, development and maintenance of software projects across several technologies,
+                plus architecture discussions, mentoring trainee developers and QA.</p>
+              <ul class="points">
+                <li>Maintained the OneRes Flight Management System in Core PHP</li>
+                <li>Backend, system design and QA on the Woblu Property Management System</li>
+                <li>Backend services with Node.js and Express.js</li>
+                <li>New features and upkeep for SteelWall, a PHP-based CMS</li>
+                <li>Staff-augmented developer for the German Shopify agency Eshop Guide</li>
+              </ul>
+              <div class="skills"><i>PHP</i><i>Node.js</i><i>Express.js</i><i>System design</i><i>QA</i></div>
+            </article>
+          </li>
+
+          <li class="stop">
+            <div class="when"><b>2023</b><span class="mono">Oct 2023 – May 2025</span></div>
+            <span class="node" aria-hidden="true"></span>
+            <article class="card">
+              <div class="card-top">
+                <div>
+                  <h2 class="role">Software Developer</h2>
+                  <span class="company">BayLanka Technologies</span>
+                </div>
+                <span class="logo"><img src="../assets/images/logos/brands/baylanka.png" alt="BayLanka Technologies"></span>
+              </div>
+              <div class="meta">
+                <span class="pill">Part-time · 1 yr 8 mos</span>
+                <span class="pill"><img src="../assets/images/flags/lk.svg" alt="">Sri Lanka · Remote</span>
+              </div>
+              <p class="desc">Software development alongside comAlpine, its German partner company.</p>
+              <div class="skills"><i>PHP</i><i>Node.js</i></div>
+            </article>
+          </li>
+
+          <li class="stop">
+            <div class="when"><b>2023</b><span class="mono">Sep 2023 – Oct 2024</span></div>
+            <span class="node" aria-hidden="true"></span>
+            <article class="card">
+              <div class="card-top">
+                <div>
+                  <h2 class="role">Imara Software Solutions</h2>
+                  <span class="company">Where it started · 1 yr 2 mos</span>
+                </div>
+                <span class="logo"><img src="../assets/images/logos/brands/imarasoft.png" alt="Imara Software Solutions"></span>
+              </div>
+              <div class="meta">
+                <span class="pill"><img src="../assets/images/flags/lk.svg" alt="">Puttalam, Sri Lanka · On-site</span>
+              </div>
+              <ol class="roles">
+                <li>
+                  <h4>Software Developer</h4>
+                  <span class="sub mono">Full-time · Sep 2023 – Oct 2024</span>
+                  <p class="desc">Projects in PHP, Laravel, HTML, CSS and JavaScript, including several e-commerce
+                    solutions, working closely with senior software architects. A strong grounding in clean,
+                    maintainable code and team workflows.</p>
+                </li>
+                <li>
+                  <h4>Trainee Software Developer</h4>
+                  <span class="sub mono">Internship · Sep 2023 – Oct 2023</span>
+                </li>
+              </ol>
+              <div class="skills"><i>PHP</i><i>Laravel</i><i>JavaScript</i><i>Bootstrap</i><i>Make.com</i></div>
+            </article>
+          </li>
+
+          <li class="stop muted">
+            <div class="when"><b>2022</b><span class="mono">May 2022 – Sep 2022</span></div>
+            <span class="node" aria-hidden="true"></span>
+            <article class="card">
+              <div class="card-top">
+                <div>
+                  <h2 class="role">Professional development</h2>
+                  <span class="company">Career break · Self-directed learning</span>
+                </div>
+                <span class="logo"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg></span>
+              </div>
+              <p class="desc">Taught myself software development with freeCodeCamp and other open learning platforms:
+                programming, web development, engineering best practices and modern tools, through hands-on
+                projects. The step that turned into a developer career.</p>
+            </article>
+          </li>
+
+          <li class="stop muted">
+            <div class="when"><b>2019</b><span class="mono">Jan 2019 – Feb 2022</span></div>
+            <span class="node" aria-hidden="true"></span>
+            <article class="card">
+              <div class="card-top">
+                <div>
+                  <h2 class="role">CCTV Technician</h2>
+                  <span class="company">Telica CCTV</span>
+                </div>
+                <span class="logo"><svg class="ico" aria-hidden="true"><use href="#i-cam"/></svg></span>
+              </div>
+              <div class="meta">
+                <span class="pill">Full-time · 3 yrs 2 mos</span>
+                <span class="pill"><img src="../assets/images/flags/lk.svg" alt="">Puttalam, Sri Lanka</span>
+              </div>
+              <div class="skills"><i>CCTV troubleshooting</i><i>Teamwork</i></div>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="cta">
+          <h2>Want this experience on <em>your</em> store?</h2>
+          <div class="btns">
+            <a class="btn btn-dark" href="../#inquiry">Start a project <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-line" href="../certification/">See certifications</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Sajaath Mohamed</span>
+      <nav>
+        <a href="../certification/">Certifications</a>
+        <a href="https://www.linkedin.com/in/sajaathmohamed/details/experience/" target="_blank" rel="noopener">Also on LinkedIn ↗</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const timeline = document.getElementById('timeline');
+      const stops = $$('.stop', timeline);
+
+      // the lime line fills down the rail as you scroll; each stop lights up once the line reaches its node
+      const update = () => {
+        const r = timeline.getBoundingClientRect();
+        const mark = innerHeight * .8;
+        const p = Math.max(0, Math.min(1, (mark - r.top) / (r.height - 40)));
+        timeline.style.setProperty('--p', reduce ? 1 : p.toFixed(4));
+        stops.forEach(s => {
+          const n = s.querySelector('.node').getBoundingClientRect();
+          if (reduce || n.top < mark + 4) s.classList.add('on');
+        });
+      };
+      let ticking = false;
+      addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }, { passive: true });
+      addEventListener('resize', update);
+      update();
+      // measure again once fonts and images have settled the layout
+      addEventListener('load', update);
+      if (document.fonts) document.fonts.ready.then(update);
+
+      // light follows the pointer on each card
+      $$('.card').forEach(card => card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--my', `${e.clientY - r.top}px`);
+      }));
+
+      // stats count up once
+      if (!reduce) {
+        $$('[data-count]').forEach(el => {
+          const end = +el.dataset.count, t0 = performance.now();
+          const step = now => {
+            const k = Math.min(1, (now - t0) / 1000);
+            el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3)));
+            if (k < 1) requestAnimationFrame(step);
+          };
+          el.textContent = '0';
+          requestAnimationFrame(step);
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
