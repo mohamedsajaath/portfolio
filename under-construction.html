@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sajaath Mohamed — Under Construction</title>
+  <meta name="description"
+    content="sajaath.com is being rebuilt and rebranded. For urgent queries, contact hello@sajaath.com.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://sajaath.com/" />
+  <link rel="shortcut icon" type="image/svg+xml" href="./assets/images/logos/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #fff3e6;
+      --ink-soft: rgba(255, 238, 222, .78);
+      --ink-faint: rgba(255, 230, 210, .55);
+      --line: rgba(255, 228, 200, .35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background: #120a0d;
+      color: var(--ink);
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, sans-serif;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #scene {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* readability scrim + lens vignette */
+    .grade {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 120% 90% at 60% 70%, transparent 45%, rgba(8, 4, 8, .55) 100%),
+        linear-gradient(90deg, rgba(16, 8, 16, .58) 0%, rgba(16, 8, 16, .28) 38%, transparent 58%);
+    }
+
+    .grain {
+      position: fixed;
+      inset: -50%;
+      pointer-events: none;
+      opacity: .13;
+      mix-blend-mode: overlay;
+      animation: grain 1s steps(6) infinite;
+    }
+
+    @keyframes grain {
+      0% { transform: translate(0, 0); }
+      20% { transform: translate(-3%, 2%); }
+      40% { transform: translate(2%, -4%); }
+      60% { transform: translate(-4%, -1%); }
+      80% { transform: translate(3%, 3%); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 40px clamp(24px, 6.5vw, 104px) 28px;
+      pointer-events: none;
+    }
+
+    .content a {
+      pointer-events: auto;
+    }
+
+    .logo img {
+      height: 30px;
+      width: auto;
+      display: block;
+    }
+
+    .copy {
+      margin-top: clamp(48px, 13vh, 150px);
+      max-width: 560px;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 26px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .kicker::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: var(--line);
+    }
+
+    h1 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(46px, 6.4vw, 96px);
+      line-height: .98;
+      letter-spacing: -.01em;
+      margin: 0 0 26px;
+      text-shadow: 0 2px 30px rgba(20, 8, 12, .35);
+    }
+
+    h1 em {
+      font-style: italic;
+      color: #ffd9b0;
+    }
+
+    .lede {
+      font-size: clamp(15px, 1.25vw, 18px);
+      line-height: 1.65;
+      color: var(--ink-soft);
+      margin: 0 0 40px;
+      max-width: 440px;
+    }
+
+    .contact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact span {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .contact a {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(26px, 2.4vw, 34px);
+      color: var(--ink);
+      text-decoration: none;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+      transition: border-color .3s ease, gap .3s ease;
+    }
+
+    .contact a:hover,
+    .contact a:focus-visible {
+      border-color: var(--ink);
+      gap: 18px;
+      outline: none;
+    }
+
+    .contact svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    footer {
+      margin-top: auto;
+      font-size: 12px;
+      letter-spacing: .06em;
+      color: var(--ink-faint);
+    }
+
+    @media (max-width: 799px) {
+      .grade {
+        background:
+          radial-gradient(ellipse 140% 80% at 50% 85%, transparent 40%, rgba(8, 4, 8, .5) 100%),
+          linear-gradient(180deg, rgba(16, 8, 16, .6) 0%, rgba(16, 8, 16, .3) 45%, transparent 62%);
+      }
+
+      .content {
+        padding: 26px 24px 20px;
+      }
+
+      .logo img {
+        height: 26px;
+      }
+
+      .copy {
+        margin-top: 36px;
+      }
+
+      .kicker {
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        font-size: 44px;
+        margin-bottom: 16px;
+      }
+
+      .lede {
+        font-size: 15px;
+        line-height: 1.55;
+        margin-bottom: 22px;
+      }
+
+      .contact a {
+        font-size: 26px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .grain {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="grade"></div>
+  <div class="grain" id="grain"></div>
+
+  <div class="content">
+    <a class="logo" href="./" aria-label="Sajaath Mohamed — home" style="display: none;">
+      <img src="./assets/images/logos/Sajaath-logo-white.svg" alt="Sajaath Mohamed" width="110" height="38">
+    </a>
+
+    <section class="copy">
+      <p class="kicker">Under construction</p>
+      <h1>We're rebuilding,<br><em>from the ground up.</em></h1>
+      <p class="lede">
+        sajaath.com is being reconstructed and rebranded right now. The crew is on site and a new
+        look is on its way.
+      </p>
+      <div class="contact">
+        <span>Urgent queries</span>
+        <a href="mailto:hello@sajaath.com">
+          hello@sajaath.com
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <footer>&copy; <span id="year"></span> Sajaath Mohamed</footer>
+  </div>
+
+  <script>
+    (() => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // film grain tile
+      (() => {
+        const n = document.createElement('canvas');
+        n.width = n.height = 180;
+        const g = n.getContext('2d');
+        const img = g.createImageData(180, 180);
+        for (let i = 0; i < img.data.length; i += 4) {
+          const v = Math.random() * 255;
+          img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+          img.data[i + 3] = 255;
+        }
+        g.putImageData(img, 0, 0);
+        document.getElementById('grain').style.backgroundImage = `url(${n.toDataURL()})`;
+      })();
+
+      const cvs = document.getElementById('scene');
+      const ctx = cvs.getContext('2d');
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const C = {
+        far1: 'rgba(132, 62, 70, .5)',
+        far2: 'rgba(72, 32, 44, .88)',
+        mid: '#1b0f14',
+        ground: '#130a0e',
+        fg: '#09050a'
+      };
+
+      const rng = seed => () => {
+        seed = seed + 0x6D2B79F5 | 0;
+        let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      };
+      const clamp01 = v => Math.max(0, Math.min(1, v));
+      const ease = v => v * v * (3 - 2 * v);
+
+      let W, H, s, gy, mobile, L;
+      let far1 = [], far2 = [], groundPts = [], clouds = [], dust = [], birds = [];
+      let mx = 0, mxT = 0;
+
+      function resize() {
+        W = innerWidth;
+        H = innerHeight;
+        const dpr = Math.min(devicePixelRatio || 1, 2);
+        cvs.width = Math.round(W * dpr);
+        cvs.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        mobile = W < 800;
+        s = mobile ? Math.max(.5, Math.min(W / 700, .62)) : Math.max(.6, Math.min(W / 1440, H / 900));
+        gy = H * (mobile ? .9 : .87);
+
+        const bw = 300 * s;
+        const bh = mobile ? Math.min(330 * s, gy - H * .62) : 330 * s;
+        const bx = mobile ? W * .38 : W * .6;
+        const cx = W * .8;
+        const mastH = mobile ? Math.min(560 * s, gy - H * .57) : Math.min(560 * s, gy - H * .2);
+        L = {
+          b: { x: bx - bw / 2, w: bw, h: bh, floors: 5 },
+          crane: { x: cx, top: gy - mastH, jib: mobile ? W * .62 : Math.min(480 * s, cx - bx + bw * .45), mw: 14 * s },
+          sun: { x: bx - bw * .12, y: gy - bh * .52 }
+        };
+
+        const r = rng(7);
+        far1 = [];
+        for (let x = -60; x < W + 60;) {
+          const w = (34 + r() * 70) * s;
+          far1.push({ x, w, h: (40 + r() * 120) * s, ant: r() < .2 });
+          x += w + r() * 8 * s;
+        }
+        far2 = [];
+        for (let x = -60; x < W + 60;) {
+          const w = (40 + r() * 90) * s;
+          far2.push({ x, w, h: (18 + r() * 70) * s });
+          x += w + r() * 30 * s;
+        }
+        groundPts = [];
+        for (let x = -40; x <= W + 80; x += 40) groundPts.push([x, gy + (r() - .5) * 4 * s]);
+
+        clouds = Array.from({ length: 5 }, (_, i) => ({
+          x: r() * W, y: H * (.12 + r() * .38), r: (220 + r() * 260) * s, k: .07 + r() * .06,
+          v: 3 + r() * 5, a: .1 + r() * .14
+        }));
+        dust = Array.from({ length: mobile ? 40 : 75 }, () => ({
+          x: r() * W, y: gy - r() * H * .55, z: .4 + r() * 1.2, v: 4 + r() * 10, p: r() * 6.28
+        }));
+        birds = Array.from({ length: 3 }, (_, i) => ({
+          y: H * (.16 + r() * .2), v: (28 + r() * 16) * s, off: r() * 2000, sz: (5 + r() * 3) * s, p: r() * 6
+        }));
+      }
+
+      /* ---------------- sky & atmosphere ---------------- */
+      function drawSky(t) {
+        let g = ctx.createLinearGradient(0, 0, 0, gy);
+        g.addColorStop(0, '#150e21');
+        g.addColorStop(.28, '#2c1934');
+        g.addColorStop(.55, '#6a2e3e');
+        g.addColorStop(.76, '#c0573b');
+        g.addColorStop(.9, '#ee9650');
+        g.addColorStop(1, '#ffcd8b');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+
+        const { x, y } = L.sun;
+        g = ctx.createRadialGradient(x, y, 0, x, y, Math.max(W, H) * .65);
+        g.addColorStop(0, 'rgba(255,214,150,.55)');
+        g.addColorStop(.14, 'rgba(255,168,98,.24)');
+        g.addColorStop(1, 'rgba(255,140,80,0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+
+        // thin lit cloud streaks
+        for (const c of clouds) {
+          const cx = ((c.x + t * c.v) % (W + c.r * 2)) - c.r;
+          ctx.save();
+          ctx.translate(cx, c.y);
+          ctx.scale(1, c.k);
+          const cg = ctx.createRadialGradient(0, 0, 0, 0, 0, c.r);
+          cg.addColorStop(0, `rgba(255,178,128,${c.a})`);
+          cg.addColorStop(1, 'rgba(255,150,110,0)');
+          ctx.fillStyle = cg;
+          ctx.beginPath();
+          ctx.arc(0, 0, c.r, 0, 6.283);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // sun disc
+        g = ctx.createRadialGradient(x, y, 0, x, y, 46 * s);
+        g.addColorStop(0, '#fffbf2');
+        g.addColorStop(.55, '#fff0cc');
+        g.addColorStop(.78, 'rgba(255,222,168,.55)');
+        g.addColorStop(1, 'rgba(255,200,140,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(x, y, 46 * s, 0, 6.283);
+        ctx.fill();
+      }
+
+      function drawBirds(t) {
+        ctx.strokeStyle = 'rgba(40,20,30,.75)';
+        ctx.lineWidth = Math.max(1, 1.3 * s);
+        ctx.lineCap = 'round';
+        for (const b of birds) {
+          const span = W + 400;
+          const x = ((b.off + t * b.v) % span) - 200;
+          const y = b.y + Math.sin(t * .4 + b.p) * 8 * s;
+          const flap = Math.sin(t * 7 + b.p) * (Math.sin(t * .6 + b.p) > -.2 ? 1 : .15);
+          const wy = -flap * b.sz * .7;
+          ctx.beginPath();
+          ctx.moveTo(x - b.sz, y + wy);
+          ctx.quadraticCurveTo(x - b.sz * .4, y - b.sz * .25, x, y);
+          ctx.quadraticCurveTo(x + b.sz * .4, y - b.sz * .25, x + b.sz, y + wy);
+          ctx.stroke();
+        }
+      }
+
+      function drawFar() {
+        ctx.fillStyle = C.far1;
+        for (const b of far1) {
+          ctx.fillRect(b.x, gy - b.h, b.w, b.h + 2);
+          if (b.ant) ctx.fillRect(b.x + b.w * .5, gy - b.h - 22 * s, 1.5 * s, 22 * s);
+        }
+        // distant crane in the haze
+        ctx.strokeStyle = C.far1;
+        ctx.lineWidth = 2 * s;
+        const dx = W * (mobile ? .1 : .3), dt = gy - 230 * s;
+        ctx.beginPath();
+        ctx.moveTo(dx, gy); ctx.lineTo(dx, dt);
+        ctx.moveTo(dx - 130 * s, dt + 6 * s); ctx.lineTo(dx + 45 * s, dt + 6 * s);
+        ctx.moveTo(dx, dt - 22 * s); ctx.lineTo(dx - 120 * s, dt + 6 * s);
+        ctx.moveTo(dx, dt - 22 * s); ctx.lineTo(dx + 40 * s, dt + 6 * s);
+        ctx.stroke();
+
+        let g = ctx.createLinearGradient(0, gy - 170 * s, 0, gy);
+        g.addColorStop(0, 'rgba(255,186,128,0)');
+        g.addColorStop(1, 'rgba(255,186,128,.38)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, gy - 170 * s, W, 172 * s);
+
+        ctx.fillStyle = C.far2;
+        for (const b of far2) ctx.fillRect(b.x, gy - b.h, b.w, b.h + 2);
+
+        g = ctx.createLinearGradient(0, gy - 60 * s, 0, gy);
+        g.addColorStop(0, 'rgba(255,170,110,0)');
+        g.addColorStop(1, 'rgba(255,170,110,.22)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, gy - 60 * s, W, 62 * s);
+      }
+
+      /* ---------------- structure ---------------- */
+      function drawBuilding() {
+        const { x, w, h, floors } = L.b;
+        const fh = h / floors, col = 9 * s, slab = 7 * s, cols = 6;
+        ctx.fillStyle = C.mid;
+        ctx.strokeStyle = C.mid;
+
+        const colX = i => x + i * (w - col) / (cols - 1);
+        for (let f = 0; f < floors; f++) {
+          const y = gy - (f + 1) * fh;
+          const top = f === floors - 1;
+          const sw = top ? w * .62 : w;
+          ctx.fillRect(x - 4 * s, y, sw + 8 * s, slab);
+          for (let c = 0; c < cols; c++) {
+            if (top && c > 3) continue;
+            ctx.fillRect(colX(c), y + slab, col, fh - slab);
+          }
+        }
+        // ground floor infill with openings
+        const y0 = gy - fh;
+        ctx.fillRect(x, y0 + slab, w * .28, fh - slab);
+        ctx.fillRect(x + w * .55, y0 + slab, w * .45, fh - slab);
+        // half-built walls on floor 2
+        ctx.fillRect(x, gy - 2 * fh + slab, w * .18, fh - slab);
+        ctx.fillRect(x + w * .8, gy - 2 * fh + fh * .45, w * .2, fh * .55 - slab + slab);
+
+        // starter columns + rebar on roof slab
+        const ry = gy - floors * fh;
+        ctx.lineWidth = Math.max(1, 1.1 * s);
+        for (let c = 0; c < cols; c++) {
+          const cxp = colX(c);
+          if (c <= 3) {
+            ctx.fillRect(cxp, ry - fh * .38, col, fh * .38);
+            for (let k = 0; k < 3; k++) {
+              ctx.beginPath();
+              ctx.moveTo(cxp + col * (.2 + k * .3), ry - fh * .38);
+              ctx.lineTo(cxp + col * (.2 + k * .3) + (k - 1) * 1.5 * s, ry - fh * .38 - 24 * s);
+              ctx.stroke();
+            }
+          } else {
+            for (let k = 0; k < 4; k++) {
+              ctx.beginPath();
+              ctx.moveTo(cxp + col * (.15 + k * .23), gy - (floors - 1) * fh);
+              ctx.lineTo(cxp + col * (.15 + k * .23) + (k - 1.5) * 2 * s, gy - (floors - 1) * fh - 30 * s);
+              ctx.stroke();
+            }
+          }
+        }
+        // formwork props under the newest slab
+        for (let i = 0; i < 9; i++) {
+          const px = x + w * (.05 + i * .065);
+          ctx.beginPath();
+          ctx.moveTo(px, ry - 1);
+          ctx.lineTo(px, ry);
+          ctx.moveTo(px, gy - (floors - 1) * fh);
+          ctx.lineTo(px, ry + slab);
+          ctx.stroke();
+        }
+
+        // scaffold on left face
+        const sx = x - 30 * s, sx2 = x - 8 * s, sTop = gy - 4 * fh - fh * .55;
+        ctx.lineWidth = Math.max(1, 1.4 * s);
+        ctx.beginPath();
+        for (const px of [sx, sx2]) { ctx.moveTo(px, gy); ctx.lineTo(px, sTop); }
+        for (let yy = gy; yy > sTop; yy -= fh / 2) { ctx.moveTo(sx - 3 * s, yy); ctx.lineTo(x, yy); }
+        for (let yy = gy; yy - fh / 2 > sTop; yy -= fh) {
+          ctx.moveTo(sx, yy); ctx.lineTo(sx2, yy - fh / 2);
+          ctx.moveTo(sx2, yy - fh / 2); ctx.lineTo(sx, yy - fh);
+        }
+        // guard rail at top
+        ctx.moveTo(sx, sTop + 10 * s); ctx.lineTo(sx2, sTop + 10 * s);
+        ctx.stroke();
+        for (let yy = gy - fh; yy > sTop; yy -= fh) ctx.fillRect(sx - 2 * s, yy - 3 * s, sx2 - sx + 6 * s, 3 * s);
+      }
+
+      // crane state for the pendulum
+      const P = { th: 0, om: 0, lastTx: null, lastV: 0 };
+
+      function craneTrolley(t) {
+        const u = (t % 40) / 40;
+        let p;
+        if (u < .12) p = 0;
+        else if (u < .5) p = ease((u - .12) / .38);
+        else if (u < .62) p = 1;
+        else p = 1 - ease((u - .62) / .38);
+        return .22 + p * .6;
+      }
+
+      function drawCrane(t, dt) {
+        const c = L.crane, cx = c.x, mw = c.mw, top = c.top;
+        const jy = top, jd = 16 * s, J = c.jib, cj = J * .32;
+        ctx.strokeStyle = C.mid;
+        ctx.fillStyle = C.mid;
+        const lw = Math.max(1, 1.5 * s);
+        ctx.lineWidth = lw;
+
+        // base
+        ctx.fillRect(cx - 34 * s, gy - 12 * s, 68 * s, 12 * s);
+        // mast lattice
+        const l = cx - mw / 2, r = cx + mw / 2;
+        ctx.lineWidth = lw * 1.6;
+        ctx.beginPath();
+        ctx.moveTo(l, gy); ctx.lineTo(l, top);
+        ctx.moveTo(r, gy); ctx.lineTo(r, top);
+        ctx.stroke();
+        ctx.lineWidth = lw * .8;
+        ctx.beginPath();
+        let side = 0;
+        for (let y = gy - 12 * s; y > top + mw; y -= mw * 1.15) {
+          ctx.moveTo(side ? r : l, y);
+          ctx.lineTo(side ? l : r, y - mw * 1.15);
+          ctx.moveTo(l, y); ctx.lineTo(r, y);
+          side ^= 1;
+        }
+        ctx.stroke();
+
+        // slewing unit + apex
+        ctx.fillRect(l - 4 * s, top - 8 * s, mw + 8 * s, 10 * s);
+        const ay = top - 92 * s;
+        ctx.lineWidth = lw * 1.3;
+        ctx.beginPath();
+        ctx.moveTo(l, top - 8 * s); ctx.lineTo(cx, ay); ctx.lineTo(r, top - 8 * s);
+        ctx.moveTo(cx - mw * .25, top - 30 * s); ctx.lineTo(cx + mw * .25, top - 30 * s);
+        ctx.moveTo(cx - mw * .12, top - 60 * s); ctx.lineTo(cx + mw * .12, top - 60 * s);
+        ctx.stroke();
+
+        // jib (tapered lattice)
+        const tipY = jy - jd * .3;
+        ctx.lineWidth = lw * 1.3;
+        ctx.beginPath();
+        ctx.moveTo(l, jy); ctx.lineTo(cx - J, jy);
+        ctx.moveTo(l, jy - jd); ctx.lineTo(cx - J, tipY);
+        ctx.lineTo(cx - J, jy);
+        ctx.stroke();
+        ctx.lineWidth = lw * .7;
+        ctx.beginPath();
+        const segs = Math.max(8, Math.round(J / (jd * 1.2)));
+        for (let i = 0; i < segs; i++) {
+          const x0 = l - (J - mw / 2) * i / segs, x1 = l - (J - mw / 2) * (i + 1) / segs;
+          const yTop0 = jy - jd + (jd * .7) * (i / segs), yTop1 = jy - jd + (jd * .7) * ((i + 1) / segs);
+          if (i % 2) { ctx.moveTo(x0, jy); ctx.lineTo(x1, yTop1); }
+          else { ctx.moveTo(x0, yTop0); ctx.lineTo(x1, jy); }
+        }
+        ctx.stroke();
+
+        // counter-jib + counterweights + machinery
+        ctx.lineWidth = lw * 1.3;
+        ctx.beginPath();
+        ctx.moveTo(r, jy); ctx.lineTo(cx + cj, jy);
+        ctx.moveTo(r, jy - jd * .6); ctx.lineTo(cx + cj, jy - jd * .6);
+        ctx.stroke();
+        for (let i = 0; i < 4; i++) ctx.fillRect(cx + cj * .62 + i * cj * .085, jy - jd * .2, cj * .075, jd * 2.4);
+        ctx.fillRect(cx + cj * .25, jy - jd * 1.4, cj * .26, jd * .9);
+
+        // pendant ties
+        ctx.lineWidth = Math.max(.8, s);
+        ctx.beginPath();
+        ctx.moveTo(cx, ay); ctx.lineTo(cx - J * .62, jy - jd + jd * .43);
+        ctx.moveTo(cx, ay); ctx.lineTo(cx - J * .3, jy - jd + jd * .2);
+        ctx.moveTo(cx, ay); ctx.lineTo(cx + cj, jy - jd * .6);
+        ctx.stroke();
+
+        // operator cab
+        ctx.fillRect(l - 22 * s, jy + 2 * s, 20 * s, 18 * s);
+        ctx.fillStyle = 'rgba(255,196,140,.32)';
+        ctx.fillRect(l - 20 * s, jy + 5 * s, 9 * s, 8 * s);
+        ctx.fillStyle = C.mid;
+
+        // trolley + damped pendulum load
+        const tx = cx - J * craneTrolley(t);
+        const len = (150 + 70 * (.5 - .5 * Math.cos(t * 2 * Math.PI / 26))) * s;
+        if (P.lastTx === null || dt <= 0) { P.lastTx = tx; P.lastV = 0; }
+        const v = dt > 0 ? (tx - P.lastTx) / dt : 0;
+        const a = dt > 0 ? (v - P.lastV) / dt : 0;
+        P.lastTx = tx; P.lastV = v;
+        if (dt > 0) {
+          const g = 340 * s, steps = 4, h = dt / steps;
+          for (let i = 0; i < steps; i++) {
+            const acc = -(g / len) * Math.sin(P.th) - (a / len) * Math.cos(P.th) - .35 * P.om;
+            P.om += acc * h;
+            P.th += P.om * h;
+          }
+          P.th = Math.max(-.35, Math.min(.35, P.th));
+        }
+        ctx.fillRect(tx - 9 * s, jy, 18 * s, 6 * s);
+        const hx = tx + Math.sin(P.th) * len, hy = jy + 6 * s + Math.cos(P.th) * len;
+        ctx.lineWidth = Math.max(.7, .9 * s);
+        ctx.beginPath();
+        ctx.moveTo(tx - 3 * s, jy + 6 * s); ctx.lineTo(hx - 3 * s, hy);
+        ctx.moveTo(tx + 3 * s, jy + 6 * s); ctx.lineTo(hx + 3 * s, hy);
+        ctx.stroke();
+        ctx.fillRect(hx - 6 * s, hy, 12 * s, 14 * s);
+
+        // steel beam on slings
+        ctx.save();
+        ctx.translate(hx, hy + 14 * s);
+        ctx.rotate(P.th * .6 + Math.sin(t * .5) * .03);
+        const bl = 130 * s, drop = 34 * s;
+        ctx.lineWidth = Math.max(.7, .9 * s);
+        ctx.beginPath();
+        ctx.moveTo(0, 0); ctx.lineTo(-bl * .38, drop);
+        ctx.moveTo(0, 0); ctx.lineTo(bl * .38, drop);
+        ctx.stroke();
+        ctx.fillRect(-bl / 2, drop, bl, 4 * s);
+        ctx.fillRect(-bl / 2, drop + 4 * s, bl, 3 * s);
+        ctx.fillRect(-bl / 2, drop + 7 * s, bl, 3 * s);
+        ctx.restore();
+
+        // aviation lights
+        const blink = .5 + .5 * Math.sin(t * 3.2);
+        for (const [lx, ly] of [[cx, ay], [cx - J, jy - 2 * s]]) {
+          const g = ctx.createRadialGradient(lx, ly, 0, lx, ly, 14 * s);
+          g.addColorStop(0, `rgba(255,70,50,${.9 * blink})`);
+          g.addColorStop(1, 'rgba(255,40,30,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(lx, ly, 14 * s, 0, 6.283); ctx.fill();
+        }
+        ctx.fillStyle = C.mid;
+      }
+
+      function drawGround() {
+        ctx.fillStyle = C.ground;
+        ctx.beginPath();
+        ctx.moveTo(-40, H);
+        for (const [x, y] of groundPts) ctx.lineTo(x, y);
+        ctx.lineTo(W + 80, H);
+        ctx.fill();
+
+        const b = L.b;
+        // spoil heap
+        const mx0 = b.x - 150 * s;
+        ctx.beginPath();
+        ctx.moveTo(mx0 - 110 * s, gy + 2);
+        ctx.bezierCurveTo(mx0 - 60 * s, gy - 30 * s, mx0 + 20 * s, gy - 44 * s, mx0 + 90 * s, gy + 2);
+        ctx.fill();
+        // pipe stack
+        const px = b.x + b.w + 30 * s, pr = 8 * s;
+        ctx.fillStyle = C.mid;
+        for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.arc(px + i * pr * 2, gy - pr, pr, 0, 6.283); ctx.fill(); }
+        for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.arc(px + pr + i * pr * 2, gy - pr * 2.7, pr, 0, 6.283); ctx.fill(); }
+        // pallets
+        const qx = L.crane.x + 50 * s;
+        for (let i = 0; i < 3; i++) ctx.fillRect(qx, gy - (i + 1) * 13 * s, 56 * s, 11 * s);
+
+        // site office with a lit window
+        const ox = mobile ? W * .02 : W * .06, ow = 150 * s, oh = 56 * s;
+        if (!mobile) {
+          ctx.fillStyle = C.mid;
+          ctx.fillRect(ox, gy - oh, ow, oh);
+          ctx.fillRect(ox - 3 * s, gy - oh - 4 * s, ow + 6 * s, 5 * s);
+          const wx = ox + ow * .58, wy = gy - oh * .7;
+          const g = ctx.createRadialGradient(wx + 14 * s, wy + 8 * s, 0, wx + 14 * s, wy + 8 * s, 60 * s);
+          g.addColorStop(0, 'rgba(255,190,110,.28)');
+          g.addColorStop(1, 'rgba(255,170,90,0)');
+          ctx.fillStyle = g;
+          ctx.fillRect(wx - 50 * s, wy - 50 * s, 130 * s, 120 * s);
+          ctx.fillStyle = '#ffc77e';
+          ctx.globalAlpha = .75;
+          ctx.fillRect(wx, wy, 28 * s, 16 * s);
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = C.mid;
+          ctx.fillRect(wx + 13 * s, wy, 2 * s, 16 * s);
+        }
+      }
+
+      /* ---------------- people ---------------- */
+      function ik(hip, foot, l1, l2, dir) {
+        const dx = foot[0] - hip[0], dy = foot[1] - hip[1];
+        const d = Math.min(Math.hypot(dx, dy), l1 + l2 - .001);
+        const a = Math.atan2(dy, dx);
+        const al = Math.acos(Math.max(-1, Math.min(1, (l1 * l1 + d * d - l2 * l2) / (2 * l1 * d))));
+        return [hip[0] + l1 * Math.cos(a - dir * al), hip[1] + l1 * Math.sin(a - dir * al)];
+      }
+
+      function line(a, b, w) {
+        ctx.lineWidth = w;
+        ctx.beginPath();
+        ctx.moveTo(a[0], a[1]);
+        ctx.lineTo(b[0], b[1]);
+        ctx.stroke();
+      }
+
+      function drawFigure(p) {
+        const h = p.h, d = p.dir;
+        ctx.strokeStyle = ctx.fillStyle = C.mid;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        const leg = i => {
+          line(p.hip, p.knee[i], .085 * h);
+          line(p.knee[i], p.foot[i], .066 * h);
+          line([p.foot[i][0] - d * .02 * h, p.foot[i][1] + .025 * h], [p.foot[i][0] + d * .075 * h, p.foot[i][1] + .025 * h], .05 * h);
+        };
+        const arm = i => {
+          line(p.sh, p.elbow[i], .056 * h);
+          line(p.elbow[i], p.hand[i], .046 * h);
+        };
+
+        leg(1); arm(1);
+
+        // torso (vest adds bulk)
+        const hp = p.hip, sh = p.sh;
+        ctx.beginPath();
+        ctx.moveTo(hp[0] - d * .06 * h, hp[1] + .02 * h);
+        ctx.lineTo(hp[0] + d * .055 * h, hp[1] + .02 * h);
+        ctx.lineTo(sh[0] + d * .075 * h, sh[1] + .03 * h);
+        ctx.quadraticCurveTo(sh[0] + d * .05 * h, sh[1] - .025 * h, sh[0], sh[1] - .022 * h);
+        ctx.quadraticCurveTo(sh[0] - d * .07 * h, sh[1] - .015 * h, sh[0] - d * .075 * h, sh[1] + .04 * h);
+        ctx.closePath();
+        ctx.fill();
+
+        // reflective vest tape catching the low sun
+        ctx.strokeStyle = 'rgba(255,196,128,.32)';
+        for (const k of [.32, .62]) {
+          const ax = hp[0] + (sh[0] - hp[0]) * k, ay = hp[1] + (sh[1] - hp[1]) * k;
+          line([ax - d * .062 * h, ay], [ax + d * .066 * h, ay], .014 * h);
+        }
+        ctx.strokeStyle = C.mid;
+
+        // neck, head, hard hat
+        const hd = [sh[0] + d * (.025 * h) + (p.headTilt || 0) * d * .03 * h, sh[1] - .1 * h + Math.abs(p.headTilt || 0) * .02 * h];
+        line(sh, [hd[0], hd[1] + .04 * h], .045 * h);
+        ctx.beginPath();
+        ctx.arc(hd[0], hd[1], .062 * h, 0, 6.283);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(hd[0] - d * .004 * h, hd[1] - .018 * h, .074 * h, .06 * h, 0, Math.PI, 0);
+        ctx.fill();
+        line([hd[0] - d * .07 * h, hd[1] - .016 * h], [hd[0] + d * .1 * h, hd[1] - .02 * h], .018 * h);
+
+        leg(0); arm(0);
+      }
+
+      const walkers = [
+        { x0: .08, dir: 1, h: 76, S: .34, cad: 1.75, ph: 0 },
+        { x0: .7, dir: -1, h: 73, S: .3, cad: 1.6, ph: .4, carry: 'plank' },
+        { x0: .32, dir: 1, h: 75, S: .28, cad: 1.4, ph: .1, carry: 'beam', pair: 0 },
+        { x0: .32, dir: 1, h: 72, S: .28, cad: 1.4, ph: .62, carry: 'beam', pair: 1, lag: 1.9 }
+      ];
+
+      function walkerPose(w, t) {
+        const h = w.h * s, S = w.S * h;
+        const d = w.cad * S * t + w.ph * 2 * S;
+        const span = W + 240 * s;
+        let bx = w.x0 * W + w.dir * w.cad * S * t - w.dir * (w.lag || 0) * h;
+        bx = ((bx % span) + span) % span - 120 * s;
+
+        const q0 = d / (2 * S);
+        const hipY = gy - .5 * h + .012 * h * Math.cos(4 * Math.PI * q0);
+        const hip = [bx, hipY];
+        const foot = [], knee = [];
+        for (let i = 0; i < 2; i++) {
+          const q = q0 + i / 2, n = Math.floor(q), f = q - n;
+          const Xn = (n - i / 2) * 2 * S + S / 2;
+          let rel, lift = 0;
+          if (f < .5) rel = Xn - d;
+          else {
+            const g = (f - .5) * 2;
+            rel = Xn + 2 * S * ease(g) - d;
+            lift = Math.sin(Math.PI * g) * .05 * h;
+          }
+          foot[i] = [bx + w.dir * rel, gy - .04 * h - lift];
+          knee[i] = ik(hip, foot[i], .255 * h, .255 * h, w.dir);
+        }
+
+        const lean = w.carry ? .05 : .035;
+        const sh = [bx + w.dir * lean * h, hipY - .32 * h];
+        const elbow = [], hand = [];
+        for (let i = 0; i < 2; i++) {
+          const raise = w.carry && (w.carry === 'beam' || i === 0);
+          if (raise) {
+            elbow[i] = [sh[0] + w.dir * .1 * h, sh[1] + .02 * h];
+            hand[i] = [sh[0] + w.dir * .045 * h, sh[1] - .075 * h];
+          } else {
+            const th = (i === 0 ? -1 : 1) * (w.carry ? .2 : .36) * Math.cos(2 * Math.PI * q0);
+            elbow[i] = [sh[0] + w.dir * Math.sin(th) * .17 * h, sh[1] + Math.cos(th) * .17 * h];
+            const th2 = th + .3 + .3 * Math.max(0, th);
+            hand[i] = [elbow[i][0] + w.dir * Math.sin(th2) * .15 * h, elbow[i][1] + Math.cos(th2) * .15 * h];
+          }
+        }
+        return { h, dir: w.dir, hip, knee, foot, sh, elbow, hand };
+      }
+
+      function drawWalkers(t) {
+        const poses = walkers.map(w => walkerPose(w, t));
+        poses.forEach((p, i) => {
+          const w = walkers[i];
+          if (w.carry === 'plank') {
+            ctx.strokeStyle = C.mid;
+            ctx.lineCap = 'butt';
+            line([p.sh[0] - p.dir * .62 * p.h, p.sh[1] - .045 * p.h], [p.sh[0] + p.dir * .5 * p.h, p.sh[1] - .07 * p.h], .04 * p.h);
+          }
+          drawFigure(p);
+        });
+        // shared beam between the two carriers
+        const a = poses[2], b = poses[3];
+        if (Math.abs(a.sh[0] - b.sh[0]) < a.h * 3) {
+          ctx.strokeStyle = C.mid;
+          ctx.lineCap = 'butt';
+          line([b.sh[0] - .5 * b.h, b.sh[1] - .06 * b.h], [a.sh[0] + .55 * a.h, a.sh[1] - .06 * a.h], .045 * a.h);
+        }
+      }
+
+      // banksman signalling the crane, and a welder on the roof slab
+      const sparks = [];
+      let weldPt = null;
+
+      function drawRoofCrew(t, dt) {
+        const b = L.b, ry = gy - b.h, h = 66 * s, fh = b.h / b.floors;
+
+        // banksman
+        {
+          const x = b.x + b.w * .2, dir = 1;
+          const hip = [x, ry - .5 * h + Math.sin(t * .9) * .004 * h];
+          const foot = [[x + .07 * h, ry - .04 * h], [x - .07 * h, ry - .04 * h]];
+          const knee = foot.map(f => ik(hip, f, .255 * h, .255 * h, dir));
+          const sh = [x + .015 * h, hip[1] - .32 * h];
+          const wave = Math.sin(t * 1.6) * .12;
+          const up = 2.55 + wave;
+          const elbow = [[sh[0] + Math.sin(up) * .17 * h, sh[1] + Math.cos(up) * .17 * h], [sh[0] - .02 * h, sh[1] + .17 * h]];
+          const hand = [[elbow[0][0] + Math.sin(up + .15) * .15 * h, elbow[0][1] + Math.cos(up + .15) * .15 * h], [sh[0] + .02 * h, sh[1] + .31 * h]];
+          drawFigure({ h, dir, hip, knee, foot, sh, elbow, hand, headTilt: -.6 });
+        }
+
+        // welder crouched at a starter column
+        {
+          const cols = 6, col = 9 * s;
+          const cX = b.x + 3 * (b.w - col) / 5;
+          const dir = 1, x = cX - .34 * h;
+          const hip = [x, ry - .27 * h];
+          const foot = [[x + .2 * h, ry - .04 * h], [x - .26 * h, ry - .04 * h]];
+          const knee = [ik(hip, foot[0], .255 * h, .255 * h, dir), [x - .03 * h, ry - .035 * h]];
+          const sh = [hip[0] + .14 * h, hip[1] - .28 * h];
+          weldPt = [cX - 1 * s, ry - .22 * h];
+          const elbow = [[sh[0] + .12 * h, sh[1] + .1 * h], [sh[0] + .09 * h, sh[1] + .13 * h]];
+          const hand = [[weldPt[0] - .02 * h, weldPt[1]], [weldPt[0] - .05 * h, weldPt[1] + .03 * h]];
+          drawFigure({ h, dir, hip, knee, foot, sh, elbow, hand, headTilt: 1 });
+        }
+
+        // welding arc: on for a few seconds, off while repositioning
+        const cyc = t % 6.5;
+        const on = cyc < 4.2 && Math.sin(t * 37) > -.6;
+        if (on && dt > 0) {
+          const n = Math.min(6, Math.round(dt * 160 * (.5 + Math.random())));
+          for (let i = 0; i < n && sparks.length < 140; i++) {
+            const a = -Math.PI / 2 + (Math.random() - .5) * 2.4;
+            const v = (60 + Math.random() * 170) * s;
+            sparks.push({ x: weldPt[0], y: weldPt[1], vx: Math.cos(a) * v, vy: Math.sin(a) * v, life: .4 + Math.random() * .7 });
+          }
+        }
+        ctx.globalCompositeOperation = 'lighter';
+        if (on) {
+          const r = (34 + Math.random() * 18) * s;
+          const g = ctx.createRadialGradient(weldPt[0], weldPt[1], 0, weldPt[0], weldPt[1], r);
+          g.addColorStop(0, 'rgba(235,245,255,.95)');
+          g.addColorStop(.12, 'rgba(170,205,255,.5)');
+          g.addColorStop(1, 'rgba(120,160,255,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(weldPt[0], weldPt[1], r, 0, 6.283); ctx.fill();
+        }
+        ctx.lineCap = 'round';
+        for (let i = sparks.length - 1; i >= 0; i--) {
+          const p = sparks[i];
+          p.vy += 520 * s * dt;
+          p.x += p.vx * dt;
+          p.y += p.vy * dt;
+          p.life -= dt;
+          if (p.life <= 0 || p.y > gy) { sparks.splice(i, 1); continue; }
+          ctx.strokeStyle = `rgba(255,${180 + Math.round(p.life * 60)},110,${Math.min(1, p.life * 1.6)})`;
+          ctx.lineWidth = Math.max(.8, 1.1 * s);
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p.x - p.vx * .025, p.y - p.vy * .025);
+          ctx.stroke();
+        }
+        ctx.globalCompositeOperation = 'source-over';
+      }
+
+      /* ---------------- light & foreground ---------------- */
+      function drawLight(t, dt) {
+        const { x, y } = L.sun;
+        ctx.globalCompositeOperation = 'lighter';
+        // bloom bleeding over silhouette edges
+        let g = ctx.createRadialGradient(x, y, 0, x, y, 520 * s);
+        g.addColorStop(0, 'rgba(255,176,96,.3)');
+        g.addColorStop(.25, 'rgba(255,140,80,.09)');
+        g.addColorStop(1, 'rgba(255,120,70,0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+        // faint anamorphic streak
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(1, .015);
+        g = ctx.createRadialGradient(0, 0, 0, 0, 0, W * .5);
+        g.addColorStop(0, 'rgba(255,200,140,.22)');
+        g.addColorStop(1, 'rgba(255,180,120,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(0, 0, W * .5, 0, 6.283); ctx.fill();
+        ctx.restore();
+
+        // dust in the light
+        for (const p of dust) {
+          p.x += p.v * dt * s;
+          p.y += Math.sin(t * .5 + p.p) * 3 * dt;
+          if (p.x > W + 10) p.x = -10;
+          const near = Math.max(0, 1 - Math.hypot(p.x - x, p.y - y) / (520 * s));
+          const a = (.08 + near * .55) * (.6 + .4 * Math.sin(t * 1.3 + p.p));
+          ctx.fillStyle = `rgba(255,214,160,${a})`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.z * s * 1.2, 0, 6.283);
+          ctx.fill();
+        }
+        ctx.globalCompositeOperation = 'source-over';
+      }
+
+      function drawForeground() {
+        ctx.save();
+        ctx.filter = `blur(${Math.round(3 * s)}px)`;
+        ctx.fillStyle = C.fg;
+        ctx.strokeStyle = C.fg;
+        const x = W * (mobile ? .86 : .9), y = H + 30 * s;
+        ctx.beginPath();
+        ctx.ellipse(x, y, 230 * s, 90 * s, 0, Math.PI, 0);
+        ctx.fill();
+        ctx.lineWidth = 4 * s;
+        ctx.lineCap = 'round';
+        for (let i = 0; i < 6; i++) {
+          const bx = x - 120 * s + i * 42 * s;
+          ctx.beginPath();
+          ctx.moveTo(bx, y - 40 * s);
+          ctx.lineTo(bx + (i - 2.5) * 14 * s, y - (120 + (i % 3) * 30) * s);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      /* ---------------- loop ---------------- */
+      function frame(t, dt) {
+        mx += (mxT - mx) * Math.min(1, dt * 2.5);
+        ctx.clearRect(0, 0, W, H);
+
+        ctx.save();
+        ctx.translate(-mx * 4, 0);
+        drawSky(t);
+        drawBirds(t);
+        ctx.restore();
+
+        ctx.save();
+        ctx.translate(-mx * 9, 0);
+        drawFar();
+        ctx.restore();
+
+        ctx.save();
+        ctx.translate(-mx * 16, 0);
+        drawBuilding();
+        drawCrane(t, dt);
+        drawGround();
+        drawRoofCrew(t, dt);
+        drawWalkers(t);
+        ctx.restore();
+
+        drawLight(t, dt);
+
+        ctx.save();
+        ctx.translate(-mx * 30, 0);
+        drawForeground();
+        ctx.restore();
+      }
+
+      resize();
+      addEventListener('resize', () => { resize(); if (reduced) frame(14, 0); });
+      addEventListener('pointermove', e => { mxT = (e.clientX / W - .5) * 2; }, { passive: true });
+
+      if (reduced) {
+        frame(14, 0);
+        return;
+      }
+
+      let last = null, t = 6;
+      function tick(now) {
+        if (last !== null) {
+          const dt = Math.min(.05, (now - last) / 1000);
+          t += dt;
+          frame(t, dt);
+        }
+        last = now;
+        requestAnimationFrame(tick);
+      }
+      document.addEventListener('visibilitychange', () => { last = null; });
+      requestAnimationFrame(tick);
+    })();
+  </script>
+</body>
+
+</html>
