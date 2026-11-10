@@ -1344,6 +1344,93 @@
       max-width: 24ch;
     }
 
+    /* ---------- Verified Shopify skill badges (under the stats) ---------- */
+    .verified {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 24px 48px;
+      margin-top: 56px;
+      padding: 28px 32px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--bg-2);
+    }
+
+    .verified-copy .mono {
+      color: var(--lime);
+    }
+
+    .verified-copy h3 {
+      margin: 10px 0 6px;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: clamp(22px, 2.2vw, 28px);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+    }
+
+    .verified-copy p {
+      margin: 0;
+      color: var(--ink-2);
+      font-size: 15px;
+      max-width: 46ch;
+    }
+
+    .verified-copy a {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--lime);
+    }
+
+    .verified-badges {
+      display: flex;
+      gap: 16px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .verified-badges a {
+      display: block;
+      border-radius: 14px;
+      transition: transform .35s var(--ease);
+    }
+
+    .verified-badges a:hover {
+      transform: translateY(-4px);
+    }
+
+    .verified-badges img {
+      width: 156px;
+      height: 156px;
+    }
+
+    @media (max-width: 900px) {
+      .verified {
+        grid-template-columns: 1fr;
+        padding: 24px 20px;
+      }
+
+      .verified-badges {
+        gap: 10px;
+      }
+
+      .verified-badges li {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+
+      .verified-badges img {
+        width: 100%;
+        height: auto;
+        max-width: 156px;
+      }
+    }
+
     /* ---------- Work: store dial ---------- */
     /* Store names sit around a dial; the one in focus shows in the round window in the middle. */
     .dial {
@@ -4792,6 +4879,29 @@
             <div class="stat-num"><span data-count="2">0</span><sup>DE</sup></div>
             <p>Leading German Shopify agencies I've shipped storefronts with.</p>
           </div>
+        </div>
+        <div class="verified rv">
+          <div class="verified-copy">
+            <span class="mono">Verified by Shopify</span>
+            <h3>Shopify certified developer</h3>
+            <p>Three Shopify Academy verified skill badges, covering development fundamentals, solution planning
+              and Liquid storefronts for theme developers.</p>
+            <a href="./certification/">See all certifications</a>
+          </div>
+          <ul class="verified-badges">
+            <li><a href="https://www.credly.com/badges/45b9c825-e283-422b-9fb1-8a3e6bf5cac1/linked_in_profile"
+                target="_blank" rel="noopener"><img src="./assets/images/certifications/shopify-dev-fundamentals.png"
+                  width="156" height="156" loading="lazy"
+                  alt="Shopify verified skill badge: Shopify Development Fundamentals"></a></li>
+            <li><a href="https://www.credly.com/badges/7d13e487-7aaa-4792-9d1b-0888c8243773/linked_in_profile"
+                target="_blank" rel="noopener"><img src="./assets/images/certifications/shopify-solution-planning.png"
+                  width="156" height="156" loading="lazy"
+                  alt="Shopify verified skill badge: Solution Planning Fundamentals"></a></li>
+            <li><a href="https://www.credly.com/badges/7ae673df-1a96-40c5-be87-8efe66c2033b/linked_in_profile"
+                target="_blank" rel="noopener"><img src="./assets/images/certifications/shopify-liquid-storefronts.png"
+                  width="156" height="156" loading="lazy"
+                  alt="Shopify verified skill badge: Liquid Storefronts for Theme Developers"></a></li>
+          </ul>
         </div>
       </div>
     </section>
